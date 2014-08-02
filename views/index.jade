@@ -48,7 +48,7 @@ html(lang="en")
               - var playerName = players[i]["Player Name"].toLowerCase()
               - var pos = players[i]["Position"]
               - var rank = players[i]["Rank"]
-              tr.player(data-name=playerName, data-position=pos, data-id=rank)
+              tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank)
                 td.rank= rank
                 td.pos= pos
                 td.name= players[i]["Player Name"]
@@ -60,7 +60,7 @@ html(lang="en")
               - var playerName = players[i]["Player Name"].toLowerCase()
               - var pos = players[i]["Position"]
               - var rank = players[i]["Rank"]
-              tr.player(data-name=playerName, data-position=pos, data-id=rank)
+              tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank)
                 td.rank= rank
                 td.pos= pos
                 td.name= players[i]["Player Name"]
@@ -72,7 +72,7 @@ html(lang="en")
               - var playerName = players[i]["Player Name"].toLowerCase()
               - var pos = players[i]["Position"]
               - var rank = players[i]["Rank"]
-              tr.player(data-name=playerName, data-position=pos, data-id=rank)
+              tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank)
                 td.rank= rank
                 td.pos= pos
                 td.name= players[i]["Player Name"]
@@ -150,11 +150,12 @@ html(lang="en")
           id = $player.attr('data-id'),
           pos = $player.attr('data-position'),
           taken = $player.hasClass('taken'),
-          mine = $player.hasClass('mine');
+          mine = $player.hasClass('mine'),
+          $cells = $("[data-id='"+id+"']");
 
-        if(mine) { $player.removeClass('taken').removeClass('mine') }
-        else if(taken) { $player.addClass('mine') }
-        else { $player.addClass('taken') }
+        if(mine) { $cells.removeClass('taken').removeClass('mine') }
+        else if(taken) { $cells.addClass('mine') }
+        else { $cells.addClass('taken') }
 
         mine = $player.hasClass('mine');
         updateMyTeam(name, id, pos, mine);
