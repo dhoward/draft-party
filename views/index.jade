@@ -4,3 +4,14 @@ html(lang="en")
     title Fantasy Draft Tool
   body
     h1 Index
+
+    each player in players
+      .player
+        span.rank= player["Rank"]
+        span.name= player["Player Name"]
+        span.position= player["Position"]
+
+    script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
+
+    //- script(type='text/javascript').
+    //-   positions = _.groupBy(players, "Position")
