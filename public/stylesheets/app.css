@@ -1,3 +1,7 @@
 .position {
   float: left
 }
+
+.position th {
+  text-align: center;
+}

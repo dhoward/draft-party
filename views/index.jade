@@ -3,19 +3,26 @@ html(lang="en")
   head
     title Fantasy Draft Tool
     link(rel="stylesheet", href="/stylesheets/app.css")
+    link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
+    link(rel="stylesheet", href="/stylesheets/bootstrap-theme.min.css")
     script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
 
   body
-    input.search(type="text")
+    .container-fluid
+      .row
+        input.search(type="text")
 
-    each positionPlayers, position in positions
-      .position
-        h1= position
-        each player in positionPlayers
-          - var playerName = player["Player Name"].toLowerCase()
-          .player(data-name=playerName)
-            span.rank= player["Rank"]
-            span.name= player["Player Name"]
+      .row
+        each positionPlayers, position in positions
+          .col-md-2
+            .position
+              table.table.table-hover.table-bordered
+                th(colspan=2)= position
+                each player in positionPlayers
+                  - var playerName = player["Player Name"].toLowerCase()
+                  tr.player(data-name=playerName)
+                    td.rank= player["Rank"]
+                    td.name= player["Player Name"]
 
     script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
 
