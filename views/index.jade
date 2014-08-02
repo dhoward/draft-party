@@ -124,9 +124,8 @@ html(lang="en")
           $player.removeAttr('data-id').find('.name').empty();
         } else {
           var $row = $team.find("tr[data-position='"+position+"']:not([data-id])").first();
-          console.log($row);
+          if(!$row.length && (position === 'rb' || position === 'wr')) $row = $team.find("tr[data-position='flx']:not([data-id])").first();
           if(!$row.length) $row = $team.find("tr[data-position='bn']:not([data-id])").first();
-          console.log($row);
           $row.attr('data-id', id).find('.name').text(name);
         }
       };
