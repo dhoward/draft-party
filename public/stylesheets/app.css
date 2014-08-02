@@ -25,3 +25,19 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
   background-color: #449d44 !important;
   color: #fff;
 }
+
+.show-positional .positional {
+  display: block;
+}
+
+.show-positional .absolute {
+  display: none;
+}
+
+.show-absolute .positional {
+  display: none;
+}
+
+.show-absolute .absolute {
+  display: block;
+}

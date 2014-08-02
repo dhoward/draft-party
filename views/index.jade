@@ -8,22 +8,29 @@ html(lang="en")
     script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
 
   body
-    .container-fluid
+    .container-fluid.main-content.show-positional
       .row
-        form
+        form.form-horizontal
           .col-md-4
             .form-group
-              label(for="searchText") Search
-              input.search.form-control(name="searchText", type="text")
-          .col-md-4
+              .col-md-2
+                label.control-label(for="searchText") Search
+              .col-md-10
+                input.search.form-control(name="searchText", type="text")
+          .col-md-2
             .checkbox
               label
                 input(name="takenToggle", type="checkbox")
                 | Hide drafted players
+          .col-md-2
+            .checkbox
+              label
+                input(name="positionalToggle", type="checkbox", checked="checked")
+                | Positional
 
       .row
         each positionPlayers, position in positions
-          .col-md-2
+          .col-md-2.positional
             .position
               table.table.table-hover.table-bordered
                 th(colspan=2)= position
@@ -34,6 +41,43 @@ html(lang="en")
                   tr.player(data-name=playerName, data-position=pos, data-id=rank)
                     td.rank= player["Rank"]
                     td.name= player["Player Name"]
+
+        .col-md-3.absolute
+          table.table.table-hover.table-bordered
+            - for (var i = 0; i < 100; ++i) {
+              - var playerName = players[i]["Player Name"].toLowerCase()
+              - var pos = players[i]["Position"]
+              - var rank = players[i]["Rank"]
+              tr.player(data-name=playerName, data-position=pos, data-id=rank)
+                td.rank= rank
+                td.pos= pos
+                td.name= players[i]["Player Name"]
+            - }
+
+        .col-md-3.absolute
+          table.table.table-hover.table-bordered
+            - for (var i = 100; i < 200; ++i) {
+              - var playerName = players[i]["Player Name"].toLowerCase()
+              - var pos = players[i]["Position"]
+              - var rank = players[i]["Rank"]
+              tr.player(data-name=playerName, data-position=pos, data-id=rank)
+                td.rank= rank
+                td.pos= pos
+                td.name= players[i]["Player Name"]
+            - }
+
+        .col-md-3.absolute
+          table.table.table-hover.table-bordered
+            - for (var i = 200; i < 298; ++i) {
+              - var playerName = players[i]["Player Name"].toLowerCase()
+              - var pos = players[i]["Position"]
+              - var rank = players[i]["Rank"]
+              tr.player(data-name=playerName, data-position=pos, data-id=rank)
+                td.rank= rank
+                td.pos= pos
+                td.name= players[i]["Player Name"]
+            - }
+
         .col-md-2
           .my-team
             table.table.table-bordered
@@ -133,4 +177,10 @@ html(lang="en")
       $('[name=takenToggle').on('change', function(){
         var hide = $(this).prop('checked');
         $('.player.taken').toggle( !hide );
+      });
+
+      $('[name=positionalToggle').on('change', function(){
+        var positional = $(this).prop('checked');
+        $('.main-content').toggleClass( 'show-positional', positional );
+        $('.main-content').toggleClass( 'show-absolute', !positional );
       });
