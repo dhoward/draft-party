@@ -5,3 +5,15 @@
 .position th {
   text-align: center;
 }
+
+tr.taken > td, tr.taken:hover > td {
+  background: #222 !important;
+  background-color: #222 !important;
+  color: #ccc;
+}
+
+tr.taken.mine > td, tr.taken.mine:hover > td {
+  background: #449d44 !important;
+  background-color: #449d44 !important;
+  color: #fff;
+}

@@ -35,7 +35,17 @@ html(lang="en")
           return;
         }
 
-        console.log('search: '+searchText);
         $('.player').hide();
         $( ".player[data-name*='"+searchText+"']" ).show();
+      });
+
+      $('tr').on('click', function(){
+        var $player = $(this),
+          taken = $player.hasClass('taken'),
+          mine = $player.hasClass('mine');
+
+        if(mine) { $player.removeClass('taken').removeClass('mine') }
+        else if(taken) { $player.addClass('mine') }
+        else { $player.addClass('taken') }
+
       });
