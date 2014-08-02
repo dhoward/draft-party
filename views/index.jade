@@ -29,9 +29,61 @@ html(lang="en")
                 th(colspan=2)= position
                 each player in positionPlayers
                   - var playerName = player["Player Name"].toLowerCase()
-                  tr.player(data-name=playerName)
+                  - var pos = player["Position"].toLowerCase()
+                  - var rank = player["Rank"]
+                  tr.player(data-name=playerName, data-position=pos, data-id=rank)
                     td.rank= player["Rank"]
                     td.name= player["Player Name"]
+        .col-md-2
+          .my-team
+            table.table.table-bordered
+              th(colspan=2) Your Team
+                tr.player(data-position="qb")
+                  td.pos QB
+                  td.name
+                tr.player(data-position="rb")
+                  td.pos RB
+                  td.name
+                tr.player(data-position="rb")
+                  td.pos RB
+                  td.name
+                tr.player(data-position="wr")
+                  td.pos WR
+                  td.name
+                tr.player(data-position="wr")
+                  td.pos WR
+                  td.name
+                tr.player(data-position="flx")
+                  td.pos FLX
+                  td.name
+                tr.player(data-position="te")
+                  td.pos TE
+                  td.name
+                tr.player(data-position="k")
+                  td.pos K
+                  td.name
+
+                tr.player(data-position="bn")
+                  td.pos BN
+                  td.name
+                tr.player(data-position="bn")
+                  td.pos BN
+                  td.name
+                tr.player(data-position="bn")
+                  td.pos BN
+                  td.name
+                tr.player(data-position="bn")
+                  td.pos BN
+                  td.name
+                tr.player(data-position="bn")
+                  td.pos BN
+                  td.name
+                tr.player(data-position="bn")
+                  td.pos BN
+                  td.name
+                tr.player(data-position="bn")
+                  td.pos BN
+                  td.name
 
     script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
 
@@ -50,13 +102,34 @@ html(lang="en")
 
       $('tr').on('click', function(){
         var $player = $(this),
+          name = $player.find('.name').text(),
+          id = $player.attr('data-id'),
+          pos = $player.attr('data-position'),
           taken = $player.hasClass('taken'),
           mine = $player.hasClass('mine');
 
         if(mine) { $player.removeClass('taken').removeClass('mine') }
         else if(taken) { $player.addClass('mine') }
         else { $player.addClass('taken') }
+
+        mine = $player.hasClass('mine');
+        updateMyTeam(name, id, pos, mine);
       });
+
+      var updateMyTeam = function(name, id, position, mine) {
+        var $team = $('.my-team .table');
+
+        if(!mine) {
+          var $player = $team.find("[data-id='"+id+"']");
+          $player.removeAttr('data-id').find('.name').empty();
+        } else {
+          var $row = $team.find("tr[data-position='"+position+"']:not([data-id])").first();
+          console.log($row);
+          if(!$row.length) $row = $team.find("tr[data-position='bn']:not([data-id])").first();
+          console.log($row);
+          $row.attr('data-id', id).find('.name').text(name);
+        }
+      };
 
       $('[name=takenToggle').on('change', function(){
         var hide = $(this).prop('checked');
