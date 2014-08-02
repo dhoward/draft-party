@@ -10,7 +10,16 @@ html(lang="en")
   body
     .container-fluid
       .row
-        input.search(type="text")
+        form
+          .col-md-4
+            .form-group
+              label(for="searchText") Search
+              input.search.form-control(name="searchText", type="text")
+          .col-md-4
+            .checkbox
+              label
+                input(name="takenToggle", type="checkbox")
+                | Hide drafted players
 
       .row
         each positionPlayers, position in positions
@@ -47,5 +56,9 @@ html(lang="en")
         if(mine) { $player.removeClass('taken').removeClass('mine') }
         else if(taken) { $player.addClass('mine') }
         else { $player.addClass('taken') }
+      });
 
+      $('[name=takenToggle').on('change', function(){
+        var hide = $(this).prop('checked');
+        $('.player.taken').toggle( !hide );
       });
