@@ -2,16 +2,33 @@ doctype html
 html(lang="en")
   head
     title Fantasy Draft Tool
-  body
-    h1 Index
+    link(rel="stylesheet", href="/stylesheets/app.css")
+    script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
 
-    each player in players
-      .player
-        span.rank= player["Rank"]
-        span.name= player["Player Name"]
-        span.position= player["Position"]
+  body
+    input.search(type="text")
+
+    each positionPlayers, position in positions
+      .position
+        h1= position
+        each player in positionPlayers
+          - var playerName = player["Player Name"].toLowerCase()
+          .player(data-name=playerName)
+            span.rank= player["Rank"]
+            span.name= player["Player Name"]
 
     script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
 
-    //- script(type='text/javascript').
-    //-   positions = _.groupBy(players, "Position")
+    script(type='text/javascript').
+      $('.search').on('keyup', function(){
+        var searchText = $(this).val().toLowerCase();
+
+        if(searchText === ''){
+          $('.player').show();
+          return;
+        }
+
+        console.log('search: '+searchText);
+        $('.player').hide();
+        $( ".player[data-name*='"+searchText+"']" ).show();
+      });
