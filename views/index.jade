@@ -27,6 +27,10 @@ html(lang="en")
               label
                 input(name="positionalToggle", type="checkbox", checked="checked")
                 | Positional
+          .col-md-2
+            .pick
+              span Current pick:
+                span.pickCounter 1
 
       .row
         each positionPlayers, position in positions
@@ -157,6 +161,7 @@ html(lang="en")
 
         mine = $player.hasClass('mine');
         updateMyTeam(name, id, pos, mine);
+        updateCounter();
       });
 
       var updateMyTeam = function(name, id, position, mine) {
@@ -171,6 +176,12 @@ html(lang="en")
           if(!$row.length) $row = $team.find("tr[data-position='bn']:not([data-id])").first();
           $row.attr('data-id', id).find('.name').text(name);
         }
+      };
+
+      var updateCounter = function() {
+        var count = $('.absolute .taken').length,
+          pick = count+1;
+        $('.pickCounter').text(pick);
       };
 
       $('[name=takenToggle').on('change', function(){

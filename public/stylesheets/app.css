@@ -6,6 +6,11 @@ body {
   user-select: none;
 }
 
+.main-content {
+  padding-top: 20px;
+  font-size: 12px;
+}
+
 tr, td {
   cursor: pointer;
 }
@@ -40,4 +45,13 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
 
 .show-absolute .absolute {
   display: block;
+}
+
+.pick {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.pickCounter {
+  margin-left: 10px;
 }
