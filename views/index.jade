@@ -4,7 +4,6 @@ html(lang="en")
     title Fantasy Draft Tool
     link(rel="stylesheet", href="/stylesheets/app.css")
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
-    //- link(rel="stylesheet", href="/stylesheets/bootstrap-theme.min.css")
     script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
 
   body
@@ -27,12 +26,12 @@ html(lang="en")
               .col-md-2
                 .checkbox
                   label
-                    input(name="takenToggle", type="checkbox")
+                    input(name="playerToggle", type="checkbox")
                     | Hide drafted players
               .col-md-6
                 .checkbox
                   label
-                    input(name="positionalToggle", type="checkbox", checked="checked")
+                    input(name="viewToggle", type="checkbox", checked="checked")
                     | Positional
               .col-md-2
                 .pick
@@ -140,64 +139,17 @@ html(lang="en")
                   td.pos.col-md-2 BN
                   td.name
 
+    != js("pick-counter")
+    != js("view-toggle")
+    != js("player-toggle")
+    != js("search")
+    != js("players")
+    != js("team")
+
     script(type='text/javascript').
-      $('.search').on('keyup', function(){
-        var searchText = $(this).val().toLowerCase();
-
-        if(searchText === ''){
-          $('.player').show();
-          return;
-        }
-
-        $('.player').hide();
-        $( ".player[data-name*='"+searchText+"']" ).show();
-      });
-
-      $('tr').on('click', function(){
-        var $player = $(this),
-          name = $player.find('.name').text(),
-          id = $player.attr('data-id'),
-          pos = $player.attr('data-position'),
-          taken = $player.hasClass('taken'),
-          mine = $player.hasClass('mine'),
-          $cells = $("[data-id='"+id+"']");
-
-        if(mine) { $cells.removeClass('taken').removeClass('mine') }
-        else if(taken) { $cells.addClass('mine') }
-        else { $cells.addClass('taken') }
-
-        mine = $player.hasClass('mine');
-        updateMyTeam(name, id, pos, mine);
-        updateCounter();
-      });
-
-      var updateMyTeam = function(name, id, position, mine) {
-        var $team = $('.my-team .table');
-
-        if(!mine) {
-          var $player = $team.find("[data-id='"+id+"']");
-          $player.removeAttr('data-id').find('.name').empty();
-        } else {
-          var $row = $team.find("tr[data-position='"+position+"']:not([data-id])").first();
-          if(!$row.length && (position === 'rb' || position === 'wr')) $row = $team.find("tr[data-position='flx']:not([data-id])").first();
-          if(!$row.length) $row = $team.find("tr[data-position='bn']:not([data-id])").first();
-          $row.attr('data-id', id).find('.name').text(name);
-        }
-      };
-
-      var updateCounter = function() {
-        var count = $('.absolute .taken').length,
-          pick = count+1;
-        $('.pickCounter').text(pick);
-      };
-
-      $('[name=takenToggle').on('change', function(){
-        var hide = $(this).prop('checked');
-        $('.player.taken').toggle( !hide );
-      });
-
-      $('[name=positionalToggle').on('change', function(){
-        var positional = $(this).prop('checked');
-        $('.main-content').toggleClass( 'show-positional', positional );
-        $('.main-content').toggleClass( 'show-absolute', !positional );
-      });
+      new ViewToggle($('[name=viewToggle'));
+      new PlayerToggle($('[name=playerToggle'));
+      new PickCounter($('.pickCounter'));
+      new Search($('.search'));
+      new Players($('.positional'));
+      new Team($('.my-team .table'));

@@ -33,7 +33,7 @@ tr, td {
   padding-bottom: 0;
 }
 
-.position th {
+.position th, .my-team th {
   text-align: center;
 }
 
