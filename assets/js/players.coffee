@@ -1,6 +1,8 @@
 class Players
   constructor: (@$el) ->
     @$el.on 'click', '.player', @updateState
+    @hidePlayers = false
+    $('body').on 'Players.hide', @onHide
 
   updateState: (e) =>
     $player = $(e.currentTarget)
@@ -19,5 +21,22 @@ class Players
       $cells.addClass 'taken'
 
     mine = $player.hasClass 'mine'
+    @hidePlayer($player, id) if @hidePlayers and $player.hasClass('taken')
+
     $player.trigger 'Team.update', {name, id, position, mine}
     $player.trigger 'Pick.update'
+
+  onHide: (e, hide) =>
+    console.log "Hide on draft: #{hide}"
+    @hidePlayers = hide
+
+  hidePlayer: ($player, id) =>
+    timeout = "timeout#{id}"
+    clearTimeout this[timeout] if this[timeout]?
+    this[timeout] = setTimeout (->
+      console.log "fading out"
+      console.log "player"
+      $player.fadeOut()
+      return
+    ), 3000
+

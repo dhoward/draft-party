@@ -5,3 +5,4 @@ class PlayerToggle
   updatePlayers: =>
     hide = @$el.prop 'checked'
     $('.player.taken').toggle !hide
+    @$el.trigger 'Players.hide', hide

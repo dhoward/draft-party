@@ -17,7 +17,6 @@ class Team
     $row.attr('data-id', id).find('.name').text name
 
   getRow: ({name, id, position}) =>
-    debugger
     $row = @nextOpen position
     if !$row.length and @flexEligible(position)
       $row = @nextOpen 'flx'

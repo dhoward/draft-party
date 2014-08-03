@@ -44,9 +44,13 @@ tr.taken > td, tr.taken:hover > td {
 }
 
 tr.taken.mine > td, tr.taken.mine:hover > td {
-  background: #449d44 !important;
-  background-color: #449d44 !important;
-  color: #fff;
+  color: #000;
+  background-image: -webkit-linear-gradient(#27FF7A, #0CE861 60%, #449d44) !important;
+  background-image: -o-linear-gradient(#27FF7A, #0CE861 60%, #449d44) !important;
+  background-image: linear-gradient(#27FF7A, #0CE861 60%, #449d44) !important;
+  background-repeat: no-repeat !important;
+  font-weight: 500;
+  text-shadow: none;
 }
 
 .show-positional .positional {
