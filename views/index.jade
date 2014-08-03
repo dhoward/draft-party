@@ -4,45 +4,52 @@ html(lang="en")
     title Fantasy Draft Tool
     link(rel="stylesheet", href="/stylesheets/app.css")
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
-    link(rel="stylesheet", href="/stylesheets/bootstrap-theme.min.css")
+    //- link(rel="stylesheet", href="/stylesheets/bootstrap-theme.min.css")
     script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
 
   body
     .container-fluid.main-content.show-positional
+
       .row
-        form.form-horizontal
-          .col-md-4
-            .form-group
+        .col-md-12
+          .page-header
+            h1
+              | Fantasy Football Draft Tool
+
+      .row
+        .col-md-12.navbar-holder
+          .col-md-12.navbar
+            form.form-horizontal
               .col-md-2
-                label.control-label(for="searchText") Search
-              .col-md-10
-                input.search.form-control(name="searchText", type="text")
-          .col-md-2
-            .checkbox
-              label
-                input(name="takenToggle", type="checkbox")
-                | Hide drafted players
-          .col-md-2
-            .checkbox
-              label
-                input(name="positionalToggle", type="checkbox", checked="checked")
-                | Positional
-          .col-md-2
-            .pick
-              span Current pick:
-                span.pickCounter 1
+                .form-group
+                  .col-md-12
+                    input.search.form-control(name="searchText", type="text", placeholder="Search")
+              .col-md-2
+                .checkbox
+                  label
+                    input(name="takenToggle", type="checkbox")
+                    | Hide drafted players
+              .col-md-6
+                .checkbox
+                  label
+                    input(name="positionalToggle", type="checkbox", checked="checked")
+                    | Positional
+              .col-md-2
+                .pick
+                  span Current pick:
+                    span.pickCounter 1
 
       .row
         each positionPlayers, position in positions
           .col-md-2.positional
             .position
               table.table.table-hover.table-bordered
-                th(colspan=2)= position
+                th(colspan=2, class="breadcrumb")= position
                 each player in positionPlayers
                   - var playerName = player["Player Name"].toLowerCase()
                   - var pos = player["Position"].toLowerCase()
                   - var rank = player["Rank"]
-                  tr.player(data-name=playerName, data-position=pos, data-id=rank)
+                  tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
                     td.rank= player["Rank"]
                     td.name= player["Player Name"]
 
