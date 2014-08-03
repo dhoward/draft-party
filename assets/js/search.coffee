@@ -7,5 +7,5 @@ class Search
     if searchText is ''
       $('.player').show()
     else
-      $('.player').hide()
+      $('.positional .player, .absolute .player').hide()
       $( ".player[data-name*='#{searchText}']" ).show()
