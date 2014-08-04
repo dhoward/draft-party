@@ -1,8 +1,11 @@
 class Players
   constructor: (@$el) ->
     @$el.on 'click', '.player', @updateState
-    @hidePlayers = false
+    $('body').on 'Players.highlight', @onHighlight
+    $('body').on 'Players.lowlight', @onLowlight
     $('body').on 'Players.hide', @onHide
+    @hidePlayers = false
+    @highlightClass = null
 
   updateState: (e) =>
     $player = $(e.currentTarget)
@@ -12,6 +15,8 @@ class Players
     taken = $player.hasClass 'taken'
     mine = $player.hasClass 'mine'
     $cells = $("[data-id='#{id}']")
+
+    if @highlightPlayer($player) then return
 
     if mine
       $cells.removeClass('taken').removeClass('mine')
@@ -37,3 +42,15 @@ class Players
       return
     ), 3000
 
+  highlightPlayer: ($player) =>
+    return false unless @highlightClass?
+    activate = !$player.hasClass(@highlightClass)
+    $player.removeClass('highlighted').removeClass('lowlighted')
+    $player.toggleClass @highlightClass, activate
+    return true
+
+  onHighlight: (e, activate) =>
+    @highlightClass = if activate then 'highlighted' else null
+
+  onLowlight: (e, activate) =>
+    @highlightClass = if activate then 'lowlighted' else null
