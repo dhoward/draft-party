@@ -27,7 +27,6 @@ class Players
     $player.trigger 'Pick.update'
 
   onHide: (e, hide) =>
-    console.log "Hide on draft: #{hide}"
     @hidePlayers = hide
 
   hidePlayer: ($player, id) =>
