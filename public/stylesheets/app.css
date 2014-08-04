@@ -118,9 +118,9 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
 }
 
 .pick {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  padding-top: 3px;
+  line-height: 40px;
 }
 
 .pickCounter {
