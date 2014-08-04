@@ -63,7 +63,7 @@ class Players
 
     mine = $player.hasClass 'mine'
     @cancelHidePlayer id
-    @hidePlayer($player, id) if @hidePlayers and $player.hasClass('taken')
+    @hidePlayer($cells, id) if @hidePlayers and $player.hasClass('taken')
 
     $player.trigger 'Team.update', {name, id, position, mine}
     $player.trigger 'Pick.update'
