@@ -6,9 +6,25 @@ button.submit
 script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
 script(type='text/javascript', src="javascripts/jquery.csv-0.71.min.js")
 script(type='text/javascript').
+  var fixName = function(nameString) {
+    var nameParts = nameString.split(',');
+    if(nameParts.length === 1) {
+      return nameString;
+    }
+
+    var orderedParts = [nameParts[1].trim(), nameParts[0].trim()];
+    return orderedParts.join(' ');
+  };
+
   $(".submit").on('click', function(){
     var source = $('.rankings').val();
     var json = $.csv.toObjects(source);
+
+    for(var i=0; i<json.length; i++) {
+      var player = json[i];
+      player["Player Name"] = fixName(player["Player Name"])
+    }
+
     $('.json-rankings').val(JSON.stringify(json));
     console.log(JSON.stringify(json));
   });
