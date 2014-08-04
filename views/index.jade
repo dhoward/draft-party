@@ -22,35 +22,39 @@ html(lang="en")
         .col-md-12.navbar-holder
           .col-md-12.navbar
             form.form-horizontal
-              .col-md-2
+              .col-md-2.col-sm-12.col-xs-8
                 .form-group
                   .col-md-12
                     input.search.form-control(name="searchText", type="text", placeholder="Search")
-              .col-md-2
+              .col-md-2.col-sm-3.hidden-xs
                 .checkbox
                   label
                     input(name="playerToggle", type="checkbox")
                     | Hide drafted players
-              .col-md-2
+              .col-md-2.col-sm-3.hidden-xs
                 .checkbox
                   label
                     input(name="viewToggle", type="checkbox", checked="checked")
                     | Positional rankings
-              .col-md-2
+              .col-md-2.hidden-sm.hidden-xs
                 .checkbox
                   label
                     input(name="tooltipToggle", type="checkbox")
                     | Show projections
-              .col-md-2
+              .col-md-2.col-sm-3.hidden-xs
                 .radio
                   button.highlight
                     i.fa.fa-pencil
                   button.lowlight
                     i.fa.fa-pencil
-              .col-md-2
+              .col-md-2.col-sm-3.col-xs-4
                 .pick
-                  span Current pick:
-                    span.pickCounter 1
+                  .hidden-xs
+                    span Current pick:
+                      span.pickCounter 1
+                  .visible-xs
+                    span Pick:
+                      span.pickCounter 1
 
       .row
         .col-md-12
@@ -58,7 +62,7 @@ html(lang="en")
             - orderedPositions = [{"QB": positions.QB}, {"RB": positions.RB}, {"WR": positions.WR}, {"TE": positions.TE}]
             each position, index in orderedPositions
               each positionPlayers, name in position
-                .col-md-2.position-column
+                .col-md-2.col-sm-6.position-column
                   table.table.table-hover.table-bordered
                     th(colspan=2, class="breadcrumb")= name
                     each player in positionPlayers
@@ -69,7 +73,7 @@ html(lang="en")
                         td.rank= player["Rank"]
                         td.name= player["Player Name"]
 
-            .col-md-2.position-column
+            .col-md-2.col-sm-6.position-column
               table.table.table-hover.table-bordered
                 th(colspan=2, class="breadcrumb") K
                 each player in positions.K
@@ -92,7 +96,7 @@ html(lang="en")
 
 
           .absolute
-            .col-md-3.position-column
+            .col-md-3.col-sm-6.position-column
               table.table.table-hover.table-bordered
                 - for (var i = 0; i < 105; ++i) {
                   - var playerName = players[i]["Player Name"].toLowerCase()
@@ -104,7 +108,7 @@ html(lang="en")
                     td.name= players[i]["Player Name"]
                 - }
 
-            .col-md-3.position-column
+            .col-md-3.col-sm-6.position-column
               table.table.table-hover.table-bordered
                 - for (var i = 105; i < 210; ++i) {
                   - var playerName = players[i]["Player Name"].toLowerCase()
@@ -116,7 +120,7 @@ html(lang="en")
                     td.name= players[i]["Player Name"]
                 - }
 
-            .col-md-3.position-column
+            .col-md-3.col-sm-6.position-column
               table.table.table-hover.table-bordered
                 - for (var i = 210; i < 315; ++i) {
                   - var playerName = players[i]["Player Name"].toLowerCase()
@@ -130,7 +134,7 @@ html(lang="en")
 
 
 
-          .col-md-2.my-team
+          .col-md-2.col-xs-12.my-team
             table.table.table-hover.table-bordered
               th(colspan=2) Your Team
                 tr

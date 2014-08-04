@@ -52,8 +52,9 @@ tr, td {
   cursor: pointer;
 }
 
-.checkbox {
+.main-content .form-horizontal .checkbox {
   font-size: 16px;
+  margin-bottom: 20px;
 }
 
 .main-content .page-header {
@@ -120,6 +121,7 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
 .main-content .my-team {
   padding-left: 0;
   padding-right: 0;
+  float: left;
 }
 
 .main-content.show-absolute .my-team {
@@ -153,4 +155,16 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
 
 .drop-target {
   background-color: #aaa;
+}
+
+@media (max-width: 992px) {
+  .main-content .position-column:nth-child(even) {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content .position-column {
+    padding-right: 0;
+  }
 }
