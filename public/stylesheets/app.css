@@ -32,11 +32,11 @@ form button.on {
   filter: none;
 }
 
-.highlight, .highlighted {
+.highlight, .highlighted .name {
   color: #fff572;
 }
 
-.lowlight, .lowlighted {
+.lowlight, .lowlighted .name {
   color: #ff6c60;
 }
 
