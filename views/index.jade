@@ -72,7 +72,7 @@ html(lang="en")
                       - var pos = player["Position"].toLowerCase()
                       - var rank = player["Rank"]
                       tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
-                        td.rank= player["Rank"]
+                        td.col-md-1.rank= player["Rank"]
                         td.name= player["Player Name"]
 
             .col-md-2.col-sm-6.position-column
@@ -83,7 +83,7 @@ html(lang="en")
                   - var pos = player["Position"].toLowerCase()
                   - var rank = player["Rank"]
                   tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
-                    td.rank= player["Rank"]
+                    td.col-md-1.rank= player["Rank"]
                     td.name= player["Player Name"]
 
               table.table.table-hover.table-bordered
@@ -93,7 +93,7 @@ html(lang="en")
                   - var pos = player["Position"].toLowerCase()
                   - var rank = player["Rank"]
                   tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
-                    td.rank= player["Rank"]
+                    td.col-md-1.rank= player["Rank"]
                     td.name= player["Player Name"]
 
 
@@ -105,8 +105,8 @@ html(lang="en")
                   - var pos = players[i]["Position"]
                   - var rank = players[i]["Rank"]
                   tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank, class="breadcrumb")
-                    td.rank= rank
-                    td.pos= pos
+                    td.col-md-1.rank= rank
+                    td.col-md-1.pos= pos
                     td.name= players[i]["Player Name"]
                 - }
 
@@ -117,8 +117,8 @@ html(lang="en")
                   - var pos = players[i]["Position"]
                   - var rank = players[i]["Rank"]
                   tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank, class="breadcrumb")
-                    td.rank= rank
-                    td.pos= pos
+                    td.col-md-1.rank= rank
+                    td.col-md-1.pos= pos
                     td.name= players[i]["Player Name"]
                 - }
 
@@ -129,8 +129,8 @@ html(lang="en")
                   - var pos = players[i]["Position"]
                   - var rank = players[i]["Rank"]
                   tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank, class="breadcrumb")
-                    td.rank= rank
-                    td.pos= pos
+                    td.col-md-1.rank= rank
+                    td.col-md-1.pos= pos
                     td.name= players[i]["Player Name"]
                 - }
 
