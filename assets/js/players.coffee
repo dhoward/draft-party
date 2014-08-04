@@ -34,8 +34,6 @@ class Players
     timeout = "timeout#{id}"
     clearTimeout this[timeout] if this[timeout]?
     this[timeout] = setTimeout (->
-      console.log "fading out"
-      console.log "player"
       $player.fadeOut()
       return
     ), 3000
