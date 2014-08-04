@@ -92,7 +92,7 @@ class Team
       console.log 'back-filling'
       @fillOpenRow @$dropTarget.text(), @$dropTarget.attr('data-id'), @$dropTarget.attr('data-true-position')
 
-    @fillRow @$dropTarget, @$dragMarker.text(), @$dragMarker.attr('data-id')
+    @fillRow @$dropTarget, @$dragMarker.text(), @$dragMarker.attr('data-id'), @$dragMarker.attr('data-true-position')
 
     @$dragMarker.remove()
     @$dragMarker = null
