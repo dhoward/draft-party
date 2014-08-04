@@ -14,12 +14,10 @@ class Team
     $player.removeAttr('data-id').removeAttr('data-true-position').empty()
 
   fillOpenRow: (name, id, position) =>
-    console.log "fillOpenRow", name, id, position
     $row = @getOpenRow position
     @fillRow $row, name, id, position
 
   fillRow: ($row, name, id, position) =>
-    console.log "filling:", name, id, position
     $row.attr('data-id', id).attr('data-true-position', position).text(name)
 
   getOpenRow: (position) =>
@@ -34,7 +32,6 @@ class Team
     position is 'rb' or position is 'wr'
 
   validRow: (currPos, checkPos) ->
-    console.log currPos, checkPos
     if checkPos is 'bn'
       return true
     else if checkPos is currPos
@@ -49,10 +46,10 @@ class Team
     @$el.find("[data-position='#{position}']:not([data-id])").first()
 
   onPlayerClick: (e) =>
-    @$dragPlayer = $(e.currentTarget)
-    @$dropTarget = @$dragPlayer
-    playerOffset = @$dragPlayer.offset()
-    @$dragMarker = @$dragPlayer.clone().addClass 'drag-marker'
+    @$initialPosition = $(e.currentTarget)
+    @$dropTarget = @$initialPosition
+    playerOffset = @$initialPosition.offset()
+    @$dragMarker = @$initialPosition.clone().addClass 'drag-marker'
     @$dragMarker.offset playerOffset
 
     offsetX = e.pageX - playerOffset.left
@@ -60,7 +57,7 @@ class Team
     @dragOffset = { top: offsetY, left: offsetX }
 
     $('body').append @$dragMarker
-    @clearRow @$dragPlayer.attr('data-id')
+    @clearRow @$initialPosition.attr('data-id')
 
     $('body').on 'mousemove.playerdrag', @onPlayerDrag
     $('body').on 'mouseup.playerdrag', @endPlayerDrag
@@ -82,16 +79,15 @@ class Team
         currentPos = @$dragMarker.attr 'data-true-position'
         if @validRow(currentPos, newPos)
           @$dropTarget = $player
+        else
+          @$dropTarget = @$initialPosition
 
   endPlayerDrag: =>
     $('body').off 'mousemove.playerdrag'
     $('body').off 'mouseup.playerdrag'
 
-    console.log "Dropping on to: #{@$dropTarget.text()}"
     if @$dropTarget.text() isnt ''
-      console.log 'back-filling'
       @fillOpenRow @$dropTarget.text(), @$dropTarget.attr('data-id'), @$dropTarget.attr('data-true-position')
-
     @fillRow @$dropTarget, @$dragMarker.text(), @$dragMarker.attr('data-id'), @$dragMarker.attr('data-true-position')
 
     @$dragMarker.remove()
