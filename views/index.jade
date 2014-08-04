@@ -53,84 +53,84 @@ html(lang="en")
                     span.pickCounter 1
 
       .row
-        .positional
-          - orderedPositions = [{"QB": positions.QB}, {"RB": positions.RB}, {"WR": positions.WR}, {"TE": positions.TE}]
-          each position, index in orderedPositions
-            each positionPlayers, name in position
-              .col-md-2
-                table.table.table-hover.table-bordered
-                  th(colspan=2, class="breadcrumb")= name
-                  each player in positionPlayers
-                    - var playerName = player["Player Name"].toLowerCase()
-                    - var pos = player["Position"].toLowerCase()
-                    - var rank = player["Rank"]
-                    tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
-                      td.rank= player["Rank"]
-                      td.name= player["Player Name"]
+        .col-md-12
+          .positional
+            - orderedPositions = [{"QB": positions.QB}, {"RB": positions.RB}, {"WR": positions.WR}, {"TE": positions.TE}]
+            each position, index in orderedPositions
+              each positionPlayers, name in position
+                .col-md-2.position-column
+                  table.table.table-hover.table-bordered
+                    th(colspan=2, class="breadcrumb")= name
+                    each player in positionPlayers
+                      - var playerName = player["Player Name"].toLowerCase()
+                      - var pos = player["Position"].toLowerCase()
+                      - var rank = player["Rank"]
+                      tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
+                        td.rank= player["Rank"]
+                        td.name= player["Player Name"]
 
-          .col-md-2
-            table.table.table-hover.table-bordered
-              th(colspan=2, class="breadcrumb") K
-              each player in positions.K
-                - var playerName = player["Player Name"].toLowerCase()
-                - var pos = player["Position"].toLowerCase()
-                - var rank = player["Rank"]
-                tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
-                  td.rank= player["Rank"]
-                  td.name= player["Player Name"]
+            .col-md-2.position-column
+              table.table.table-hover.table-bordered
+                th(colspan=2, class="breadcrumb") K
+                each player in positions.K
+                  - var playerName = player["Player Name"].toLowerCase()
+                  - var pos = player["Position"].toLowerCase()
+                  - var rank = player["Rank"]
+                  tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
+                    td.rank= player["Rank"]
+                    td.name= player["Player Name"]
 
-            table.table.table-hover.table-bordered
-              th(colspan=2, class="breadcrumb") DEF
-              each player in positions.DEF
-                - var playerName = player["Player Name"].toLowerCase()
-                - var pos = player["Position"].toLowerCase()
-                - var rank = player["Rank"]
-                tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
-                  td.rank= player["Rank"]
-                  td.name= player["Player Name"]
-
-
-        .absolute
-          .col-md-3
-            table.table.table-hover.table-bordered
-              - for (var i = 0; i < 100; ++i) {
-                - var playerName = players[i]["Player Name"].toLowerCase()
-                - var pos = players[i]["Position"]
-                - var rank = players[i]["Rank"]
-                tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank, class="breadcrumb")
-                  td.rank= rank
-                  td.pos= pos
-                  td.name= players[i]["Player Name"]
-              - }
-
-          .col-md-3
-            table.table.table-hover.table-bordered
-              - for (var i = 100; i < 200; ++i) {
-                - var playerName = players[i]["Player Name"].toLowerCase()
-                - var pos = players[i]["Position"]
-                - var rank = players[i]["Rank"]
-                tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank, class="breadcrumb")
-                  td.rank= rank
-                  td.pos= pos
-                  td.name= players[i]["Player Name"]
-              - }
-
-          .col-md-3
-            table.table.table-hover.table-bordered
-              - for (var i = 200; i < 298; ++i) {
-                - var playerName = players[i]["Player Name"].toLowerCase()
-                - var pos = players[i]["Position"]
-                - var rank = players[i]["Rank"]
-                tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank, class="breadcrumb")
-                  td.rank= rank
-                  td.pos= pos
-                  td.name= players[i]["Player Name"]
-              - }
+              table.table.table-hover.table-bordered
+                th(colspan=2, class="breadcrumb") DEF
+                each player in positions.DEF
+                  - var playerName = player["Player Name"].toLowerCase()
+                  - var pos = player["Position"].toLowerCase()
+                  - var rank = player["Rank"]
+                  tr.player(data-name=playerName, data-position=pos, data-id=rank, class="breadcrumb")
+                    td.rank= player["Rank"]
+                    td.name= player["Player Name"]
 
 
+          .absolute
+            .col-md-3.position-column
+              table.table.table-hover.table-bordered
+                - for (var i = 0; i < 105; ++i) {
+                  - var playerName = players[i]["Player Name"].toLowerCase()
+                  - var pos = players[i]["Position"]
+                  - var rank = players[i]["Rank"]
+                  tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank, class="breadcrumb")
+                    td.rank= rank
+                    td.pos= pos
+                    td.name= players[i]["Player Name"]
+                - }
 
-        .col-md-2
-          .my-team
+            .col-md-3.position-column
+              table.table.table-hover.table-bordered
+                - for (var i = 105; i < 210; ++i) {
+                  - var playerName = players[i]["Player Name"].toLowerCase()
+                  - var pos = players[i]["Position"]
+                  - var rank = players[i]["Rank"]
+                  tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank, class="breadcrumb")
+                    td.rank= rank
+                    td.pos= pos
+                    td.name= players[i]["Player Name"]
+                - }
+
+            .col-md-3.position-column
+              table.table.table-hover.table-bordered
+                - for (var i = 210; i < 315; ++i) {
+                  - var playerName = players[i]["Player Name"].toLowerCase()
+                  - var pos = players[i]["Position"]
+                  - var rank = players[i]["Rank"]
+                  tr.player(data-name=playerName, data-position=pos.toLowerCase(), data-id=rank, class="breadcrumb")
+                    td.rank= rank
+                    td.pos= pos
+                    td.name= players[i]["Player Name"]
+                - }
+
+
+
+          .col-md-2.my-team
             table.table.table-hover.table-bordered
               th(colspan=2) Your Team
                 tr
