@@ -107,3 +107,7 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
   font-size: 12px;
   text-shadow: none;
 }
+
+.drop-target {
+  background-color: #aaa;
+}

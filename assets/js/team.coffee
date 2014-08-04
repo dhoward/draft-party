@@ -77,8 +77,10 @@ class Team
       if centerY > top and centerY < top + $player.height()
         newPos = $player.attr('data-position')
         currentPos = @$dragMarker.attr 'data-true-position'
+        @$dropTarget.removeClass('drop-target') if @$dropTarget?
         if @validRow(currentPos, newPos)
           @$dropTarget = $player
+          @$dropTarget.addClass 'drop-target'
         else
           @$dropTarget = @$initialPosition
 
@@ -89,6 +91,7 @@ class Team
     if @$dropTarget.text() isnt ''
       @fillOpenRow @$dropTarget.text(), @$dropTarget.attr('data-id'), @$dropTarget.attr('data-true-position')
     @fillRow @$dropTarget, @$dragMarker.text(), @$dragMarker.attr('data-id'), @$dragMarker.attr('data-true-position')
+    @$dropTarget.removeClass 'drop-target'
 
     @$dragMarker.remove()
     @$dragMarker = null
