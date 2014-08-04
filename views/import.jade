@@ -16,6 +16,46 @@ script(type='text/javascript').
     return orderedParts.join(' ');
   };
 
+  var cleanStats = function(player) {
+    delete player["Bye"]
+    delete player["YPA"]
+    delete player["Att"]
+    delete player["Avg"]
+    delete player["Status"]
+    delete player["Injury Type"]
+    delete player["Rec"]
+    if(player["Position"] === "QB") {
+      delete player["Rush Yards"]
+      delete player["Rush TD"]
+      delete player["Rec Yards"]
+      delete player["Rec TD"]
+    } else if(player["Position"] === "RB") {
+      delete player["Pass Yards"]
+      delete player["Pass TD"]
+      delete player["INT"]
+    } else if(player["Position"] === "WR") {
+      delete player["Pass Yards"]
+      delete player["Pass TD"]
+      delete player["INT"]
+      delete player["Rush Yards"]
+      delete player["Rush TD"]
+    } else if(player["Position"] === "TE") {
+      delete player["Pass Yards"]
+      delete player["Pass TD"]
+      delete player["INT"]
+      delete player["Rush Yards"]
+      delete player["Rush TD"]
+    } else if(player["Position"] === "K") {
+      delete player["Pass Yards"]
+      delete player["Pass TD"]
+      delete player["INT"]
+      delete player["Rush Yards"]
+      delete player["Rush TD"]
+      delete player["Rec Yards"]
+      delete player["Rec TD"]
+    }
+  };
+
   $(".submit").on('click', function(){
     var source = $('.rankings').val();
     var json = $.csv.toObjects(source);
@@ -23,8 +63,9 @@ script(type='text/javascript').
     for(var i=0; i<json.length; i++) {
       var player = json[i];
       player["Player Name"] = fixName(player["Player Name"])
+      cleanStats(player)
     }
 
     $('.json-rankings').val(JSON.stringify(json));
-    console.log(JSON.stringify(json));
+    console.log(json);
   });
