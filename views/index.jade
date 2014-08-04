@@ -6,6 +6,8 @@ html(lang="en")
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
     link(rel="stylesheet", href="/stylesheets/font-awesome.min.css")
     script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
+    script(type='text/javascript', src="javascripts/bootstrap.min.js")
+    script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
 
   body
     .container-fluid.main-content.show-positional
@@ -34,7 +36,12 @@ html(lang="en")
                   label
                     input(name="viewToggle", type="checkbox", checked="checked")
                     | Positional rankings
-              .col-md-4
+              .col-md-2
+                .checkbox
+                  label
+                    input(name="tooltipToggle", type="checkbox")
+                    | Show projections
+              .col-md-2
                 .radio
                   button.highlight
                     i.fa.fa-pencil
@@ -183,6 +190,9 @@ html(lang="en")
     != js("players")
     != js("team")
     != js("highlighter")
+
+    script(type='text/javascript').
+      allPlayers = !{JSON.stringify(players)}
 
     script(type='text/javascript').
       new ViewToggle($('[name=viewToggle'));
