@@ -62,6 +62,7 @@ class Players
       $cells.addClass 'taken'
 
     mine = $player.hasClass 'mine'
+    @cancelHidePlayer id
     @hidePlayer($player, id) if @hidePlayers and $player.hasClass('taken')
 
     $player.trigger 'Team.update', {name, id, position, mine}
@@ -69,6 +70,10 @@ class Players
 
   onHide: (e, hide) =>
     @hidePlayers = hide
+
+  cancelHidePlayer: (id) =>
+    timeout = "timeout#{id}"
+    clearTimeout this[timeout] if this[timeout]?
 
   hidePlayer: ($player, id) =>
     timeout = "timeout#{id}"
