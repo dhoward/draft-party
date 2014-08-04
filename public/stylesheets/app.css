@@ -37,7 +37,7 @@ form button.on {
   filter: none;
 }
 
-.highlight, h4.highlighted, .highlighted .name, .highlighted .name:hover {
+.highlight, h4.highlighted, h1.highlighted, .highlighted .name, .highlighted .name:hover {
   color: #fff572;
 }
 
