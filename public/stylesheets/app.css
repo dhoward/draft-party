@@ -10,6 +10,11 @@ body {
     outline: 0;
 }
 
+.subtitle {
+  margin-left: 20px;
+  font-size: 16px;
+}
+
 .main-content {
   padding-top: 20px;
   font-size: 12px;
@@ -32,11 +37,11 @@ form button.on {
   filter: none;
 }
 
-.highlight, .highlighted .name {
+.highlight, .highlighted .name, .highlighted .name:hover {
   color: #fff572;
 }
 
-.lowlight, .lowlighted .name {
+.lowlight, .lowlighted .name, .lowlighted .name:hover {
   color: #ff6c60;
 }
 
