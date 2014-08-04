@@ -1,4 +1,5 @@
 express = require 'express'
+newrelic = require 'newrelic'
 path = require 'path'
 _ = require 'underscore'
 players = require './util/players'
