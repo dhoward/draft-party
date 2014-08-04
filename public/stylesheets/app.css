@@ -37,7 +37,7 @@ form button.on {
   filter: none;
 }
 
-.highlight, .highlighted .name, .highlighted .name:hover {
+.highlight, h4.highlighted, .highlighted .name, .highlighted .name:hover {
   color: #fff572;
 }
 
@@ -160,6 +160,18 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
 
 .drop-target {
   background-color: #aaa;
+}
+
+#instructions .modal-dialog {
+  width: 700px;
+}
+
+#instructions .modal-dialog h4{
+  margin-bottom: 4px;
+}
+
+.modal p {
+  margin-bottom: 30px;
 }
 
 @media (max-width: 992px) {

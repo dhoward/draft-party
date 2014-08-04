@@ -189,6 +189,26 @@ html(lang="en")
                   td.pos.col-md-2 BN
                   td.name.player(data-position="bn")
 
+    #instructions.modal.fade
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            button(type="button", class="close", data-dismiss="modal")
+              span(aria-hidden="true") &times;
+              span.sr-only Close
+            h3.modal-title Welcome to DraftTracker, it's here to use during, you know... the draft. Here's a few basics to get you started.
+          .modal-body
+            h4.highlighted Click on a player to mark him as taken
+            p Or double-click him to say that he's on your team.  He'll then show up in your team on the right hand side.
+            h4.highlighted Drag and drop the players on your team to rearrange your lineup
+            p Or just leave it alone and your team will autofill based on position
+            h4.highlighted The stuff in the toolbar should be self-explanatory
+            p Except maybe the pencil icons. You can use them to highlight players in the list, if you so choose.
+            h1.highlighted Let me know if ya like it!
+            p If people seem interested, I'll make it so you can log in and customize your rankings to your heart's content. To wit, if you disagree with the rankings that are currently there, I don't give a shit. They're imported from our good friends at rotoworld.
+          .modal-footer
+            button.btn.btn-default(type="button", data-dismiss="modal") Close
+
     != js("pick-counter")
     != js("view-toggle")
     != js("player-toggle")
@@ -199,6 +219,7 @@ html(lang="en")
 
     script(type='text/javascript').
       allPlayers = !{JSON.stringify(players)}
+      $('#instructions').modal()
 
     script(type='text/javascript').
       new ViewToggle($('[name=viewToggle'));
