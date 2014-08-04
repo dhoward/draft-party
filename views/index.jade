@@ -209,13 +209,7 @@ html(lang="en")
           .modal-footer
             button.btn.btn-default(type="button", data-dismiss="modal") Close
 
-    != js("pick-counter")
-    != js("view-toggle")
-    != js("player-toggle")
-    != js("search")
-    != js("players")
-    != js("team")
-    != js("highlighter")
+    != js('application')
 
     script(type='text/javascript').
       allPlayers = !{JSON.stringify(players)}
