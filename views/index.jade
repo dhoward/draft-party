@@ -5,9 +5,6 @@ html(lang="en")
     link(rel="stylesheet", href="/stylesheets/app.css")
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
     link(rel="stylesheet", href="/stylesheets/font-awesome.min.css")
-    script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
-    script(type='text/javascript', src="javascripts/bootstrap.min.js")
-    script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
 
   body
     .container-fluid.main-content.show-positional
@@ -205,29 +202,20 @@ html(lang="en")
             h4.highlighted The stuff in the toolbar is self-explanatory
             p Except maybe the pencil icons. You can use them to highlight players in the list, if you so choose.
             h1.highlighted Let me know if you like it!
-            p If people seem interested, I'll make it so you can log in and customize the rankings to your heart's content. To wit, if you disagree with the rankings that are currently there, I don't give a shit. They're imported from our good friends at rotoworld.
+            p If people seem interested, I'll make it so you can log in and customize the rankings to your heart's content. To wit, if you disagree with the rankings that are currently here, I don't give a shit. They're imported from our good friends at rotoworld.
           .modal-footer
             button.btn.btn-default(type="button", data-dismiss="modal") Close
 
-    != js('application')
 
+
+
+    script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
+    script(type='text/javascript', src="javascripts/bootstrap.min.js")
+    script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
+    script(type='text/javascript', src="javascripts/analytics.js")
     script(type='text/javascript').
       allPlayers = !{JSON.stringify(players)}
       $('#instructions').modal()
+      $('form').on('submit', function(){return false;});
 
-    script(type='text/javascript').
-      new ViewToggle($('[name=viewToggle]'));
-      new PlayerToggle($('[name=playerToggle]'));
-      new PickCounter($('.pickCounter'));
-      new Search($('.search'));
-      new Players($('.positional'));
-      new Players($('.absolute'));
-      new Team($('.my-team .table'));
-      new Highlighter($('.highlight'), $('.lowlight'));
-
-    script(type='text/javascript').
-      $('form').on('submit', function(){
-        return false;
-      });
-
-    script(type='text/javascript', src="javascripts/analytics.js")
+    != js('application')
