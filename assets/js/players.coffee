@@ -56,10 +56,13 @@ class Players
 
     if mine
       $cells.removeClass('taken').removeClass('mine')
+      @updatePlayerObject $player.attr('data-id'), 'state', null, false
     else if taken
       $cells.addClass 'mine'
+      @updatePlayerObject $player.attr('data-id'), 'state', 'mine', true
     else
       $cells.addClass 'taken'
+      @updatePlayerObject $player.attr('data-id'), 'state', 'taken', true
 
     mine = $player.hasClass 'mine'
     @cancelHidePlayer id
@@ -88,6 +91,7 @@ class Players
     activate = !$player.hasClass(@highlightClass)
     $player.removeClass('highlighted').removeClass('lowlighted')
     $player.toggleClass @highlightClass, activate
+    @updatePlayerObject $player.attr('data-id'), 'annotation', @highlightClass, activate
     return true
 
   onHighlight: (e, activate) =>
@@ -95,3 +99,11 @@ class Players
 
   onLowlight: (e, activate) =>
     @highlightClass = if activate then 'lowlighted' else null
+
+  updatePlayerObject: (id, key, value, activate) =>
+    player = _.findWhere window.allPlayers, { Id: id }
+    if !activate
+      delete player[key]
+    else
+      player[key] = value
+

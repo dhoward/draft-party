@@ -3,6 +3,6 @@ class PickCounter
     $('body').on 'Pick.update', @updateCounter
 
   updateCounter: =>
-    count = $('.absolute .taken').length
+    count = $('.positional .taken').length
     pick = count+1;
     @$el.text pick

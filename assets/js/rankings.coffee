@@ -61,8 +61,15 @@ class Rankings
 
   playerHtml: (player) ->
     nameData = player["Player Name"].toLowerCase()
+    annotation = player['annotation']
+    state = player['state']
 
-    """<tr data-name=#{nameData} data-position=#{player["Position"].toLowerCase()} data-id=#{player["Id"]} class="player breadcrumb">
+    classes = "player breadcrumb"
+    if annotation? then classes += " #{annotation}"
+    if state? then classes += " taken"
+    if state is 'mine' then classes += " mine"
+
+    """<tr data-name="#{nameData}" data-position=#{player["Position"].toLowerCase()} data-id=#{player["Id"]} class="#{classes}">
         <td class="col-md-1 rank">
           <div class="ranking">#{player["Rank"]}</div>
           <input value=#{player["Rank"]} class="rankingInput">
