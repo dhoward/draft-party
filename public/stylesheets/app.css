@@ -6,7 +6,7 @@ body {
   user-select: none;
 }
 
-*:focus {
+*:focus, *:active {
     outline: 0;
 }
 
@@ -67,6 +67,29 @@ tr, td {
 
 .positional th, .my-team th {
   text-align: center;
+}
+
+.positional .rank {
+  position: relative;
+}
+
+.positional .rank .ranking {
+  width: 28px;
+}
+
+.positional .rank .rankingInput {
+  display: none;
+  width: 28px;
+}
+
+.positional.edit .rank .ranking {
+  opacity: 0;
+}
+
+.positional.edit .rank .rankingInput {
+  display: block;
+  position: absolute;
+  top: 4px;
 }
 
 tr.taken > td, tr.taken:hover > td {

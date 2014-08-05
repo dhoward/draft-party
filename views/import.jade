@@ -25,8 +25,6 @@ script(type='text/javascript').
     delete player["Injury Type"]
     delete player["Rec"]
     if(player["Position"] === "QB") {
-      delete player["Rush Yards"]
-      delete player["Rush TD"]
       delete player["Rec Yards"]
       delete player["Rec TD"]
     } else if(player["Position"] === "RB") {
@@ -62,8 +60,9 @@ script(type='text/javascript').
 
     for(var i=0; i<json.length; i++) {
       var player = json[i];
-      player["Player Name"] = fixName(player["Player Name"])
-      cleanStats(player)
+      player["Player Name"] = fixName(player["Player Name"]);
+      cleanStats(player);
+      player.Id = player.Rank;
     }
 
     $('.json-rankings').val(JSON.stringify(json));

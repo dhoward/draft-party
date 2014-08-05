@@ -38,7 +38,7 @@ class Players
 
   tooltipHtml: (stats, id) ->
     $html = $('<table><tbody></tbody></table>')
-    player = _.findWhere window.allPlayers, { Rank: id }
+    player = _.findWhere window.allPlayers, { Id: id }
     for stat in stats
       $html.append("<tr><td><div style='width:100px'>#{stat}</div></td><td>#{player[stat]}</td></tr>")
     $html
