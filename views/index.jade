@@ -23,10 +23,14 @@ html(lang="en")
     .container-fluid.main-content.show-positional
 
       .row
-        .col-md-12
+        .col-md-8
           .page-header
             h1
               | Fantasy Football DraftTracker
+        .col-md-4
+          .pick
+            span Current pick:
+              span.pickCounter 1
 
       .row
         .col-md-12.navbar-holder
@@ -36,35 +40,27 @@ html(lang="en")
                 .form-group
                   .col-md-12
                     input.search.form-control(name="searchText", type="text", placeholder="Search")
-              .col-md-2.col-sm-3.hidden-xs
-                .checkbox
+              .col-md-8.col-sm-9.hidden-xs
+                span.btn.btn-default.highlight
+                  i.fa.fa-pencil
+                span.btn.btn-default.lowlight
+                  i.fa.fa-pencil
+                span.checkbox.hidden-xs
                   label
                     input(name="playerToggle", type="checkbox")
                     | Hide drafted players
-              .col-md-2.col-sm-3.hidden-xs
-                .checkbox
-                  label
-                    input(name="viewToggle", type="checkbox", checked="checked")
-                    | Positional rankings
-              .col-md-2.hidden-sm.hidden-xs
-                .checkbox
+                span.checkbox.hidden-sm.hidden-xs
                   label
                     input(name="tooltipToggle", type="checkbox")
                     | Show projections
+              //- .col-md-2.col-sm-3.hidden-xs
+              //-   .checkbox
+              //-     label
+              //-       input(name="viewToggle", type="checkbox", checked="checked")
+              //-       | Positional rankings
+
               .col-md-2.col-sm-3.hidden-xs
-                .radio
-                  button.highlight
-                    i.fa.fa-pencil
-                  button.lowlight
-                    i.fa.fa-pencil
-              .col-md-2.col-sm-3.col-xs-4
-                .pick
-                  .hidden-xs
-                    span Current pick:
-                      span.pickCounter 1
-                  .visible-xs
-                    span Pick:
-                      span.pickCounter 1
+                input.btn.btn-primary.editRankings(type="button", value="Edit Rankings")
 
       .row
         .col-md-12
