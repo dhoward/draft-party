@@ -50,6 +50,7 @@ class Rankings
     positions = _.groupBy(players, "Position")
     for name, players of positions
       @renderPosition name, players
+    $('body').trigger 'Players.rendered'
 
   renderPosition: (name, players) =>
     $position = $("[data-position-name=#{name}]")

@@ -5,6 +5,7 @@ class Players
     $('body').on 'Players.lowlight', @onLowlight
     $('body').on 'Players.hide', @onHide
     $('[name=tooltipToggle]').on 'change', @updateTooltips
+    $('body').on 'Players.rendered', @updateTooltips
 
     @hidePlayers = false
     @highlightClass = null
