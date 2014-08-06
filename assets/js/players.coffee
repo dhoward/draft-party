@@ -9,6 +9,10 @@ class Players
     @highlightClass = null
 
   updateState: (e) =>
+
+    #TODO: make this rely on an event rather that a class on positional
+    return if $('.positional').hasClass('edit');
+
     $player = $(e.currentTarget)
     name = $player.find('.name').text()
     id = $player.attr 'data-id'
