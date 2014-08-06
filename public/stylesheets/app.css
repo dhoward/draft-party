@@ -92,7 +92,6 @@ tr, td {
 .main-content .page-header .btn {
   padding: 4px 8px;
   margin: 16px 0 0 10px;
-  position: absolute;
 }
 
 .positional th, .my-team th {
@@ -240,6 +239,10 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
 
   .main-content .login-form form {
     float: none !important;
+  }
+
+  .main-content .page-header .btn {
+    position: absolute;
   }
 
   a.registerButton {

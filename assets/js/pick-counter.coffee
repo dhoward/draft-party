@@ -1,6 +1,6 @@
 class PickCounter
   constructor: (@$el) ->
-    @originalText = @$el.text
+    @originalText = @$el.text()
     $('body').on 'Pick.update', @updateCounter
 
   updateCounter: =>

@@ -4,6 +4,7 @@ class Rankings
     @$playersHolder = $ '.positional'
     @$editButton.on 'click', @onEditClick
     @editClass = 'btn-info'
+    $('body').on 'Players.renderRankings', @onRenderRankings
 
   onEditClick: () =>
     activateEdit = !@$editButton.hasClass(@editClass)
@@ -46,10 +47,13 @@ class Rankings
 
     @renderRankings(newOrder)
 
+  onRenderRankings: (e) =>
+    @renderRankings window.allPlayers
+
   renderRankings: (players) =>
     positions = _.groupBy(players, "Position")
-    for name, players of positions
-      @renderPosition name, players
+    for name, posPlayers of positions
+      @renderPosition name, posPlayers
     $('body').trigger 'Players.rendered'
 
   renderPosition: (name, players) =>
