@@ -73,7 +73,11 @@ html(lang="en")
                   label
                     input(name="tooltipToggle", type="checkbox")
                     | Show projections
-                span.btn.btn-primary.editRankings.hidden-xs Edit Rankings
+                - if(user)
+                  span.btn.btn-primary.editRankings.hidden-xs Edit Rankings
+                - else
+                  span.editRankingsWrapper.pull-right(data-toggle="tooltip", data-placement="top", title="Gotta log in to do this")
+                    span.btn.btn-primary.editRankings.disabled.hidden-xs Edit Rankings
 
 
       .row
@@ -194,6 +198,7 @@ html(lang="en")
 
     script(type='text/javascript').
       $('body').trigger('Players.renderRankings');
+      $('.editRankingsWrapper').tooltip();
 
     - if(!user && !error.length)
       script(type='text/javascript').
