@@ -1,8 +1,14 @@
 class PickCounter
   constructor: (@$el) ->
+    @originalText = @$el.text
     $('body').on 'Pick.update', @updateCounter
 
   updateCounter: =>
     count = $('.positional .taken').length
-    pick = count+1;
-    @$el.text pick
+    text = ""
+    if count is 0
+      text = @originalText
+    else
+      pick = count+1
+      text = "Currently drafting: #{pick}"
+    @$el.text text

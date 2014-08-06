@@ -10,10 +10,6 @@ body {
     outline: 0;
 }
 
-.user-dropdown {
-  margin-right: 20px;
-}
-
 .user-dropdown.dropdown .caret {
   margin-left: 6px;
 }
@@ -27,7 +23,8 @@ body {
 }
 
 a.registerButton {
-  margin: 4px 40px 0 0;
+  float: right;
+  margin: 4px 10px 0 0;
   cursor: pointer;
 }
 
@@ -82,17 +79,20 @@ tr, td {
 
 .main-content .page-header {
   border: none;
-  margin: 10px 0 0 0;
+  margin: 0;
   padding-bottom: 0;
+  position: relative;
 }
 
 .main-content .page-header h1 {
+  margin-top: 8px;
   float: left;
 }
 
 .main-content .page-header .btn {
   padding: 4px 8px;
-  margin: 28px 0 0 10px;
+  margin: 16px 0 0 10px;
+  position: absolute;
 }
 
 .positional th, .my-team th {
@@ -167,19 +167,6 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
   margin-bottom: 0;
 }
 
-.pick {
-  float: right;
-  margin-right: 20px;
-  margin-top: 34px;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 40px;
-}
-
-.pickCounter {
-  margin-left: 10px;
-}
-
 .main-content .my-team {
   padding-left: 0;
   padding-right: 0;
@@ -249,5 +236,14 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
 @media (max-width: 768px) {
   .main-content .position-column {
     padding-right: 0;
+  }
+
+  .main-content .login-form form {
+    float: none !important;
+  }
+
+  a.registerButton {
+    float: left;
+    margin: 4px 0 0 0;
   }
 }
