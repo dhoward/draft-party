@@ -10,7 +10,7 @@ body {
     outline: 0;
 }
 
-.user-dropdown.dropdown .caret {
+.user-dropdown .dropdown-holder .dropdown .caret {
   margin-left: 6px;
 }
 

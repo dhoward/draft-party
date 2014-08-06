@@ -1,5 +1,6 @@
+_ = require 'underscore'
 User = require '../models/user'
-players = require '../util/players'
+defaultRankings = require '../util/players'
 
 formatResponseJSON = (err, obj) ->
   if(!err?) then return obj
@@ -9,6 +10,7 @@ formatResponseJSON = (err, obj) ->
 exports.init = (app, passport) ->
 
   app.get '/', (req, res) ->
+    players = req.user?.rankings or defaultRankings
     res.render 'index.jade', { players: players, error: req.flash('error') }
 
   app.post '/register', (req, res) ->
@@ -33,9 +35,21 @@ exports.init = (app, passport) ->
     req.logout()
     res.redirect "/"
 
+  app.post '/rankings', (req, res) ->
+    user = req.user
+    players = req.body.rankings
+    newRankings = _.map players, (id) ->
+      _.findWhere user.rankings, { Id: id.toString() }
+
+    _.each newRankings, (el, index) ->
+      rank = index + 1
+      el.Rank = rank.toString()
+
+    user.rankings = newRankings
+    user.save (err) =>
+      res.send formatResponseJSON(err, true)
+
   app.get '/import', (req, res) ->
     res.render 'import.jade'
-
-# exports.rankPlayers
 
 # exports.annotatePlayer

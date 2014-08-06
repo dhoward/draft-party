@@ -8,7 +8,7 @@ class Rankings
 
   onEditClick: () =>
     activateEdit = !@$editButton.hasClass(@editClass)
-    if activateEdit then @activateEditMode() else @saveRankings()
+    if activateEdit then @activateEditMode() else @onSaveRankings()
 
   activateEditMode: () =>
     @$editButton.blur()
@@ -16,14 +16,28 @@ class Rankings
     @$editButton.text 'Save Rankings'
     @$playersHolder.addClass 'edit'
 
-  saveRankings: =>
+  onSaveRankings: =>
     @$editButton.blur()
     @$editButton.removeClass @editClass
-    @$editButton.text 'Edit Rankings'
-    @$playersHolder.removeClass 'edit'
+    @$editButton.text 'Saving...'
+    @$playersHolder.addClass 'disabled'
 
-    rankings = @getRankings()
-    @reorderPlayers rankings
+    @newRankings = @getRankings()
+    @saveRankings @newRankings
+
+  saveRankings: (rankings) =>
+    order = _.pluck rankings, '_id'
+    data =
+      rankings: order
+    $.post '/rankings', data, @onSaveSuccess
+
+  onSaveSuccess: (response) =>
+    if response.errors?
+      #TODO: show error
+    else
+      @$editButton.text 'Edit Rankings'
+      @$playersHolder.removeClass('edit').removeClass('disabled')
+      @reorderPlayers @newRankings
 
   getRankings: () =>
     newPlayers = []
@@ -46,6 +60,7 @@ class Rankings
       el.Rank = rank.toString()
 
     @renderRankings(newOrder)
+    window.allPlayers = newOrder
 
   onRenderRankings: (e) =>
     @renderRankings window.allPlayers
