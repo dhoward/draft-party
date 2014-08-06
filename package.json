@@ -10,6 +10,13 @@
     "underscore": "1.6.*",
     "connect-assets": "*",
     "newrelic": "*",
-    "serve-favicon": "*"
+    "serve-favicon": "*",
+    "mongoose": "3.8.14",
+    "body-parser": "~1.0.0",
+    "cookie-session": "~1.0.0",
+    "cookie-parser": "~1.0.0",
+    "passport": "*",
+    "passport-local": "*",
+    "connect-flash": "*"
   }
 }

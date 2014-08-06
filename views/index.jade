@@ -22,11 +22,36 @@ html(lang="en")
   body
     .container-fluid.main-content.show-positional
 
+      - if(user)
+        .row
+          .dropdown.pull-right.user-dropdown
+            .btn.btn-default(data-toggle="dropdown", href="#")
+              | Welcome, #{user.name}
+              span.caret
+            ul.dropdown-menu(role="menu", aria-labelledby="dLabel")
+              li
+                a(href="/logout") Logout
+      - else
+        .row.login-form
+          form.form-inline.user-form.pull-right(action="/login", method="post")
+            .form-group
+              .error.text-danger.pull-right
+                | !{error}
+            .form-group
+              input.form-control(type="text", name="username", placeholder="Email")
+            .form-group
+              input.form-control(type="password", name="password", placeholder="Password")
+            input.btn.btn-info(type="submit", value="Log In")
+        .row
+          a.registerButton.text-muted.pull-right Register
+
       .row
         .col-md-8.col-sm-8.col-xs-12
           .page-header
             h1
               | Fantasy Football DraftTracker
+            .btn.btn-info.instructionsButton
+              | ?
         .col-md-4.col-sm-4.hidden-xs
           .pick
             span Current pick:
@@ -221,6 +246,7 @@ html(lang="en")
           .modal-footer
             button.btn.btn-default(type="button", data-dismiss="modal") Close
 
+    include ./register.jade
 
 
 
@@ -230,7 +256,12 @@ html(lang="en")
     script(type='text/javascript', src="javascripts/analytics.js")
     script(type='text/javascript').
       allPlayers = !{JSON.stringify(players)}
-      $('#instructions').modal()
-      $('form').on('submit', function(){return false;});
+      $('.navbar form').on('submit', function(){return false;});
+      $('.instructionsButton').on('click', function(){ $('#instructions').modal(); })
+      $('.registerButton').on('click', function(){ $('#register').modal(); })
 
     != js('application')
+
+    - if(!user && !error.length)
+      script(type='text/javascript').
+        $('#instructions').modal();

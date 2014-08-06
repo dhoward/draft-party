@@ -1,0 +1,37 @@
+#register.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h3.modal-title Register
+      .modal-body
+
+        form.form-horizontal
+          fieldset
+            .form-group
+              label.col-lg-3.col-md-3.control-label(for="name") First Name
+              .col-lg-9.col-md-9
+                input.form-control(type="text", name="name")
+            .form-group
+              label.col-lg-3.col-md-3.control-label(for="email") Email
+              .col-lg-9.col-md-9
+                input.form-control(type="text", name="email")
+            .form-group
+              label.col-lg-3.col-md-3.control-label(for="password") Password
+              .col-lg-9.col-md-9
+                input.form-control.password(type="text", name="password")
+                input.form-control.password(type="password")
+                .checkbox
+                  label
+                    input.showPassword(type="checkbox")
+                    | Show password
+            .form-group
+              label.col-lg-3.col-md-3.control-label(for="security") Security Question
+              .col-lg-9.col-md-9
+                span.help-block In your opinion, who was the best Batman?
+                select.form-control
+                  option Michael Keaton
+
+            .form-group
+              .col-lg-12.buttons
+                input.btn.btn-primary(type="submit", value="Register")
+                span.btn.btn-default(data-dismiss="modal") Cancel

@@ -10,6 +10,27 @@ body {
     outline: 0;
 }
 
+.user-dropdown {
+  margin-right: 20px;
+}
+
+.user-dropdown.dropdown .caret {
+  margin-left: 6px;
+}
+
+.user-form {
+  margin-right: 20px;
+}
+
+.user-form .form-group {
+  margin-right: 10px;
+}
+
+a.registerButton {
+  margin: 4px 40px 0 0;
+  cursor: pointer;
+}
+
 .main-content {
   padding-top: 20px;
   font-size: 12px;
@@ -63,6 +84,15 @@ tr, td {
   border: none;
   margin: 10px 0 0 0;
   padding-bottom: 0;
+}
+
+.main-content .page-header h1 {
+  float: left;
+}
+
+.main-content .page-header .btn {
+  padding: 4px 8px;
+  margin: 28px 0 0 10px;
 }
 
 .positional th, .my-team th {
@@ -140,7 +170,7 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
 .pick {
   float: right;
   margin-right: 20px;
-  margin-top: 24px;
+  margin-top: 34px;
   font-size: 24px;
   font-weight: bold;
   line-height: 40px;
@@ -199,6 +229,15 @@ tr.taken.mine > td, tr.taken.mine:hover > td {
 
 .modal p {
   margin-bottom: 30px;
+}
+
+#register .password[type="text"]{
+  display: none;
+}
+
+#register .buttons .btn {
+  float: right;
+  margin-left: 20px;
 }
 
 @media (max-width: 992px) {
