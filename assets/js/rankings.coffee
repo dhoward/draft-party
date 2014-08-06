@@ -89,7 +89,10 @@ class Rankings
     if state? then classes += " taken"
     if state is 'mine' then classes += " mine"
 
-    """<tr data-name="#{nameData}" data-position=#{player["Position"].toLowerCase()} data-id=#{player["Id"]} class="#{classes}">
+    hideDrafted = $('[name="playerToggle"]').prop 'checked'
+    display = if (state? and hideDrafted) then 'none' else 'default'
+
+    """<tr data-name="#{nameData}" data-position=#{player["Position"].toLowerCase()} data-id=#{player["Id"]} class="#{classes}" style="display:#{display}">
         <td class="col-md-1 rank">
           <div class="ranking">#{player["Rank"]}</div>
           <input value=#{player["Rank"]} class="rankingInput">
