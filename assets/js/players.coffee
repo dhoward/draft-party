@@ -4,9 +4,16 @@ class Players
     $('body').on 'Players.highlight', @onHighlight
     $('body').on 'Players.lowlight', @onLowlight
     $('body').on 'Players.hide', @onHide
+    $('.resetButton').on 'click', @resetPlayers
 
     @hidePlayers = false
     @highlightClass = null
+
+  resetPlayers: () ->
+    $players = $('.positional .player')
+    $players.removeClass('taken').removeClass('mine').show()
+    $.getJSON '/resetPlayers', (response) ->
+      window.allPlayers = response.players
 
   updateState: (e) =>
 

@@ -73,6 +73,15 @@ exports.init = (app, passport) ->
     User.findByIdAndUpdate user.id, { $set: { rankings: rankings }}, (err, user) ->
       res.send formatResponseJSON(err, { success:true })
 
+  app.get '/resetPlayers', (req, res) ->
+    user = req.user
+    rankings = _.map user.rankings, (p) ->
+      delete p.state
+      return p
+
+    User.findByIdAndUpdate user.id, { $set: { rankings: rankings }}, (err, user) ->
+      res.send formatResponseJSON(err, { players: user.rankings })
+
 
   app.get '/import', (req, res) ->
     res.render 'import.jade'

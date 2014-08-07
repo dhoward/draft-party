@@ -2,6 +2,20 @@ class Team
   constructor: (@$el) ->
     $('body').on 'Team.update', @updateTeam
     @$el.on 'mousedown', '.player[data-id]', @onPlayerClick
+    $('.resetButton').on 'click', @resetTeam
+    setTimeout @renderTeam, 10
+
+  renderTeam: =>
+    $players = $('.positional .mine').each (i, player) ->
+      $player = $(player)
+      name = $player.find('.name').text()
+      id = $player.attr 'data-id'
+      position = $player.attr 'data-position'
+      mine = $player.hasClass 'mine'
+      $player.trigger 'Team.update', {name, id, position, mine}
+
+  resetTeam: =>
+    @$el.find('[data-id]').removeAttr('data-id').removeAttr('data-true-position').empty()
 
   updateTeam: (e, {name, id, position, mine}) =>
     if !mine
