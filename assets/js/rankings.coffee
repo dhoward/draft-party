@@ -63,6 +63,7 @@ class Rankings
     window.allPlayers = newOrder
 
   onRenderRankings: (e) =>
+    window.allPlayers = _.sortBy window.allPlayers, (p) -> parseInt(p.Rank, 10)
     @renderRankings window.allPlayers
 
   renderRankings: (players) =>

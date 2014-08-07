@@ -10,8 +10,9 @@ formatResponseJSON = (err, obj) ->
 exports.init = (app, passport) ->
 
   app.get '/', (req, res) ->
+    loggedIn = req.user?
     players = req.user?.rankings or defaultRankings
-    res.render 'index.jade', { players: players, error: req.flash('error') }
+    res.render 'index.jade', { loggedIn: loggedIn, players: players, error: req.flash('error') }
 
   app.post '/register', (req, res) ->
     name = req.body.name
@@ -47,9 +48,31 @@ exports.init = (app, passport) ->
 
     user.rankings = newRankings
     user.save (err) =>
-      res.send formatResponseJSON(err, true)
+      res.send formatResponseJSON(err, { success:true })
+
+  # TODO: address race conditions caused if this
+  # method is called multiple times in rapid succession
+  app.post '/updatePlayer', (req, res) ->
+    user = req.user
+    playerId = req.body.playerId
+    key = req.body.key
+    value = req.body.value
+
+    partition = _.partition user.rankings, (p) ->
+      p.Id is playerId.toString()
+    player = partition[0][0]
+    rankings = partition[1]
+
+    if value?
+      player[key] = value
+    else
+      delete player[key]
+    rankings.push player
+    user.rankings = rankings
+
+    User.findByIdAndUpdate user.id, { $set: { rankings: rankings }}, (err, user) ->
+      res.send formatResponseJSON(err, { success:true })
+
 
   app.get '/import', (req, res) ->
     res.render 'import.jade'
-
-# exports.annotatePlayer

@@ -75,3 +75,16 @@ class Players
       delete player[key]
     else
       player[key] = value
+
+    if App.loggedIn
+      @savePlayerUpdate id, key, value, activate
+
+  savePlayerUpdate: (id, key, value, activate) =>
+    data =
+      playerId: id
+      key: key
+    if activate then data.value = value
+
+    $.post '/updatePlayer', data, (response) ->
+      #TODO: actually handle response
+      console.log response

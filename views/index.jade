@@ -188,7 +188,9 @@ html(lang="en")
     script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
     script(type='text/javascript', src="javascripts/analytics.js")
     script(type='text/javascript').
-      allPlayers = !{JSON.stringify(players)}
+      App = {}
+      App.loggedIn = !{JSON.stringify(loggedIn)};
+      allPlayers = !{JSON.stringify(players)};
 
       $('.navbar form').on('submit', function(){return false;});
       $('.instructionsButton').on('click', function(){ $('#instructions').modal(); })
