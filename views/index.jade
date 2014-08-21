@@ -23,14 +23,14 @@ html(lang="en")
     .container-fluid.main-content.show-positional
 
       .row
-        .col-md-4.col-sm-4.col-xs-12
+        .col-md-6.col-sm-4.col-xs-12
           .page-header.pick
             h1.pick
               .span.pickCounter DraftTracker
             .btn.btn-info.instructionsButton
               | ?
         - if(user)
-          .col-md-8.col-sm-8.col-xs-12.user-dropdown
+          .col-md-6.col-sm-8.col-xs-12.user-dropdown
             .dropdown-holder.pull-right
               .btn.btn-default.dropdown.pull-right(data-toggle="dropdown", href="#")
                 | Welcome, #{user.name}
@@ -41,7 +41,7 @@ html(lang="en")
                 li
                   a(href="/logout") Logout
         - else
-          .col-md-8.col-sm-8.col-xs-12.login-form
+          .col-md-6.col-sm-8.col-xs-12.login-form
             form.form-inline.user-form.pull-right(action="/login", method="post")
               .form-group
                 .error.text-danger.pull-right
@@ -51,7 +51,7 @@ html(lang="en")
               .form-group
                 input.form-control(type="password", name="password", placeholder="Password")
               input.btn.btn-info(type="submit", value="Log In")
-            .col-lg-12.col-md-12
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
               a.registerButton.text-muted Register
 
       .row

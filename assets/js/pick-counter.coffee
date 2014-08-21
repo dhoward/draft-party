@@ -10,5 +10,5 @@ class PickCounter
       text = @originalText
     else
       pick = count+1
-      text = "Currently drafting: #{pick}"
+      text = "Drafting: #{pick}"
     @$el.text text
