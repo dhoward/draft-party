@@ -1,10 +1,15 @@
 class Tooltips
   constructor: (@$el) ->
-    $('[name=tooltipToggle]').on 'change', @updateTooltips
+    @toggleButton = $('form .projections')
+    @toggleButton.on 'click', @toggleTooltips
     $('body').on 'Players.rendered', @updateTooltips
 
+  toggleTooltips: =>
+    @toggleButton.toggleClass('on')
+    @updateTooltips()
+
   updateTooltips: =>
-    activate = $('[name=tooltipToggle]').prop('checked')
+    activate = @toggleButton.hasClass 'on'
     if activate then @activateTooltips() else @deactivateTooltips()
 
   activateTooltips: =>

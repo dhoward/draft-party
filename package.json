@@ -17,6 +17,7 @@
     "cookie-parser": "~1.0.0",
     "passport": "*",
     "passport-local": "*",
-    "connect-flash": "*"
+    "connect-flash": "*",
+    "stylus": "*"
   }
 }

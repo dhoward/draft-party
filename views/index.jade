@@ -15,7 +15,7 @@ html(lang="en")
     link(rel="icon", type="image/png", href="/images/favicon-96x96.png", sizes="96x96")
     link(rel="icon", type="image/png", href="/images/favicon-16x16.png", sizes="16x16")
     link(rel="icon", type="image/png", href="/images/favicon-32x32.png", sizes="32x32")
-    link(rel="stylesheet", href="/stylesheets/app.css")
+    link(rel="stylesheet", href="/stylesheets/styles.css")
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
     link(rel="stylesheet", href="/stylesheets/font-awesome.min.css")
 
@@ -23,94 +23,96 @@ html(lang="en")
     .container-fluid.main-content.show-positional
 
       .row
-        .col-md-6.col-sm-4.col-xs-12
-          .page-header.pick
-            h1.pick
-              .span.pickCounter DraftTracker
-            .btn.btn-info.instructionsButton
-              | ?
-        - if(user)
-          .col-md-6.col-sm-8.col-xs-12.user-dropdown
-            .dropdown-holder.pull-right
-              .btn.btn-default.dropdown.pull-right(data-toggle="dropdown", href="#")
-                | Welcome, #{user.name}
-                span.caret
-              ul.dropdown-menu(role="menu", aria-labelledby="dLabel")
-                li
-                  a.resetButton(href="#") Reset
-                li
-                  a(href="/logout") Logout
-        - else
-          .col-md-6.col-sm-8.col-xs-12.login-form
-            form.form-inline.user-form.pull-right(action="/login", method="post")
-              .form-group
-                .error.text-danger.pull-right
-                  | !{error}
-              .form-group
-                input.form-control(type="text", name="username", placeholder="Email")
-              .form-group
-                input.form-control(type="password", name="password", placeholder="Password")
-              input.btn.btn-info(type="submit", value="Log In")
-            .col-lg-12.col-md-12.col-sm-12.col-xs-12
-              a.registerButton.text-muted Register
+        .col-md-3.col-sm-3.col-xs-12
+          .logo
+            img(src="/images/logo-rainbow.png")
+          //
+            .page-header.pick
+              h1.pick
+                .span.pickCounter DraftTracker
+              .btn.btn-info.instructionsButton
+                | ?
 
-      .row
-        .col-md-12.navbar-holder
-          .col-md-12.navbar
-            form.form-horizontal
-              .col-md-3.col-sm-3.col-xs-12
-                .form-group
-                  .col-md-12
-                    input.search.form-control(name="searchText", type="text", placeholder="Search")
-              .col-md-9.col-sm-9.hidden-xs
-                span.btn.btn-default.highlight
-                  i.fa.fa-pencil
-                span.btn.btn-default.lowlight
-                  i.fa.fa-pencil
-                span.checkbox.hidden-xs
-                  label
-                    input(name="playerToggle", type="checkbox")
-                    | Hide drafted players
-                span.checkbox.hidden-sm.hidden-xs
-                  label
-                    input(name="tooltipToggle", type="checkbox")
-                    | Show projections
-                - if(user)
-                  span.btn.btn-primary.editRankings.hidden-xs Edit Rankings
-                - else
-                  span.editRankingsWrapper.pull-right(data-toggle="tooltip", data-placement="top", title="Gotta log in to do this")
-                    span.btn.btn-primary.editRankings.disabled.hidden-xs Edit Rankings
+        .col-md-9.col-sm-9.col-xs-12
+          .row
+            - if(user)
+              .col-xs-12.user-dropdown
+                .dropdown-holder.pull-right
+                  .metal.linear.dropdown.pull-right(data-toggle="dropdown", href="#")
+                    | Welcome, #{user.name}
+                    span.caret
+                  ul.dropdown-menu(role="menu", aria-labelledby="dLabel")
+                    li
+                      a.resetButton(href="#") Help
+                    li
+                      a.resetButton(href="#") Reset
+                    li
+                      a(href="/logout") Logout
+            - else
+              .col-xs-12.login-form
+                form.form-inline.user-form.pull-right(action="/login", method="post")
+                  .form-group
+                    .error.text-danger.pull-right
+                      | !{error}
+                  .form-group
+                    input.form-control(type="text", name="username", placeholder="Email")
+                  .form-group
+                    input.form-control(type="password", name="password", placeholder="Password")
+                  input.btn.btn-info(type="submit", value="Log In")
+                .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                  a.registerButton.text-muted Register
+
+          .row
+            .col-md-12.navbar-holder
+              .col-md-12.navbar
+                form.form-horizontal
+                  //.col-md-3.col-sm-3.col-xs-12
+                  //  .form-group
+                  //    .col-md-12
+                  //      input.search.form-control(name="searchText", type="text", placeholder="Search")
+                  .col-md-12.col-sm-12.hidden-xs
+                    .highlight.metal.yellow.radial
+                      i.fa.fa-pencil
+                    .lowlight.metal.red.radial
+                      i.fa.fa-pencil
+                    span.hidden-xs.metal.linear.drafted Hide drafted
+                    span.hidden-sm.hidden-xs.metal.linear.projections Show projections
+                    - if(user)
+                      span.metal.linear.editRankings.hidden-xs Edit Rankings
+                    - else
+                      span.editRankingsWrapper.pull-right(data-toggle="tooltip", data-placement="top", title="Gotta log in to do this")
+                        span.metal.linear.editRankings.disabled.hidden-xs Edit Rankings
 
 
-      .row
+      .row.players
         .col-md-12
           .positional
             .col-md-2.col-sm-6.position-column
-              table.table.table-hover.table-bordered(data-position-name="QB")
-                th(colspan=2, class="breadcrumb") QB
+              table.table.table-bordered(data-position-name="QB")
+                th(colspan=2) QB
 
             .col-md-2.col-sm-6.position-column
-              table.table.table-hover.table-bordered(data-position-name="RB")
-                th(colspan=2, class="breadcrumb") RB
+              table.table.table-bordered(data-position-name="RB")
+                th(colspan=2) RB
 
             .col-md-2.col-sm-6.position-column
-              table.table.table-hover.table-bordered(data-position-name="WR")
-                th(colspan=2, class="breadcrumb") WR
+              table.table.table-bordered(data-position-name="WR")
+                th(colspan=2) WR
 
             .col-md-2.col-sm-6.position-column
-              table.table.table-hover.table-bordered(data-position-name="TE")
-                th(colspan=2, class="breadcrumb") TE
+              table.table.table-bordered(data-position-name="TE")
+                th(colspan=2) TE
 
             .col-md-2.col-sm-6.position-column
-              table.table.table-hover.table-bordered(data-position-name="K")
-                th(colspan=2, class="breadcrumb") K
+              table.table.table-bordered(data-position-name="K")
+                th(colspan=2) K
 
-              table.table.table-hover.table-bordered(data-position-name="DEF")
-                th(colspan=2, class="breadcrumb") DEF
+              table.table.table-bordered(data-position-name="DEF")
+                th(colspan=2) DEF
 
 
           .col-md-2.col-xs-12.my-team
-            table.table.table-hover.table-bordered
+            table.table.table-bordered
               th(colspan=2) Your Team
                 tr
                   td.pos.col-md-2 QB
@@ -140,9 +142,6 @@ html(lang="en")
                   td.pos.col-md-2 DEF
                   td.name.player(data-position="def")
 
-                tr
-                  td.pos.col-md-2 BN
-                  td.name.player(data-position="bn")
                 tr
                   td.pos.col-md-2 BN
                   td.name.player(data-position="bn")

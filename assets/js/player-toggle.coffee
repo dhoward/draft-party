@@ -1,8 +1,9 @@
 class PlayerToggle
   constructor: (@$el) ->
-    @$el.on 'change', @updatePlayers
+    @$el.on 'click', @updatePlayers
 
   updatePlayers: =>
-    hide = @$el.prop 'checked'
+    @$el.toggleClass('on')
+    hide = @$el.hasClass 'on'
     $('.player.taken').toggle !hide
     @$el.trigger 'Players.hide', hide

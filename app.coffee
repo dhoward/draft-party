@@ -20,6 +20,7 @@ app = express()
 # Middleware
 
 app.use favicon(__dirname + '/public/images/favicon.ico')
+app.use require("stylus").middleware(path.join(__dirname, "public"))
 app.use express.static(path.join(__dirname, '/public'))
 app.use bodyParser()
 app.use cookieParser('draft')

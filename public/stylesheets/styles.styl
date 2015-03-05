@@ -1,0 +1,290 @@
+@import "metal"
+
+body
+  background-image url("/images/metal6.png")
+  background-color white
+  -webkit-user-select none
+  -moz-user-select none
+  -ms-user-select none
+  -o-user-select none
+  user-select none
+
+*:focus, *:active
+  outline 0
+
+.user-dropdown
+  margin-bottom 20px
+
+  .dropdown-holder
+    margin-right 10px
+    position relative
+
+    .dropdown
+      padding 6px 20px
+
+      .caret
+        margin-left 6px
+
+.user-form
+  margin-right 20px
+  .form-group
+    margin-right 10px
+
+.logo img
+  width 100%
+
+a.registerButton
+  float right
+  margin 4px 10px 0 0
+  cursor pointer
+  float left
+  margin 4px 0 0 0
+
+.main-content
+  padding-top 20px
+  font-size 12px
+  .form-horizontal
+    .checkbox
+      font-size 16px
+      margin-right 30px
+      margin-bottom 20px
+      display inline
+  .page-header
+    border none
+    margin 0
+    padding-bottom 0
+    position relative
+    h1
+      margin-top 8px
+      float left
+    .btn
+      padding 4px 8px
+      margin 16px 0 0 10px
+      position absolute
+  .position-column
+    padding-left 0
+    padding-right 20px
+    .rank
+      text-align right
+  .my-team
+    padding-left 0
+    padding-right 0
+    float left
+  &.show-absolute
+    .my-team
+      width 25%
+  .login-form
+    form
+      float none !important
+
+form .on, form .on:hover
+  // background #000
+  filter none
+
+form
+  .highlight, .lowlight
+    float left
+    font-size 18px
+    padding 6px
+    margin 22px 0 24px 30px
+    width 45px
+
+  .projections, .drafted, .editRankings
+    float left
+    padding 10px 16px
+    margin-left 30px
+    margin-top 26px
+    line-height 28px
+
+  .editRankings
+    width 166px
+    float right
+    margin-right 30px
+
+
+form .highlight, form .highlight:hover, h4.highlighted, h1.highlighted, .highlighted .name, .highlighted .name:hover
+  color #ffff50
+
+form .lowlight, form .lowlight:hover, .lowlighted .name, .lowlighted .name:hover
+  color #ff6c60
+
+.navbar-holder
+  padding 10px 20px 0 20px
+  .navbar
+    padding 10px 0 0 0
+    background: #444
+    border: none
+    border-radius: 80px
+    box-shadow: inset 0 0 2px 2px hsla(0,0%,0%,.2),
+                inset 0 0 2px 4px hsla(0,0%,0%,.2),
+                inset 0 0 2px 6px hsla(0,0%,0%,.2),
+                inset 0 0 1px 8px hsla(0,0%,0%,.5),
+                inset 0 -4px 2px 4px hsla(0,0%,0%,.5),
+                inset 0 1px 1px 8px hsla(0,0%,100%,.25),
+                inset 0 -30px 30px hsla(0,0%,0%,.2),
+                0 -4px 8px 4px hsla(0,0%,0%,.5),
+                0 10px 10px hsla(0,0%,0%,.25),
+                0 0 2px 2px hsla(0,0%,0%,.2),
+                0 0 2px 4px hsla(0,0%,0%,.2),
+                0 0 2px 6px hsla(0,0%,0%,.2),
+                0 0 2px 8px hsla(0,0%,0%,.5),
+                0 1px 2px 8px hsla(0,0%,100%,.25),
+                0 -1px 2px 8px hsla(0,0%,0%,.5)
+    color: #303030
+    cursor: pointer
+    font: bold 40px/85px sans-serif
+    // height: 80px
+    padding: 0
+    text-shadow: 0 1px 1px hsla(0,0%,100%,.25),
+                 0 -1px 1px hsla(0,0%,0%,.75)
+    // width: 80px
+
+.row.players
+  margin-top 30px
+
+table.table-bordered
+  border-width 3px
+
+table
+  box-shadow hsla(0,0%, 0%,.15) 0 -5px 6px 4px,
+    hsla(0,0%,0%,.5) 0  5px 6px 4px
+
+  tr
+    border: 1px solid rgba(0,0,0,0.6);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    background-color: #454545
+
+tr, td
+  cursor pointer
+
+.positional th, .my-team th
+  text-align center
+
+.positional
+  .rank
+    position relative
+    background-image url("/images/drag-handle.png")
+    background-repeat no-repeat
+    background-position 6px 50%
+    cursor ns-resize
+    .ranking
+      width 28px
+    .rankingInput
+      display none
+      width 28px
+  &.edit
+    .rank
+      .ranking
+        opacity 0
+      .rankingInput
+        display block
+        position absolute
+        top 4px
+
+tr.taken, tr.taken:hover
+  background-image none
+  background-color #222
+  color #555
+
+  td.rank
+    background-image none
+
+tr.taken.mine, tr.taken.mine:hover
+  color #eee
+  background-color #16a910
+  background-position 0 0
+  background-repeat no-repeat !important
+  text-shadow none
+
+  td.rank
+    background-image none
+
+tr.dragging
+  opacity: 0.5
+
+.show-positional
+  .positional
+    display block
+  .absolute
+    display none
+
+.show-absolute
+  .positional
+    display none
+  .absolute
+    display block
+
+.alert
+  .form-group
+    margin-bottom 0
+
+.my-team
+  border 2px solid #16a910 !important
+  box-shadow rgba(0,0,0,0.15) 0 -5px 6px 4px, rgba(0,0,0,0.5) 0 5px 6px 4px
+
+  table
+    // overflow hidden
+    box-shadow none
+    position relative
+    border 1px solid black !important
+    text-shadow 1px 1px 1px rgba(0,0,0,0.3) !important
+    margin-bottom 0
+
+    tr
+      opacity: 0.7
+      // background-image url("/images/metal6-brightblue.png")
+
+  .player
+    &.hidden
+      text-indent -300px
+
+.drag-marker
+  position absolute
+  height 34px
+  padding 8px
+  font-family 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size 12px
+  text-shadow none
+
+.drop-target
+  background-color #aaa
+
+#instructions
+  .modal-dialog
+    width 700px
+    h4
+      margin-bottom 4px
+
+.modal
+  p
+    margin-bottom 30px
+
+#register
+  .password[type="text"]
+    display none
+  .buttons
+    .btn
+      float right
+      margin-left 20px
+
+@media(max-width: 992px)
+  .main-content .position-column nth-child(even)
+    padding-right: 0
+
+
+@media(max-width: 768px)
+  .main-content
+    .position-column
+      padding-right 0
+    .login-form
+      form
+        float none !important
+    .page-header
+      .btn
+        position absolute
+
+  a
+    &.registerButton
+      float left
+      margin 4px 0 0 0
+

@@ -79,13 +79,16 @@ class Rankings
     _.each players, (player) =>
       html = @playerHtml player
       $table.append $(html)
+      $table.tableDnD({
+        onDragClass: "dragging"
+      })
 
   playerHtml: (player) ->
     nameData = player["Player Name"].toLowerCase()
     annotation = player['annotation']
     state = player['state']
 
-    classes = "player breadcrumb"
+    classes = "player"
     if annotation? then classes += " #{annotation}"
     if state? then classes += " taken"
     if state is 'mine' then classes += " mine"

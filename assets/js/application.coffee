@@ -1,7 +1,7 @@
 #= require_tree .
 
 new ViewToggle $('[name=viewToggle]')
-new PlayerToggle $('[name=playerToggle]')
+new PlayerToggle $('form .drafted')
 new PickCounter $('.pickCounter')
 new Search $('.search')
 new Players $('.positional')
