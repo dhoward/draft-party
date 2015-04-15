@@ -62,44 +62,44 @@ class Rankings
     @renderRankings(newOrder)
     window.allPlayers = newOrder
 
-  onRenderRankings: (e) =>
-    window.allPlayers = _.sortBy window.allPlayers, (p) -> parseInt(p.Rank, 10)
-    @renderRankings window.allPlayers
+  # onRenderRankings: (e) =>
+  #   window.allPlayers = _.sortBy window.allPlayers, (p) -> parseInt(p.Rank, 10)
+  #   @renderRankings window.allPlayers
 
-  renderRankings: (players) =>
-    positions = _.groupBy(players, "Position")
-    for name, posPlayers of positions
-      @renderPosition name, posPlayers
-    $('body').trigger 'Players.rendered'
+  # renderRankings: (players) =>
+  #   positions = _.groupBy(players, "Position")
+  #   for name, posPlayers of positions
+  #     @renderPosition name, posPlayers
+  #   $('body').trigger 'Players.rendered'
 
-  renderPosition: (name, players) =>
-    $position = $("[data-position-name=#{name}]")
-    $table = $position.find('tbody')
-    $position.find('tr.player').remove()
-    _.each players, (player) =>
-      html = @playerHtml player
-      $table.append $(html)
-      $table.tableDnD({
-        onDragClass: "dragging"
-      })
+  # renderPosition: (name, players) =>
+  #   $position = $("[data-position-name=#{name}]")
+  #   $table = $position.find('tbody')
+  #   $position.find('tr.player').remove()
+  #   _.each players, (player) =>
+  #     html = @playerHtml player
+  #     $table.append $(html)
+  #     $table.tableDnD({
+  #       onDragClass: "dragging"
+  #     })
 
-  playerHtml: (player) ->
-    nameData = player["Player Name"].toLowerCase()
-    annotation = player['annotation']
-    state = player['state']
+  # playerHtml: (player) ->
+  #   nameData = player["Player Name"].toLowerCase()
+  #   annotation = player['annotation']
+  #   state = player['state']
 
-    classes = "player"
-    if annotation? then classes += " #{annotation}"
-    if state? then classes += " taken"
-    if state is 'mine' then classes += " mine"
+  #   classes = "player"
+  #   if annotation? then classes += " #{annotation}"
+  #   if state? then classes += " taken"
+  #   if state is 'mine' then classes += " mine"
 
-    hideDrafted = $('[name="playerToggle"]').prop 'checked'
-    display = if (state? and hideDrafted) then 'none' else 'default'
+  #   hideDrafted = $('[name="playerToggle"]').prop 'checked'
+  #   display = if (state? and hideDrafted) then 'none' else 'default'
 
-    """<tr data-name="#{nameData}" data-position=#{player["Position"].toLowerCase()} data-id=#{player["Id"]} class="#{classes}" style="display:#{display}">
-        <td class="col-md-1 rank">
-          <div class="ranking">#{player["Rank"]}</div>
-          <input value=#{player["Rank"]} class="rankingInput">
-        </td>
-        <td class="name">#{player["Player Name"]}</td>
-       </tr>"""
+  #   """<tr data-name="#{nameData}" data-position=#{player["Position"].toLowerCase()} data-id=#{player["Id"]} class="#{classes}" style="display:#{display}">
+  #       <td class="col-md-1 rank">
+  #         <div class="ranking">#{player["Rank"]}</div>
+  #         <input value=#{player["Rank"]} class="rankingInput">
+  #       </td>
+  #       <td class="name">#{player["Player Name"]}</td>
+  #      </tr>"""

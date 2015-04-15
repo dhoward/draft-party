@@ -1,0 +1,64 @@
+doctype html
+html(lang="en")
+  head
+    title DraftTracker
+    link(rel="apple-touch-icon", sizes="57x57", href="/images/apple-touch-icon-57x57.png")
+    link(rel="apple-touch-icon", sizes="114x114", href="/images/apple-touch-icon-114x114.png")
+    link(rel="apple-touch-icon", sizes="72x72", href="/images/apple-touch-icon-72x72.png")
+    link(rel="apple-touch-icon", sizes="144x144", href="/images/apple-touch-icon-144x144.png")
+    link(rel="apple-touch-icon", sizes="60x60", href="/images/apple-touch-icon-60x60.png")
+    link(rel="apple-touch-icon", sizes="120x120", href="/images/apple-touch-icon-120x120.png")
+    link(rel="apple-touch-icon", sizes="76x76", href="/images/apple-touch-icon-76x76.png")
+    link(rel="apple-touch-icon", sizes="152x152", href="/images/apple-touch-icon-152x152.png")
+    link(rel="icon", type="image/png", href="/images/favicon-196x196.png", sizes="196x196")
+    link(rel="icon", type="image/png", href="/images/favicon-160x160.png", sizes="160x160")
+    link(rel="icon", type="image/png", href="/images/favicon-96x96.png", sizes="96x96")
+    link(rel="icon", type="image/png", href="/images/favicon-16x16.png", sizes="16x16")
+    link(rel="icon", type="image/png", href="/images/favicon-32x32.png", sizes="32x32")
+    link(rel="stylesheet", href="/stylesheets/styles.css")
+    link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
+    link(rel="stylesheet", href="/stylesheets/font-awesome.min.css")
+    script(type='text/javascript', src="javascripts/react-with-addons.js")
+    script(type='text/javascript', src="javascripts/JSXTransformer.js")
+    script(type='text/jsx', src="javascripts/react/drafted-toggle.jsx")
+    script(type='text/jsx', src="javascripts/react/player.jsx")
+    script(type='text/jsx', src="javascripts/react/team.jsx")
+    script(type='text/jsx', src="javascripts/react/position-ranking.jsx")
+    script(type='text/jsx', src="javascripts/react/instructions.jsx")
+    script(type='text/jsx', src="javascripts/react/user-menu.jsx")
+    script(type='text/jsx', src="javascripts/react/navbar.jsx")
+    script(type='text/jsx', src="javascripts/react/draft.jsx")
+
+  body
+    #content-root
+    include ./register.jade
+
+    script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
+    script(type='text/javascript', src="javascripts/bootstrap.min.js")
+    script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
+    script(type='text/javascript', src="javascripts/analytics.js")
+
+    script(type='text/javascript').
+      App = {}
+      App.loggedIn = !{JSON.stringify(loggedIn)};
+      allPlayers = !{JSON.stringify(players)};
+
+      $('.navbar form').on('submit', function(){return false;});
+      $('.instructionsButton').on('click', function(){ $('#instructions').modal(); })
+      $('.registerButton').on('click', function(){ $('#register').modal(); })
+
+    != js('application')
+
+    script(type='text/jsx').
+      React.render(
+        <Draft />,
+        document.getElementById('content-root')
+      );
+
+    script(type='text/javascript').
+      $('body').trigger('Players.renderRankings');
+      $('.editRankingsWrapper').tooltip();
+
+    - if(!user && !error.length)
+      script(type='text/javascript').
+        $('#instructions').modal();
