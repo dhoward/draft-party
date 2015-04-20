@@ -36,5 +36,8 @@ class App
     console.log "toggling"
     @hidingDrafted = not @hidingDrafted
 
+  rankPlayer: (player, rank) =>
+    @rankings.rankPlayer player, rank
+
 DT = new App(window.allPlayers)
 delete[window.allPlayers]

@@ -26,6 +26,10 @@ var Player = React.createClass({
     DT.rankings.updatePlayer(player);
   },
 
+  handleMouseDown: function() {
+    this.props.onMouseDown(this.props.player);
+  },
+
   render: function() {
 
     var cx = React.addons.classSet;
@@ -41,7 +45,11 @@ var Player = React.createClass({
     }
 
     return (
-      <tr className={classes}>
+      <tr
+        onMouseDown={this.handleMouseDown}
+        data-id={this.props.player["Id"]}
+        data-rank={this.props.player["Rank"]}
+        className={classes}>
         <td className="col-md-1 rank">{this.props.label}</td>
         <td className="name" data-position={this.props.code} onClick={this.updateState}>{this.props.player['Player Name']}</td>
       </tr>

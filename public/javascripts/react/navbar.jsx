@@ -7,10 +7,7 @@ var NavBar = React.createClass({
   },
 
   render: function() {
-
     var cx = React.addons.classSet;
-
-    console.log(this.props);
 
     var highlightClass = cx({
       "highlight metal yellow radial": true,
