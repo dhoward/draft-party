@@ -53,18 +53,18 @@ class Rankings
 
   reorderPlayers: (@order) =>
     newOrder = _.map @order, (player) ->
-      _.findWhere window.allPlayers, { Id: player._id }
+      _.findWhere DT_GLOBALS.allPlayers, { Id: player._id }
 
     _.each newOrder, (el, index) ->
       rank = index + 1
       el.Rank = rank.toString()
 
     @renderRankings(newOrder)
-    window.allPlayers = newOrder
+    DT_GLOBALS.allPlayers = newOrder
 
   onRenderRankings: (e) =>
-    window.allPlayers = _.sortBy window.allPlayers, (p) -> parseInt(p.Rank, 10)
-    @renderRankings window.allPlayers
+    DT_GLOBALS.allPlayers = _.sortBy DT_GLOBALS.allPlayers, (p) -> parseInt(p.Rank, 10)
+    @renderRankings DT_GLOBALS.allPlayers
 
   renderRankings: (players) =>
     positions = _.groupBy(players, "Position")

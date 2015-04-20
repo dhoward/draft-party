@@ -18,8 +18,8 @@ html(lang="en")
     link(rel="stylesheet", href="/stylesheets/styles.css")
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
     link(rel="stylesheet", href="/stylesheets/font-awesome.min.css")
-    script(type='text/javascript', src="javascripts/react-with-addons.js")
-    script(type='text/javascript', src="javascripts/JSXTransformer.js")
+    script(type='text/javascript', src="javascripts/lib/react-with-addons.js")
+    script(type='text/javascript', src="javascripts/lib/JSXTransformer.js")
     script(type='text/jsx', src="javascripts/react/drafted-toggle.jsx")
     script(type='text/jsx', src="javascripts/react/player.jsx")
     script(type='text/jsx', src="javascripts/react/team.jsx")
@@ -33,19 +33,15 @@ html(lang="en")
     #content-root
     include ./register.jade
 
-    script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
-    script(type='text/javascript', src="javascripts/bootstrap.min.js")
-    script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
+    script(type='text/javascript', src="javascripts/lib/jquery-2.1.1.min.js")
+    script(type='text/javascript', src="javascripts/lib/bootstrap.min.js")
+    script(type='text/javascript', src="javascripts/lib/underscore-1.6.0.min.js")
     script(type='text/javascript', src="javascripts/analytics.js")
 
     script(type='text/javascript').
-      App = {}
-      App.loggedIn = !{JSON.stringify(loggedIn)};
-      allPlayers = !{JSON.stringify(players)};
-
-      $('.navbar form').on('submit', function(){return false;});
-      $('.instructionsButton').on('click', function(){ $('#instructions').modal(); })
-      $('.registerButton').on('click', function(){ $('#register').modal(); })
+      DT_GLOBALS = {}
+      DT_GLOBALS.loggedIn = !{JSON.stringify(loggedIn)};
+      DT_GLOBALS.allPlayers = !{JSON.stringify(players)};
 
     != js('application')
 
@@ -55,10 +51,5 @@ html(lang="en")
         document.getElementById('content-root')
       );
 
-    script(type='text/javascript').
-      $('body').trigger('Players.renderRankings');
-      $('.editRankingsWrapper').tooltip();
 
-    - if(!user && !error.length)
-      script(type='text/javascript').
-        $('#instructions').modal();
+

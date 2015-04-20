@@ -12,6 +12,9 @@ body
 *:focus, *:active
   outline 0
 
+.logo
+  margin: 14px 0
+
 .user-dropdown
   margin-bottom 20px
 
@@ -41,7 +44,6 @@ a.registerButton
   margin 4px 0 0 0
 
 .main-content
-  padding-top 20px
   font-size 12px
   .form-horizontal
     .checkbox
@@ -97,8 +99,6 @@ form
     line-height 28px
 
   .editRankings
-    width 166px
-    float right
     margin-right 30px
 
 
@@ -108,36 +108,24 @@ form .highlight, form .highlight:hover, h4.highlighted, h1.highlighted, .highlig
 form .lowlight, form .lowlight:hover, .lowlighted .name, .lowlighted .name:hover
   color #ff6c60
 
-.navbar-holder
-  padding 10px 20px 0 20px
-  .navbar
-    padding 10px 0 0 0
-    background: #444
-    border: none
-    border-radius: 80px
-    box-shadow: inset 0 0 2px 2px hsla(0,0%,0%,.2),
-                inset 0 0 2px 4px hsla(0,0%,0%,.2),
-                inset 0 0 2px 6px hsla(0,0%,0%,.2),
-                inset 0 0 1px 8px hsla(0,0%,0%,.5),
-                inset 0 -4px 2px 4px hsla(0,0%,0%,.5),
-                inset 0 1px 1px 8px hsla(0,0%,100%,.25),
-                inset 0 -30px 30px hsla(0,0%,0%,.2),
-                0 -4px 8px 4px hsla(0,0%,0%,.5),
-                0 10px 10px hsla(0,0%,0%,.25),
-                0 0 2px 2px hsla(0,0%,0%,.2),
-                0 0 2px 4px hsla(0,0%,0%,.2),
-                0 0 2px 6px hsla(0,0%,0%,.2),
-                0 0 2px 8px hsla(0,0%,0%,.5),
-                0 1px 2px 8px hsla(0,0%,100%,.25),
-                0 -1px 2px 8px hsla(0,0%,0%,.5)
-    color: #303030
-    cursor: pointer
-    font: bold 40px/85px sans-serif
-    // height: 80px
-    padding: 0
-    text-shadow: 0 1px 1px hsla(0,0%,100%,.25),
-                 0 -1px 1px hsla(0,0%,0%,.75)
-    // width: 80px
+.main-content .navbar
+  margin: 0
+  padding 10px 0 0 0
+  background: #444
+  border: none
+  box-shadow: inset 0 0 2px 2px hsla(0,0%,0%,.2),
+              inset 0 0 2px 4px hsla(0,0%,0%,.2),
+              inset 0 0 2px 6px hsla(0,0%,0%,.2),
+              inset 0 0 1px 8px hsla(0,0%,0%,.5),
+              inset 0 -4px 2px 4px hsla(0,0%,0%,.5),
+              inset 0 1px 1px 8px hsla(0,0%,100%,.25),
+              inset 0 -30px 30px hsla(0,0%,0%,.2)
+  color: #303030
+  cursor: pointer
+  font: bold 40px/85px sans-serif
+  padding: 0
+  text-shadow: 0 1px 1px hsla(0,0%,100%,.25),
+               0 -1px 1px hsla(0,0%,0%,.75)
 
 .row.players
   margin-top 30px
@@ -201,18 +189,6 @@ tr.taken.mine, tr.taken.mine:hover
 
 tr.dragging
   opacity: 0.5
-
-.show-positional
-  .positional
-    display block
-  .absolute
-    display none
-
-.show-absolute
-  .positional
-    display none
-  .absolute
-    display block
 
 .alert
   .form-group

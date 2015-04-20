@@ -54,11 +54,12 @@ var UserMenu = React.createClass({
   },
 
   render: function() {
-    if(this.state.user !== null) {
-      return this.userMenu();
-    } else {
-      return this.loginForm();
-    }
+    // if(this.state.user !== null) {
+    //   return this.userMenu();
+    // } else {
+    //   return this.loginForm();
+    // }
+    return <input className="btn btn-info" type="submit" value="Log In" />
   }
 
 });

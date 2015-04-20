@@ -10,9 +10,9 @@
   transition: color 0.2s;
 }
 .radial.metal {
-  width: 60px;
-  height: 60px;
-  line-height: 44px;
+  width: 50px;
+  height: 50px;
+  line-height: 36px;
   border-radius: 80px;
   background-image: -webkit-radial-gradient(50% 0%, 8% 50%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), -webkit-radial-gradient(50% 100%, 12% 50%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%), -webkit-radial-gradient(0% 50%, 50% 7%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), -webkit-radial-gradient(100% 50%, 50% 5%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 3%, rgba(0,0,0,0.1) 3.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 6%, rgba(255,255,255,0.1) 7.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 1.2%, rgba(255,255,255,0.2) 2.2%), -webkit-radial-gradient(50% 50%, 200% 50%, #e6e6e6 5%, #d9d9d9 30%, #999 100%);
 }
@@ -75,6 +75,9 @@ body {
 *:active {
   outline: 0;
 }
+.logo {
+  margin: 14px 0;
+}
 .user-dropdown {
   margin-bottom: 20px;
 }
@@ -105,7 +108,6 @@ a.registerButton {
   margin: 4px 0 0 0;
 }
 .main-content {
-  padding-top: 20px;
   font-size: 12px;
 }
 .main-content .form-horizontal .checkbox {
@@ -169,8 +171,6 @@ form .editRankings {
   line-height: 28px;
 }
 form .editRankings {
-  width: 166px;
-  float: right;
   margin-right: 30px;
 }
 form .highlight,
@@ -187,15 +187,12 @@ form .lowlight:hover,
 .lowlighted .name:hover {
   color: #ff6c60;
 }
-.navbar-holder {
-  padding: 10px 20px 0 20px;
-}
-.navbar-holder .navbar {
+.main-content .navbar {
+  margin: 0;
   padding: 10px 0 0 0;
   background: #444;
   border: none;
-  border-radius: 80px;
-  box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.2), inset 0 0 2px 4px rgba(0,0,0,0.2), inset 0 0 2px 6px rgba(0,0,0,0.2), inset 0 0 1px 8px rgba(0,0,0,0.5), inset 0 -4px 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px 8px rgba(255,255,255,0.25), inset 0 -30px 30px rgba(0,0,0,0.2), 0 -4px 8px 4px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.25), 0 0 2px 2px rgba(0,0,0,0.2), 0 0 2px 4px rgba(0,0,0,0.2), 0 0 2px 6px rgba(0,0,0,0.2), 0 0 2px 8px rgba(0,0,0,0.5), 0 1px 2px 8px rgba(255,255,255,0.25), 0 -1px 2px 8px rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.2), inset 0 0 2px 4px rgba(0,0,0,0.2), inset 0 0 2px 6px rgba(0,0,0,0.2), inset 0 0 1px 8px rgba(0,0,0,0.5), inset 0 -4px 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px 8px rgba(255,255,255,0.25), inset 0 -30px 30px rgba(0,0,0,0.2);
   color: #303030;
   cursor: pointer;
   font: bold 40px/85px sans-serif;
@@ -270,18 +267,6 @@ tr.taken.mine:hover td.rank {
 }
 tr.dragging {
   opacity: 0.5;
-}
-.show-positional .positional {
-  display: block;
-}
-.show-positional .absolute {
-  display: none;
-}
-.show-absolute .positional {
-  display: none;
-}
-.show-absolute .absolute {
-  display: block;
 }
 .alert .form-group {
   margin-bottom: 0;

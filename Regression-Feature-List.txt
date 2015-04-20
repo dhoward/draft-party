@@ -11,3 +11,6 @@ Edit player rankings - saved backend
 Populate team during draft
 Drag-and-drop to rearrange team
 Player stats tooltips
+Tooltip on edit rankings button if not logged in
+Instructions button
+Instructions appear if not logged in

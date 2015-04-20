@@ -37,7 +37,7 @@ class Tooltips
 
   tooltipHtml: (stats, id) ->
     $html = $('<table><tbody></tbody></table>')
-    player = _.findWhere window.allPlayers, { Id: id }
+    player = _.findWhere DT_GLOBALS.allPlayers, { Id: id }
     for stat in stats
       $html.append("<tr><td><div style='width:100px'>#{stat}</div></td><td>#{player[stat]}</td></tr>")
     $html

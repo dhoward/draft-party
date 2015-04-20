@@ -52,29 +52,14 @@ var Draft = React.createClass({
     rankings = DT.rankings;
 
     return (
-      <div className="container-fluid main-content show-positional">
+      <div className="container-fluid main-content">
 
         <div className="row">
-          <div className="col-md-3 col-sm-3 col-xs-12">
-            <div className="logo">
-              <img src="/images/logo-rainbow.png" />
-            </div>
-          </div>
-
-          <div className="col-md-9 col-sm-9 col-xs-12">
-            <div className="row">
-              <UserMenu />
-            </div>
-
-            <div className="row">
-              <div className="col-md-12 navbar-holder">
-                <NavBar highlighting={this.state.highlighting} lowlighting={this.state.lowlighting}
-                        onHighlight={this.onHighlight} onLowlight={this.onLowlight}
-                        onDraftedToggle={this.toggleDrafted} onEditRankings={this.onEditRankings}/>
-              </div>
-            </div>
-          </div>
+          <NavBar highlighting={this.state.highlighting} lowlighting={this.state.lowlighting}
+                  onHighlight={this.onHighlight} onLowlight={this.onLowlight}
+                  onDraftedToggle={this.toggleDrafted} onEditRankings={this.onEditRankings} />
         </div>
+
 
         <div className="row players">
           <div className="col-md-12">

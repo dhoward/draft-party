@@ -39,5 +39,5 @@ class App
   rankPlayer: (player, rank) =>
     @rankings.rankPlayer player, rank
 
-DT = new App(window.allPlayers)
-delete[window.allPlayers]
+DT = new App(DT_GLOBALS.allPlayers)
+delete[DT_GLOBALS.allPlayers]

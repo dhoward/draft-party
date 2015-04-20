@@ -13,7 +13,7 @@ class Players
     $players = $('.positional .player')
     $players.removeClass('taken').removeClass('mine').show()
     $.getJSON '/resetPlayers', (response) ->
-      window.allPlayers = response.players
+      DT_GLOBALS.allPlayers = response.players
 
   updateState: (e) =>
 
@@ -77,7 +77,7 @@ class Players
     @highlightClass = if activate then 'lowlighted' else null
 
   updatePlayerObject: (id, key, value, activate) =>
-    player = _.findWhere window.allPlayers, { Id: id }
+    player = _.findWhere DT_GLOBALS.allPlayers, { Id: id }
     if !activate
       delete player[key]
     else
