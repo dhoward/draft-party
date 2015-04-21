@@ -33,7 +33,7 @@ var NavBar = React.createClass({
         </div>
 
         <div className="col-sm-10 col-xs-12">
-          <form className="form-horizontal">
+          <div className="form form-horizontal">
             <div className="col-md-12 col-sm-12 hidden-xs">
 
               <div className={highlightClass} onClick={this.props.onHighlight} >
@@ -60,7 +60,7 @@ var NavBar = React.createClass({
               <UserMenu />
 
             </div>
-          </form>
+          </div>
         </div>
 
       </div>

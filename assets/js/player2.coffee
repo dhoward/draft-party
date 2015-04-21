@@ -23,3 +23,6 @@ class Player
   toggleLowlighted: =>
     @Lowlighted = not @Lowlighted
     @Highlighted = no
+
+  #TODO: implement save method
+  #save: ->

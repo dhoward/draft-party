@@ -15,6 +15,20 @@ body
 .logo
   margin: 14px 0
 
+#login
+  .form-error
+    color: #f00
+    float: right
+    padding-right: 20px
+
+  .register-link
+    margin: 20px 20px 0 0
+    float: right
+
+#register
+  .btn-info
+    margin-left: 20px
+
 .user-dropdown
   margin-bottom 20px
 
@@ -75,15 +89,11 @@ a.registerButton
   &.show-absolute
     .my-team
       width 25%
-  .login-form
-    form
-      float none !important
 
-form .on, form .on:hover
-  // background #000
-  filter none
+.navbar
+  .on, form .on:hover
+    filter none
 
-form
   .highlight, .lowlight
     float left
     font-size 18px
@@ -102,10 +112,10 @@ form
     margin-right 30px
 
 
-form .highlight, form .highlight:hover, h4.highlighted, h1.highlighted, .highlighted .name, .highlighted .name:hover
+.navbar .highlight, .navbar .highlight:hover, h4.highlighted, h1.highlighted, .highlighted .name, .highlighted .name:hover
   color #ffff50
 
-form .lowlight, form .lowlight:hover, .lowlighted .name, .lowlighted .name:hover
+.navbar .lowlight, .navbar .lowlight:hover, .lowlighted .name, .lowlighted .name:hover
   color #ff6c60
 
 .main-content .navbar

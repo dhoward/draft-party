@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
   head
-    title DraftTracker
+    title Draft Party
     link(rel="apple-touch-icon", sizes="57x57", href="/images/apple-touch-icon-57x57.png")
     link(rel="apple-touch-icon", sizes="114x114", href="/images/apple-touch-icon-114x114.png")
     link(rel="apple-touch-icon", sizes="72x72", href="/images/apple-touch-icon-72x72.png")
@@ -25,13 +25,15 @@ html(lang="en")
     script(type='text/jsx', src="javascripts/react/team.jsx")
     script(type='text/jsx', src="javascripts/react/position-ranking.jsx")
     script(type='text/jsx', src="javascripts/react/instructions.jsx")
+    script(type='text/jsx', src="javascripts/react/login.jsx")
+    script(type='text/jsx', src="javascripts/react/register.jsx")
     script(type='text/jsx', src="javascripts/react/user-menu.jsx")
+    script(type='text/jsx', src="javascripts/react/user-dialog.jsx")
     script(type='text/jsx', src="javascripts/react/navbar.jsx")
     script(type='text/jsx', src="javascripts/react/draft.jsx")
 
   body
     #content-root
-    include ./register.jade
 
     script(type='text/javascript', src="javascripts/lib/jquery-2.1.1.min.js")
     script(type='text/javascript', src="javascripts/lib/bootstrap.min.js")
@@ -39,9 +41,11 @@ html(lang="en")
     script(type='text/javascript', src="javascripts/analytics.js")
 
     script(type='text/javascript').
-      DT_GLOBALS = {}
-      DT_GLOBALS.loggedIn = !{JSON.stringify(loggedIn)};
-      DT_GLOBALS.allPlayers = !{JSON.stringify(players)};
+      DT_GLOBALS = {
+        loggedIn: !{JSON.stringify(loggedIn)},
+        user: !{JSON.stringify(user || null)},
+        allPlayers: !{JSON.stringify(players)}
+      };
 
     != js('application')
 

@@ -31,11 +31,18 @@ exports.init = (app, passport) ->
         req.login user, (err) =>
           res.send formatResponseJSON err, user
 
-  app.post "/login", passport.authenticate("local",
-    successRedirect: "/"
-    failureRedirect: "/"
-    failureFlash: true
-  )
+  app.post '/login', (req, res, next) ->
+    passport.authenticate('local', (err, user, info) ->
+      if err then return next(err)
+      else if !user then return res.send formatResponseJSON info.message
+      else
+        req.logIn user, (err) ->
+          if err
+            return next(err)
+          res.send user
+    ) req, res, next
+    return
+
 
   app.get "/logout", (req, res) ->
     req.logout()

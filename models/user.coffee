@@ -26,7 +26,7 @@ userSchema.statics.emailTaken = (email, callback) ->
 userSchema.statics.createUser = (name, email, password, callback) ->
   this.emailTaken email, (taken) =>
     if taken
-      callback [{ email: "That email address has been taken" }]
+      callback { email: "That email address has been taken" }
     else
       this.saveNewUser name, email, password, callback
 

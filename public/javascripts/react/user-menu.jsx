@@ -2,6 +2,7 @@ var UserMenu = React.createClass({
 
   getInitialState: function() {
     return {
+      newUser: false,
       user: null,
       error: null
     }
@@ -31,26 +32,9 @@ var UserMenu = React.createClass({
     )
   },
 
-  loginForm: function() {
-    return (
-      <div className="col-xs-12.login-form">
-        <form className="form-inline user-form pull-right" action="/login" method="post">
-          <div className="form-group">
-            <div className="error text-danger pull-right">{this.state.error}</div>
-          </div>
-          <div className="form-group">
-            <input className="form-control" type="text" name="username" placeholder="Email" />
-          </div>
-          <div className="form-group">
-            <input className="form-control" type="password" name="password" placeholder="Password" />
-          </div>
-          <input className="btn btn-info" type="submit" value="Log In" />
-        </form>
-        <div className="col-lg-12.col-md-12.col-sm-12.col-xs-12">
-          <a className="registerButton text-muted">Register</a>
-        </div>
-      </div>
-    )
+  showLogin: function() {
+    var login = new CustomEvent('DT.showLogin', {bubbles: true});
+    this.getDOMNode().dispatchEvent(login);
   },
 
   render: function() {
@@ -59,7 +43,9 @@ var UserMenu = React.createClass({
     // } else {
     //   return this.loginForm();
     // }
-    return <input className="btn btn-info" type="submit" value="Log In" />
+    return (
+      <input className="btn btn-info" value="Log In" readOnly onClick={this.showLogin} />
+    )
   }
 
 });

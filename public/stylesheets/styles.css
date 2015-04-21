@@ -78,6 +78,18 @@ body {
 .logo {
   margin: 14px 0;
 }
+#login .form-error {
+  color: #f00;
+  float: right;
+  padding-right: 20px;
+}
+#login .register-link {
+  margin: 20px 20px 0 0;
+  float: right;
+}
+#register .btn-info {
+  margin-left: 20px;
+}
 .user-dropdown {
   margin-bottom: 20px;
 }
@@ -146,43 +158,40 @@ a.registerButton {
 .main-content.show-absolute .my-team {
   width: 25%;
 }
-.main-content .login-form form {
-  float: none !important;
-}
-form .on,
-form .on:hover {
+.navbar .on,
+.navbar form .on:hover {
   filter: none;
 }
-form .highlight,
-form .lowlight {
+.navbar .highlight,
+.navbar .lowlight {
   float: left;
   font-size: 18px;
   padding: 6px;
   margin: 22px 0 24px 30px;
   width: 45px;
 }
-form .projections,
-form .drafted,
-form .editRankings {
+.navbar .projections,
+.navbar .drafted,
+.navbar .editRankings {
   float: left;
   padding: 10px 16px;
   margin-left: 30px;
   margin-top: 26px;
   line-height: 28px;
 }
-form .editRankings {
+.navbar .editRankings {
   margin-right: 30px;
 }
-form .highlight,
-form .highlight:hover,
+.navbar .highlight,
+.navbar .highlight:hover,
 h4.highlighted,
 h1.highlighted,
 .highlighted .name,
 .highlighted .name:hover {
   color: #ffff50;
 }
-form .lowlight,
-form .lowlight:hover,
+.navbar .lowlight,
+.navbar .lowlight:hover,
 .lowlighted .name,
 .lowlighted .name:hover {
   color: #ff6c60;
