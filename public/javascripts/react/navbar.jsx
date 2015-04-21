@@ -1,9 +1,7 @@
 var NavBar = React.createClass({
 
-  getInitialState: function() {
-    return {
-      user: null
-    }
+  componentDidMount: function() {
+    $('.editRankings').tooltip();
   },
 
   render: function() {
@@ -49,15 +47,13 @@ var NavBar = React.createClass({
               <span className="hidden-sm hidden-xs metal linear projections" onClick={this.props.toggleProjections}>Show projections</span>
 
               {
-                this.state.user === null ?
+                this.props.user !== null ?
                   <span className="metal linear editRankings hidden-xs">Edit Rankings</span>
                 :
-                <span className="editRankingsWrapper pull-right" data-toggle="tooltip" data-placement="top" title="Gotta log in to do this">
-                  <span className="metal linear editRankings disabled hidden-xs">Edit Rankings</span>
-                </span>
+                  <span className="metal linear editRankings disabled hidden-xs" data-toggle="tooltip" data-placement="bottom" title="Gotta log in to do this">Edit Rankings</span>
               }
 
-              <UserMenu />
+              <UserMenu user={this.props.user}/>
 
             </div>
           </div>

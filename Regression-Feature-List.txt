@@ -1,7 +1,5 @@
 Regression Feature List
 
-Register
-Log in
 Highlight players - saved backend
 Lowlight players - saved backend
 Show current pick count
@@ -9,8 +7,4 @@ Hide/show drafted players
 Update player state open/taken/mine - saved backend
 Edit player rankings - saved backend
 Populate team during draft
-Drag-and-drop to rearrange team
 Player stats tooltips
-Tooltip on edit rankings button if not logged in
-Instructions button
-Instructions appear if not logged in

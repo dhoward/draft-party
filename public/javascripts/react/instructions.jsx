@@ -1,4 +1,17 @@
 var Instructions = React.createClass({
+
+  componentDidMount: function() {
+    if(this.props.user === null) {
+      this.showModal();
+    }
+
+    window.addEventListener('DT.showInstructions', this.showModal);
+  },
+
+  showModal: function() {
+    $("#instructions").modal();
+  },
+
   render: function() {
     return (
       <div id="instructions" className="modal fade">

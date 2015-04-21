@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
   head
-    title DraftTracker
+    title Draft Party
     link(rel="apple-touch-icon", sizes="57x57", href="/images/apple-touch-icon-57x57.png")
     link(rel="apple-touch-icon", sizes="114x114", href="/images/apple-touch-icon-114x114.png")
     link(rel="apple-touch-icon", sizes="72x72", href="/images/apple-touch-icon-72x72.png")
@@ -18,192 +18,39 @@ html(lang="en")
     link(rel="stylesheet", href="/stylesheets/styles.css")
     link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
     link(rel="stylesheet", href="/stylesheets/font-awesome.min.css")
+    script(type='text/javascript', src="javascripts/lib/react-with-addons.js")
+    script(type='text/javascript', src="javascripts/lib/JSXTransformer.js")
+    script(type='text/jsx', src="javascripts/react/drafted-toggle.jsx")
+    script(type='text/jsx', src="javascripts/react/player.jsx")
+    script(type='text/jsx', src="javascripts/react/team.jsx")
+    script(type='text/jsx', src="javascripts/react/position-ranking.jsx")
+    script(type='text/jsx', src="javascripts/react/instructions.jsx")
+    script(type='text/jsx', src="javascripts/react/login.jsx")
+    script(type='text/jsx', src="javascripts/react/register.jsx")
+    script(type='text/jsx', src="javascripts/react/user-menu.jsx")
+    script(type='text/jsx', src="javascripts/react/user-dialog.jsx")
+    script(type='text/jsx', src="javascripts/react/navbar.jsx")
+    script(type='text/jsx', src="javascripts/react/draft.jsx")
 
   body
-    .container-fluid.main-content.show-positional
+    #content-root
 
-      .row
-        .col-md-3.col-sm-3.col-xs-12
-          .logo
-            img(src="/images/logo-rainbow.png")
-          //
-            .page-header.pick
-              h1.pick
-                .span.pickCounter DraftTracker
-              .btn.btn-info.instructionsButton
-                | ?
-
-        .col-md-9.col-sm-9.col-xs-12
-          .row
-            - if(user)
-              .col-xs-12.user-dropdown
-                .dropdown-holder.pull-right
-                  .metal.linear.dropdown.pull-right(data-toggle="dropdown", href="#")
-                    | Welcome, #{user.name}
-                    span.caret
-                  ul.dropdown-menu(role="menu", aria-labelledby="dLabel")
-                    li
-                      a.resetButton(href="#") Help
-                    li
-                      a.resetButton(href="#") Reset
-                    li
-                      a(href="/logout") Logout
-            - else
-              .col-xs-12.login-form
-                form.form-inline.user-form.pull-right(action="/login", method="post")
-                  .form-group
-                    .error.text-danger.pull-right
-                      | !{error}
-                  .form-group
-                    input.form-control(type="text", name="username", placeholder="Email")
-                  .form-group
-                    input.form-control(type="password", name="password", placeholder="Password")
-                  input.btn.btn-info(type="submit", value="Log In")
-                .col-lg-12.col-md-12.col-sm-12.col-xs-12
-                  a.registerButton.text-muted Register
-
-          .row
-            .col-md-12.navbar-holder
-              .col-md-12.navbar
-                form.form-horizontal
-                  //.col-md-3.col-sm-3.col-xs-12
-                  //  .form-group
-                  //    .col-md-12
-                  //      input.search.form-control(name="searchText", type="text", placeholder="Search")
-                  .col-md-12.col-sm-12.hidden-xs
-                    .highlight.metal.yellow.radial
-                      i.fa.fa-pencil
-                    .lowlight.metal.red.radial
-                      i.fa.fa-pencil
-                    span.hidden-xs.metal.linear.drafted Hide drafted
-                    span.hidden-sm.hidden-xs.metal.linear.projections Show projections
-                    - if(user)
-                      span.metal.linear.editRankings.hidden-xs Edit Rankings
-                    - else
-                      span.editRankingsWrapper.pull-right(data-toggle="tooltip", data-placement="top", title="Gotta log in to do this")
-                        span.metal.linear.editRankings.disabled.hidden-xs Edit Rankings
-
-
-      .row.players
-        .col-md-12
-          .positional
-            .col-md-2.col-sm-6.position-column
-              table.table.table-bordered(data-position-name="QB")
-                th(colspan=2) QB
-
-            .col-md-2.col-sm-6.position-column
-              table.table.table-bordered(data-position-name="RB")
-                th(colspan=2) RB
-
-            .col-md-2.col-sm-6.position-column
-              table.table.table-bordered(data-position-name="WR")
-                th(colspan=2) WR
-
-            .col-md-2.col-sm-6.position-column
-              table.table.table-bordered(data-position-name="TE")
-                th(colspan=2) TE
-
-            .col-md-2.col-sm-6.position-column
-              table.table.table-bordered(data-position-name="K")
-                th(colspan=2) K
-
-              table.table.table-bordered(data-position-name="DEF")
-                th(colspan=2) DEF
-
-
-          .col-md-2.col-xs-12.my-team
-            table.table.table-bordered
-              th(colspan=2) Your Team
-                tr
-                  td.pos.col-md-2 QB
-                  td.name.player(data-position="qb")
-                tr
-                  td.pos.col-md-2 RB
-                  td.name.player(data-position="rb")
-                tr
-                  td.pos.col-md-2 RB
-                  td.name.player(data-position="rb")
-                tr
-                  td.pos.col-md-2 WR
-                  td.name.player(data-position="wr")
-                tr
-                  td.pos.col-md-2 WR
-                  td.name.player(data-position="wr")
-                tr
-                  td.pos.col-md-2 FLX
-                  td.name.player(data-position="flx")
-                tr
-                  td.pos.col-md-2 TE
-                  td.name.player(data-position="te")
-                tr
-                  td.pos.col-md-2 K
-                  td.name.player(data-position="k")
-                tr
-                  td.pos.col-md-2 DEF
-                  td.name.player(data-position="def")
-
-                tr
-                  td.pos.col-md-2 BN
-                  td.name.player(data-position="bn")
-                tr
-                  td.pos.col-md-2 BN
-                  td.name.player(data-position="bn")
-                tr
-                  td.pos.col-md-2 BN
-                  td.name.player(data-position="bn")
-                tr
-                  td.pos.col-md-2 BN
-                  td.name.player(data-position="bn")
-                tr
-                  td.pos.col-md-2 BN
-                  td.name.player(data-position="bn")
-                tr
-                  td.pos.col-md-2 BN
-                  td.name.player(data-position="bn")
-
-    #instructions.modal.fade
-      .modal-dialog.modal-lg
-        .modal-content
-          .modal-header
-            button(type="button", class="close", data-dismiss="modal")
-              span(aria-hidden="true") &times;
-              span.sr-only Close
-            h3.modal-title Welcome to DraftTracker, your online cheat sheet.
-          .modal-body
-            h4.highlighted First, create an account to customize your rankings
-            p Or, you know, don't.
-            h4.highlighted During the draft, click on a player to mark him as taken
-            p Or double-click him to say that he's on your team.  He'll then show up in your team on the right hand side.
-            h4.highlighted Drag and drop the players on your team to rearrange your lineup
-            p Or just leave it alone and your team will autofill based on position
-            h4.highlighted The stuff in the toolbar is self-explanatory
-            p Except maybe the pencil icons. You can use them to highlight players in the list, if you so choose.
-          .modal-footer
-            button.btn.btn-default(type="button", data-dismiss="modal") Close
-
-    include ./register.jade
-
-
-
-    script(type='text/javascript', src="javascripts/jquery-2.1.1.min.js")
-    script(type='text/javascript', src="javascripts/bootstrap.min.js")
-    script(type='text/javascript', src="javascripts/underscore-1.6.0.min.js")
+    script(type='text/javascript', src="javascripts/lib/jquery-2.1.1.min.js")
+    script(type='text/javascript', src="javascripts/lib/bootstrap.min.js")
+    script(type='text/javascript', src="javascripts/lib/underscore-1.6.0.min.js")
     script(type='text/javascript', src="javascripts/analytics.js")
-    script(type='text/javascript').
-      App = {}
-      App.loggedIn = !{JSON.stringify(loggedIn)};
-      allPlayers = !{JSON.stringify(players)};
 
-      $('.navbar form').on('submit', function(){return false;});
-      $('.instructionsButton').on('click', function(){ $('#instructions').modal(); })
-      $('.registerButton').on('click', function(){ $('#register').modal(); })
+    script(type='text/javascript').
+      DT_GLOBALS = {
+        loggedIn: !{JSON.stringify(loggedIn)},
+        user: !{JSON.stringify(user || null)},
+        allPlayers: !{JSON.stringify(players)}
+      };
 
     != js('application')
 
-    script(type='text/javascript').
-      $('body').trigger('Players.renderRankings');
-      $('.editRankingsWrapper').tooltip();
-
-    - if(!user && !error.length)
-      script(type='text/javascript').
-        $('#instructions').modal();
+    script(type='text/jsx').
+      React.render(
+        <Draft />,
+        document.getElementById('content-root')
+      );

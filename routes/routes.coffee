@@ -14,11 +14,6 @@ exports.init = (app, passport) ->
     players = req.user?.rankings or defaultRankings
     res.render 'index.jade', { loggedIn: loggedIn, players: players, error: req.flash('error') }
 
-  app.get '/react', (req, res) ->
-    loggedIn = req.user?
-    players = req.user?.rankings or defaultRankings
-    res.render 'react.jade', { loggedIn: loggedIn, players: players, error: req.flash('error') }
-
   app.post '/register', (req, res) ->
     name = req.body.name
     email = req.body.email

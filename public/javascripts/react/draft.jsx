@@ -2,6 +2,7 @@ var Draft = React.createClass({
 
   getInitialState: function() {
     return {
+      user: DT_GLOBALS.user,
       highlighting: false,
       lowLighting: false,
       editing: false,
@@ -55,7 +56,8 @@ var Draft = React.createClass({
       <div className="container-fluid main-content">
 
         <div className="row">
-          <NavBar highlighting={this.state.highlighting} lowlighting={this.state.lowlighting}
+          <NavBar user={this.state.user}
+                  highlighting={this.state.highlighting} lowlighting={this.state.lowlighting}
                   onHighlight={this.onHighlight} onLowlight={this.onLowlight}
                   onDraftedToggle={this.toggleDrafted} onEditRankings={this.onEditRankings} />
         </div>
@@ -76,7 +78,7 @@ var Draft = React.createClass({
 
         <Team />
 
-        <Instructions />
+        <Instructions user={this.state.user}/>
 
         <UserDialog />
 
