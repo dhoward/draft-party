@@ -57,16 +57,9 @@ exports.init = (app, passport) ->
     user.save (err) =>
       res.send formatResponseJSON(err, { success:true })
 
-  # TODO: address race conditions caused if this
-  # method is called multiple times in rapid succession
   app.post '/updatePlayer', (req, res) ->
     user = req.user
-    # playerId = req.body.playerId
-    # key = req.body.key
-    # value = req.body.value
     player = req.body
-    console.log "playet"
-    console.log player
 
     rankings = _.reject user.rankings, (p) ->
       p.Id is player["Id"].toString()
@@ -74,10 +67,8 @@ exports.init = (app, passport) ->
     rankings.push player
     user.rankings = rankings
 
-    console.log rankings
-
     User.findByIdAndUpdate user.id, { $set: { rankings: rankings }}, (err, user) ->
-      res.send formatResponseJSON(err, { success:true })
+      res.send formatResponseJSON(err, player)
 
   app.get '/resetPlayers', (req, res) ->
     user = req.user

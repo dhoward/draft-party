@@ -33,9 +33,13 @@ class Player
     $.post '/updatePlayer', @toJSON()
 
   toJSON: ->
-    Id: @Id
-    "Player Name": @["Player Name"]
-    Position: @Position
-    Rank: @Rank
-    Owner: @Owner
-    Attribution: @Attribution
+    json =
+      Id: @Id
+      "Player Name": @["Player Name"]
+      Position: @Position
+      Rank: @Rank
+
+    if @Owner?.length then json.Owner = @Owner
+    if @Attribution?.length then json.Attribution = @Attribution
+
+    json

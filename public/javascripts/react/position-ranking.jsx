@@ -47,7 +47,7 @@ var PositionRanking = React.createClass({
     if(index === 0) {
       newRank = this.props.players[1]["Rank"] - 1;
     } else {
-      newRank = this.props.players[index-1]["Rank"] + 1;
+      newRank = parseInt(this.props.players[index-1]["Rank"], 10) + 1;
     }
 
     newRank = Math.max(newRank, 1);

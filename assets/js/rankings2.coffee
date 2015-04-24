@@ -36,6 +36,10 @@ class Rankings
     @players = players
 
     @updateRankings()
+
+    ranksArray = _.pluck @players, "Id"
+    $.post '/rankings', { rankings: ranksArray }
+
     @updateCallback() if @updateCallback?
 
   updateRankings: (players) =>
