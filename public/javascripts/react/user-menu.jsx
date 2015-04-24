@@ -15,7 +15,7 @@ var UserMenu = React.createClass({
 
   userMenu: function() {
     return (
-      <div className="col-xs-12 user-dropdown">
+      <div className="user-dropdown">
         <div className="dropdown-holder pull-right">
           <div className="metal linear dropdown pull-right" data-toggle="dropdown" href="#">
             Welcome, {this.props.user.name}

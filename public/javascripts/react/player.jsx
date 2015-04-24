@@ -15,6 +15,7 @@ var Player = React.createClass({
   updateState: function() {
     player = this.props.player;
 
+    // TODO: do this in the player model and save from there
     if(DT.highlighting) {
       player.toggleHighlighted();
     } else if(DT.lowlighting) {
