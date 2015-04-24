@@ -1,6 +1,5 @@
 Regression Feature List
 
 Show current pick count
-Edit player rankings - saved backend
 Populate team during draft
 Player stats tooltips

@@ -6,12 +6,6 @@ var Player = React.createClass({
     }
   },
 
-  getInitialState: function() {
-    return {
-      owner: null
-    }
-  },
-
   updateState: function() {
     this.props.player.updateState();
     DT.rankings.updatePlayer();
@@ -37,11 +31,10 @@ var Player = React.createClass({
 
     return (
       <tr
-        onMouseDown={this.handleMouseDown}
         data-id={this.props.player["Id"]}
         data-rank={this.props.player["Rank"]}
         className={classes}>
-        <td className="col-md-1 rank">{this.props.label}</td>
+        <td className="col-md-1 rank" onMouseDown={this.handleMouseDown}>{this.props.label}</td>
         <td className="name" data-position={this.props.code} onClick={this.updateState}>{this.props.player['Player Name']}</td>
       </tr>
     );

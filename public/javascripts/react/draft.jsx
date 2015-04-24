@@ -18,20 +18,6 @@ var Draft = React.createClass({
     DT.rankings.setUpdateCallback(this.onUpdate);
   },
 
-  onPlayerUpdate: function(player) {
-    // console.log("updated!");
-    // console.log(player);
-    // this.forceUpdate();
-  },
-
-  onRankingsReorder: function() {
-
-  },
-
-  onRankingsUpdate: function() {
-
-  },
-
   onHighlight: function(highlighting) {
     var newState = DT.toggleHighlighting();
     this.setState(newState);
@@ -65,12 +51,12 @@ var Draft = React.createClass({
         <div className="row players">
           <div className="col-md-12">
             <div className="positional">
-              <PositionRanking label="QB" players={rankings.getPosition("QB")} onUpdate={this.onPlayerUpdate} />
-              <PositionRanking label="RB" players={rankings.getPosition("RB")} onUpdate={this.onPlayerUpdate} />
-              <PositionRanking label="WR" players={rankings.getPosition("WR")} onUpdate={this.onPlayerUpdate} />
-              <PositionRanking label="TE" players={rankings.getPosition("TE")} onUpdate={this.onPlayerUpdate} />
-              <PositionRanking label="K" players={rankings.getPosition("K")} onUpdate={this.onPlayerUpdate} />
-              <PositionRanking label="DEF" players={rankings.getPosition("DEF")} onUpdate={this.onPlayerUpdate} />
+              <PositionRanking label="QB" players={rankings.getPosition("QB")} />
+              <PositionRanking label="RB" players={rankings.getPosition("RB")} />
+              <PositionRanking label="WR" players={rankings.getPosition("WR")} />
+              <PositionRanking label="TE" players={rankings.getPosition("TE")} />
+              <PositionRanking label="K" players={rankings.getPosition("K")} />
+              <PositionRanking label="DEF" players={rankings.getPosition("DEF")} />
             </div>
           </div>
         </div>
