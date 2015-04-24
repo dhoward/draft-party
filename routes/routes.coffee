@@ -61,21 +61,20 @@ exports.init = (app, passport) ->
   # method is called multiple times in rapid succession
   app.post '/updatePlayer', (req, res) ->
     user = req.user
-    playerId = req.body.playerId
-    key = req.body.key
-    value = req.body.value
+    # playerId = req.body.playerId
+    # key = req.body.key
+    # value = req.body.value
+    player = req.body
+    console.log "playet"
+    console.log player
 
-    partition = _.partition user.rankings, (p) ->
-      p.Id is playerId.toString()
-    player = partition[0][0]
-    rankings = partition[1]
+    rankings = _.reject user.rankings, (p) ->
+      p.Id is player["Id"].toString()
 
-    if value?
-      player[key] = value
-    else
-      delete player[key]
     rankings.push player
     user.rankings = rankings
+
+    console.log rankings
 
     User.findByIdAndUpdate user.id, { $set: { rankings: rankings }}, (err, user) ->
       res.send formatResponseJSON(err, { success:true })

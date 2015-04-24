@@ -16,7 +16,6 @@ var Draft = React.createClass({
 
   componentDidMount: function() {
     DT.rankings.setUpdateCallback(this.onUpdate);
-    // console.log(this.state.rankings);
   },
 
   onPlayerUpdate: function(player) {

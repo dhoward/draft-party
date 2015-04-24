@@ -1,10 +1,6 @@
 Regression Feature List
 
-Highlight players - saved backend
-Lowlight players - saved backend
 Show current pick count
-Hide/show drafted players
-Update player state open/taken/mine - saved backend
 Edit player rankings - saved backend
 Populate team during draft
 Player stats tooltips

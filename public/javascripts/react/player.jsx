@@ -13,18 +13,8 @@ var Player = React.createClass({
   },
 
   updateState: function() {
-    player = this.props.player;
-
-    // TODO: do this in the player model and save from there
-    if(DT.highlighting) {
-      player.toggleHighlighted();
-    } else if(DT.lowlighting) {
-      player.toggleLowlighted();
-    } else {
-      player.updateOwner();
-    }
-
-    DT.rankings.updatePlayer(player);
+    this.props.player.updateState();
+    DT.rankings.updatePlayer();
   },
 
   handleMouseDown: function() {
@@ -35,13 +25,13 @@ var Player = React.createClass({
 
     var cx = React.addons.classSet;
     var classes = cx({
-      'taken': this.props.player.owner !== null && typeof this.props.player.owner !== "undefined",
-      'mine': this.props.player.owner === "me",
-      'highlighted': this.props.player.Highlighted,
-      'lowlighted': this.props.player.Lowlighted
+      'taken': this.props.player.Owner !== null && typeof this.props.player.Owner !== "undefined",
+      'mine': this.props.player.Owner === "me",
+      'highlighted': this.props.player.Attribution == "highlighted",
+      'lowlighted': this.props.player.Attribution == "lowlighted"
     });
 
-    if(this.props.player.owner != null && DT.hidingDrafted) {
+    if(this.props.player.Owner != null && DT.hidingDrafted) {
       return null;
     }
 

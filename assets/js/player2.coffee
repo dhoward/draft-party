@@ -5,24 +5,37 @@ class Player
     @Position = player.Position
     @Rank = player.Rank
     @Owner = player.Owner
-    @Highlighted = player.Highlighted
-    @Lowlighted = player.Lowlighted
+    @Attribution = player.Attribution
+    @Stats = player.Stats
 
   updateOwner: =>
-    if !@owner?
-      @owner = "other"
-    else if @owner is "other"
-      @owner = "me"
+    if !@Owner?
+      @Owner = "other"
+    else if @Owner is "other"
+      @Owner = "me"
     else
-      @owner = null
+      @Owner = null
 
   toggleHighlighted: =>
-    @Highlighted = not @Highlighted
-    @Lowlighted = no
+    @Attribution = if @Attribution is "highlighted" then null else "highlighted"
 
   toggleLowlighted: =>
-    @Lowlighted = not @Lowlighted
-    @Highlighted = no
+    @Attribution = if @Attribution is "lowlighted" then null else "lowlighted"
 
-  #TODO: implement save method
-  #save: ->
+  updateState: ->
+    if DT.highlighting
+      @toggleHighlighted()
+    else if DT.lowlighting
+      @toggleLowlighted()
+    else
+      @updateOwner()
+
+    $.post '/updatePlayer', @toJSON()
+
+  toJSON: ->
+    Id: @Id
+    "Player Name": @["Player Name"]
+    Position: @Position
+    Rank: @Rank
+    Owner: @Owner
+    Attribution: @Attribution
