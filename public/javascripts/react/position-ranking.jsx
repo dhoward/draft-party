@@ -51,7 +51,8 @@ var PositionRanking = React.createClass({
     }
 
     newRank = Math.max(newRank, 1);
-    DT.rankPlayer(this.draggedPlayer, newRank);
+    DT.rankings.rankPlayer(this.draggedPlayer, newRank);
+    this.forceUpdate();
 
     this.draggedPlayer = null;
     $("body").off("mousemove");

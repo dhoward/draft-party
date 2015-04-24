@@ -8,7 +8,7 @@ var Player = React.createClass({
 
   updateState: function() {
     this.props.player.updateState();
-    DT.rankings.updatePlayer();
+    this.forceUpdate();
   },
 
   handleMouseDown: function() {

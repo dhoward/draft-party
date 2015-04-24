@@ -10,14 +10,6 @@ var Draft = React.createClass({
     }
   },
 
-  onUpdate: function() {
-    this.forceUpdate();
-  },
-
-  componentDidMount: function() {
-    DT.rankings.setUpdateCallback(this.onUpdate);
-  },
-
   onHighlight: function(highlighting) {
     var newState = DT.toggleHighlighting();
     this.setState(newState);
