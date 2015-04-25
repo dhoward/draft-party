@@ -8,7 +8,9 @@ var Player = React.createClass({
 
   updateState: function() {
     this.props.player.updateState();
-    this.forceUpdate();
+
+    var e = new CustomEvent('DT.update', { bubbles: true });
+    this.getDOMNode().dispatchEvent(e);
   },
 
   handleMouseDown: function() {

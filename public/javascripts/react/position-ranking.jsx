@@ -52,7 +52,9 @@ var PositionRanking = React.createClass({
 
     newRank = Math.max(newRank, 1);
     DT.rankings.rankPlayer(this.draggedPlayer, newRank);
-    this.forceUpdate();
+
+    var e = new CustomEvent('DT.update', { bubbles: true });
+    this.getDOMNode().dispatchEvent(e);
 
     this.draggedPlayer = null;
     $("body").off("mousemove");
@@ -61,18 +63,16 @@ var PositionRanking = React.createClass({
 
   render: function() {
     return (
-      <div className="col-md-2 col-sm-6 position-column">
-        <table ref="table" className="table table-bordered">
-          <tbody>
-            <tr>
-              <th colSpan="2">
-                {this.props.label}
-              </th>
-            </tr>
-            {this.playerRows()}
-          </tbody>
-        </table>
-      </div>
+      <table ref="table" className="table table-bordered">
+        <tbody>
+          <tr>
+            <th colSpan="2">
+              {this.props.label}
+            </th>
+          </tr>
+          {this.playerRows()}
+        </tbody>
+      </table>
     )
   }
 });

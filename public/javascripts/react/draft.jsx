@@ -10,6 +10,14 @@ var Draft = React.createClass({
     }
   },
 
+  componentDidMount: function() {
+    window.addEventListener('DT.update', this.onUpdate);
+  },
+
+  onUpdate: function() {
+    this.forceUpdate();
+  },
+
   onHighlight: function(highlighting) {
     var newState = DT.toggleHighlighting();
     this.setState(newState);
@@ -21,13 +29,13 @@ var Draft = React.createClass({
   },
 
   toggleDrafted: function() {
-    console.log("toggle drafted");
     DT.toggleDrafted();
     this.forceUpdate();
   },
 
   render: function() {
     rankings = DT.rankings;
+    nextPick = rankings.getNextPick();
 
     return (
       <div className="container-fluid main-content">
@@ -39,21 +47,42 @@ var Draft = React.createClass({
                   onDraftedToggle={this.toggleDrafted} onEditRankings={this.onEditRankings} />
         </div>
 
+        <div className="row players">
+          <div className="col-md-12">
+            Now picking: { nextPick }
+          </div>
+        </div>
 
         <div className="row players">
           <div className="col-md-12">
             <div className="positional">
-              <PositionRanking label="QB" players={rankings.getPosition("QB")} />
-              <PositionRanking label="RB" players={rankings.getPosition("RB")} />
-              <PositionRanking label="WR" players={rankings.getPosition("WR")} />
-              <PositionRanking label="TE" players={rankings.getPosition("TE")} />
-              <PositionRanking label="K" players={rankings.getPosition("K")} />
-              <PositionRanking label="DEF" players={rankings.getPosition("DEF")} />
+
+              <div className="col-md-2 col-sm-6 position-column">
+                <PositionRanking label="QB" players={rankings.getPosition("QB")} />
+              </div>
+
+              <div className="col-md-2 col-sm-6 position-column">
+                <PositionRanking label="RB" players={rankings.getPosition("RB")} />
+              </div>
+
+              <div className="col-md-2 col-sm-6 position-column">
+                <PositionRanking label="WR" players={rankings.getPosition("WR")} />
+              </div>
+
+              <div className="col-md-2 col-sm-6 position-column">
+                <PositionRanking label="TE" players={rankings.getPosition("TE")} />
+              </div>
+
+              <div className="col-md-2 col-sm-6 position-column">
+                <PositionRanking label="K" players={rankings.getPosition("K")} />
+                <PositionRanking label="DEF" players={rankings.getPosition("DEF")} />
+              </div>
+
+              <Team />
+
             </div>
           </div>
         </div>
-
-        <Team />
 
         <Instructions user={this.state.user}/>
 

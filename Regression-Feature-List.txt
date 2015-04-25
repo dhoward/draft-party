@@ -1,5 +1,4 @@
 Regression Feature List
 
-Show current pick count
 Populate team during draft
 Player stats tooltips

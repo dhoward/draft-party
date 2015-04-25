@@ -27,8 +27,11 @@ class Rankings
     ranksArray = _.pluck @players, "Id"
     $.post '/rankings', { rankings: ranksArray }
 
-    @updateCallback() if @updateCallback?
-
   updateRankings: (players) =>
     for player, index in @players
       player["Rank"] = index + 1
+
+  getNextPick: () =>
+    players = _.filter @players, (player) ->
+      player["Owner"]?
+    players.length + 1

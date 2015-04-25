@@ -28,7 +28,6 @@ class App
     return stateObj
 
   toggleDrafted: =>
-    console.log "toggling"
     @hidingDrafted = not @hidingDrafted
 
 DT = new App(DT_GLOBALS.allPlayers)
