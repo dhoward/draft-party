@@ -1,5 +1,3 @@
-#= require_tree .
-
 class App
 
   rankings: []
