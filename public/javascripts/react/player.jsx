@@ -42,7 +42,7 @@ var Player = React.createClass({
     var classes = "";
 
     if(this.props.showAnnotations) {
-      classes = React.addons.classSet({
+      classes = DT.util.classNames({
         'taken': this.props.player.Owner !== null && typeof this.props.player.Owner !== "undefined",
         'mine': this.props.player.Owner === "me",
         'highlighted': this.props.player.Attribution == "highlighted",

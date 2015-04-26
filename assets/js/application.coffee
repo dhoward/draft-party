@@ -39,3 +39,5 @@ class App
 
 DT = new App(DT_GLOBALS.allPlayers)
 delete[DT_GLOBALS.allPlayers]
+
+DT.util = { classNames: classNames };

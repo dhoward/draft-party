@@ -3,7 +3,7 @@ var Team = React.createClass({
   positionRows: function(label, players, max) {
     rows = [];
     for(var i=0; i< max; i++) {
-      rows.push( <Player label={label} player={players[i]} showAnnotations={false} draggable={false} /> );
+      rows.push( <Player key={i} label={label} player={players[i]} showAnnotations={false} draggable={false} /> );
     }
     return rows;
   },

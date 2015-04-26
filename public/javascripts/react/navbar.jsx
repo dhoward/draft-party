@@ -5,19 +5,18 @@ var NavBar = React.createClass({
   },
 
   render: function() {
-    var cx = React.addons.classSet;
 
-    var highlightClass = cx({
+    var highlightClass = DT.util.classNames({
       "highlight metal yellow radial": true,
       "on": this.props.highlighting
     });
 
-    var lowlightClass = cx({
+    var lowlightClass = DT.util.classNames({
       "lowlight metal red radial": true,
       "on": this.props.lowlighting
     });
 
-    var draftedClass = cx({
+    var draftedClass = DT.util.classNames({
       "hidden-xs metal linear drafted": true,
       "on": DT.hidingDrafted
     });
