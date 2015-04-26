@@ -146,7 +146,7 @@ var Instructions = React.createClass({displayName: "Instructions",
                 React.createElement("span", {"aria-hidden": "true"}, "×"), 
                 React.createElement("span", {className: "sr-only"}, "Close")
               ), 
-              React.createElement("h3", {className: "modal-title"}, "Welcome to DraftTracker, your online cheat sheet.")
+              React.createElement("h3", {className: "modal-title"}, "Welcome to the Draft Party!")
             ), 
             React.createElement("div", {className: "modal-body"}, 
               React.createElement("h4", {className: "highlighted"}, "First, create an account to customize your rankings"), 

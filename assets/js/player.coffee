@@ -33,7 +33,8 @@ class Player
     else
       @updateOwner()
 
-    $.post '/updatePlayer', @toJSON()
+    if DT_GLOBALS.loggedIn
+      $.post '/updatePlayer', @toJSON()
 
   toJSON: ->
     json =

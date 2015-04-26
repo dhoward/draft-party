@@ -22,7 +22,7 @@ var Instructions = React.createClass({
                 <span aria-hidden="true">&times;</span>
                 <span className="sr-only">Close</span>
               </button>
-              <h3 className="modal-title">Welcome to DraftTracker, your online cheat sheet.</h3>
+              <h3 className="modal-title">Welcome to the Draft Party!</h3>
             </div>
             <div className="modal-body">
               <h4 className="highlighted">First, create an account to customize your rankings</h4>
