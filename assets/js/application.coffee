@@ -9,7 +9,14 @@ class App
   hidingDrafted: false
 
   constructor: (players) ->
+    players = _.map players, (player) ->
+      new Player player
+
     @rankings = new Rankings players
+    @team = new Team
+
+    taken = _.where players, { Owner: "me" }
+    @team.addPlayer player for player in taken
 
   toggleHighlighting: =>
     @lowlighting = false

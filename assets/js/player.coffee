@@ -8,6 +8,9 @@ class Player
     @Attribution = player.Attribution
     @Stats = player.Stats
 
+  isFlexEligible: =>
+    @Position is "RB" or @Position is "WR"
+
   updateOwner: =>
     if !@Owner?
       @Owner = "other"
@@ -38,6 +41,7 @@ class Player
       "Player Name": @["Player Name"]
       Position: @Position
       Rank: @Rank
+      Stats: @Stats
 
     if @Owner?.length then json.Owner = @Owner
     if @Attribution?.length then json.Attribution = @Attribution

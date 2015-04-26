@@ -12,6 +12,18 @@ var Draft = React.createClass({
 
   componentDidMount: function() {
     window.addEventListener('DT.update', this.onUpdate);
+    window.addEventListener('DT.team.addPlayer', this.addPlayerToTeam);
+    window.addEventListener('DT.team.removePlayer', this.removePlayerFromTeam);
+  },
+
+  addPlayerToTeam: function(e) {
+    DT.team.addPlayer(e.detail.player);
+    this.onUpdate();
+  },
+
+  removePlayerFromTeam: function(e) {
+    DT.team.removePlayer(e.detail.player);
+    this.onUpdate();
   },
 
   onUpdate: function() {
@@ -78,7 +90,7 @@ var Draft = React.createClass({
                 <PositionRanking label="DEF" players={rankings.getPosition("DEF")} />
               </div>
 
-              <Team />
+              <Team team={DT.team} />
 
             </div>
           </div>

@@ -9,8 +9,27 @@ var Player = React.createClass({
   updateState: function() {
     this.props.player.updateState();
 
+    this.checkAdded();
+    this.checkRemoved();
+
     var e = new CustomEvent('DT.update', { bubbles: true });
     this.getDOMNode().dispatchEvent(e);
+  },
+
+  checkAdded: function() {
+    player = this.props.player;
+    if(player.Owner === "me") {
+      var e = new CustomEvent('DT.team.addPlayer', { detail: { player: player }, bubbles: true });
+      this.getDOMNode().dispatchEvent(e);
+    }
+  },
+
+  checkRemoved: function() {
+    player = this.props.player;
+    if(player.Owner === null) {
+      var e = new CustomEvent('DT.team.removePlayer', { detail: { player: player }, bubbles: true });
+      this.getDOMNode().dispatchEvent(e);
+    }
   },
 
   handleMouseDown: function() {
