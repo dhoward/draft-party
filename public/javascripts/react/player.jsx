@@ -2,7 +2,8 @@ var Player = React.createClass({
 
   getDefaultProps: function() {
     return {
-      player: {}
+      player: {},
+      showAnnotations: true
     }
   },
 
@@ -38,13 +39,16 @@ var Player = React.createClass({
 
   render: function() {
 
-    var cx = React.addons.classSet;
-    var classes = cx({
-      'taken': this.props.player.Owner !== null && typeof this.props.player.Owner !== "undefined",
-      'mine': this.props.player.Owner === "me",
-      'highlighted': this.props.player.Attribution == "highlighted",
-      'lowlighted': this.props.player.Attribution == "lowlighted"
-    });
+    var classes = "";
+
+    if(this.props.showAnnotations) {
+      classes = React.addons.classSet({
+        'taken': this.props.player.Owner !== null && typeof this.props.player.Owner !== "undefined",
+        'mine': this.props.player.Owner === "me",
+        'highlighted': this.props.player.Attribution == "highlighted",
+        'lowlighted': this.props.player.Attribution == "lowlighted"
+      });
+    }
 
     if(this.props.player.Owner != null && DT.hidingDrafted) {
       return null;

@@ -291,8 +291,8 @@ tr.dragging {
   text-shadow: 1px 1px 1px rgba(0,0,0,0.3) !important;
   margin-bottom: 0;
 }
-.my-team table tr {
-  opacity: 0.7;
+.my-team table tr .rank {
+  background-image: none;
 }
 .my-team .player.hidden {
   text-indent: -300px;
