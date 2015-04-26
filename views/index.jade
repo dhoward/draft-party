@@ -20,18 +20,6 @@ html(lang="en")
     link(rel="stylesheet", href="/stylesheets/font-awesome.min.css")
     script(type='text/javascript', src="javascripts/lib/react-with-addons.js")
     script(type='text/javascript', src="javascripts/lib/classNames.js")
-    script(type='text/javascript', src="javascripts/lib/JSXTransformer.js")
-    script(type='text/jsx', src="javascripts/react/drafted-toggle.jsx")
-    script(type='text/jsx', src="javascripts/react/player.jsx")
-    script(type='text/jsx', src="javascripts/react/team.jsx")
-    script(type='text/jsx', src="javascripts/react/position-ranking.jsx")
-    script(type='text/jsx', src="javascripts/react/instructions.jsx")
-    script(type='text/jsx', src="javascripts/react/login.jsx")
-    script(type='text/jsx', src="javascripts/react/register.jsx")
-    script(type='text/jsx', src="javascripts/react/user-menu.jsx")
-    script(type='text/jsx', src="javascripts/react/user-dialog.jsx")
-    script(type='text/jsx', src="javascripts/react/navbar.jsx")
-    script(type='text/jsx', src="javascripts/react/draft.jsx")
 
   body
     #content-root
@@ -50,8 +38,10 @@ html(lang="en")
 
     != js('application')
 
-    script(type='text/jsx').
+    script(type='text/javascript', src="javascripts/components.js")
+
+    script(type='text/javascript').
       React.render(
-        <Draft />,
+        React.createElement(Draft, null),
         document.getElementById('content-root')
       );

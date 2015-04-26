@@ -103,4 +103,4 @@ var Draft = React.createClass({
       </div>
     )
   }
-})
+});
