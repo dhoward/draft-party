@@ -5,6 +5,7 @@ class App
   lowLighting: false
   editing: false
   hidingDrafted: false
+  showProjections: false
 
   constructor: (players) ->
     players = _.map players, (player) ->
@@ -34,6 +35,9 @@ class App
 
   toggleDrafted: =>
     @hidingDrafted = not @hidingDrafted
+
+  toggleProjections: =>
+    @showProjections = not @showProjections
 
 DT = new App(DT_GLOBALS.allPlayers)
 delete[DT_GLOBALS.allPlayers]

@@ -45,6 +45,11 @@ var Draft = React.createClass({displayName: "Draft",
     this.forceUpdate();
   },
 
+  toggleProjections: function() {
+    DT.toggleProjections();
+    this.forceUpdate();
+  },
+
   render: function() {
     rankings = DT.rankings;
     nextPick = rankings.getNextPick();
@@ -56,7 +61,8 @@ var Draft = React.createClass({displayName: "Draft",
           React.createElement(NavBar, {user: this.state.user, 
                   highlighting: this.state.highlighting, lowlighting: this.state.lowlighting, 
                   onHighlight: this.onHighlight, onLowlight: this.onLowlight, 
-                  onDraftedToggle: this.toggleDrafted, onEditRankings: this.onEditRankings})
+                  onDraftedToggle: this.toggleDrafted, onProjectionsToggle: this.toggleProjections, 
+                  onEditRankings: this.onEditRankings})
         ), 
 
         React.createElement("div", {className: "row players"}, 
@@ -271,6 +277,11 @@ var NavBar = React.createClass({displayName: "NavBar",
       "on": DT.hidingDrafted
     });
 
+    var projectionsClass = DT.util.classNames({
+      "hidden-xs metal linear drafted": true,
+      "on": DT.showProjections
+    });
+
     return (
 
       React.createElement("div", {className: "row navbar"}, 
@@ -293,7 +304,7 @@ var NavBar = React.createClass({displayName: "NavBar",
 
               React.createElement("span", {className: draftedClass, onClick: this.props.onDraftedToggle}, "Hide drafted"), 
 
-              React.createElement("span", {className: "hidden-sm hidden-xs metal linear projections", onClick: this.props.toggleProjections}, "Show projections"), 
+              React.createElement("span", {className: projectionsClass, onClick: this.props.onProjectionsToggle}, "Show projections"), 
 
               
                 this.props.user !== null ?
@@ -321,6 +332,30 @@ var Player = React.createClass({displayName: "Player",
     }
   },
 
+  componentDidUpdate: function() {
+    var _this = this;
+    console.log("updating");
+    if(DT.showProjections) {
+      this.activateTooltip();
+    } else {
+      this.deactivateTooltip();
+    }
+  },
+
+  activateTooltip: function() {
+    $(this.getDOMNode()).popover({
+      html : true,
+      container: 'body',
+      trigger: 'hover',
+      content: this.statsHTML,
+      title: function() { return 'Projected Stats' }
+    })
+  },
+
+  deactivateTooltip: function() {
+    $(this.getDOMNode()).popover('destroy');
+  },
+
   updateState: function() {
     this.props.player.updateState();
 
@@ -345,6 +380,19 @@ var Player = React.createClass({displayName: "Player",
       var e = new CustomEvent('DT.team.removePlayer', { detail: { player: player }, bubbles: true });
       this.getDOMNode().dispatchEvent(e);
     }
+  },
+
+  statsHTML: function() {
+    rows = "";
+    player = this.props.player;
+
+    for (var stat in player.Stats) {
+      if (player.Stats.hasOwnProperty(stat)) {
+        rows += "<tr key={stat}><td><div style='width:100px'>"+stat+"</div></td><td>"+player.Stats[stat]+"</td></tr>";
+      }
+    }
+
+    return "<table><tbody>" + rows + "</tbody></table>";
   },
 
   handleMouseDown: function() {

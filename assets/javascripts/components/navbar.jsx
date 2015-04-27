@@ -21,6 +21,11 @@ var NavBar = React.createClass({
       "on": DT.hidingDrafted
     });
 
+    var projectionsClass = DT.util.classNames({
+      "hidden-xs metal linear drafted": true,
+      "on": DT.showProjections
+    });
+
     return (
 
       <div className="row navbar">
@@ -43,7 +48,7 @@ var NavBar = React.createClass({
 
               <span className={draftedClass} onClick={this.props.onDraftedToggle}>Hide drafted</span>
 
-              <span className="hidden-sm hidden-xs metal linear projections" onClick={this.props.toggleProjections}>Show projections</span>
+              <span className={projectionsClass} onClick={this.props.onProjectionsToggle}>Show projections</span>
 
               {
                 this.props.user !== null ?

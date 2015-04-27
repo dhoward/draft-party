@@ -45,6 +45,11 @@ var Draft = React.createClass({
     this.forceUpdate();
   },
 
+  toggleProjections: function() {
+    DT.toggleProjections();
+    this.forceUpdate();
+  },
+
   render: function() {
     rankings = DT.rankings;
     nextPick = rankings.getNextPick();
@@ -56,7 +61,8 @@ var Draft = React.createClass({
           <NavBar user={this.state.user}
                   highlighting={this.state.highlighting} lowlighting={this.state.lowlighting}
                   onHighlight={this.onHighlight} onLowlight={this.onLowlight}
-                  onDraftedToggle={this.toggleDrafted} onEditRankings={this.onEditRankings} />
+                  onDraftedToggle={this.toggleDrafted} onProjectionsToggle={this.toggleProjections}
+                  onEditRankings={this.onEditRankings} />
         </div>
 
         <div className="row players">

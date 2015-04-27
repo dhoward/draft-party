@@ -333,7 +333,10 @@ App = (function() {
 
   App.prototype.hidingDrafted = false;
 
+  App.prototype.showProjections = false;
+
   function App(players) {
+    this.toggleProjections = bind(this.toggleProjections, this);
     this.toggleDrafted = bind(this.toggleDrafted, this);
     this.toggleLowlighting = bind(this.toggleLowlighting, this);
     this.toggleHighlighting = bind(this.toggleHighlighting, this);
@@ -376,6 +379,10 @@ App = (function() {
 
   App.prototype.toggleDrafted = function() {
     return this.hidingDrafted = !this.hidingDrafted;
+  };
+
+  App.prototype.toggleProjections = function() {
+    return this.showProjections = !this.showProjections;
   };
 
   return App;

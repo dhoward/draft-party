@@ -7,6 +7,30 @@ var Player = React.createClass({
     }
   },
 
+  componentDidUpdate: function() {
+    var _this = this;
+    console.log("updating");
+    if(DT.showProjections) {
+      this.activateTooltip();
+    } else {
+      this.deactivateTooltip();
+    }
+  },
+
+  activateTooltip: function() {
+    $(this.getDOMNode()).popover({
+      html : true,
+      container: 'body',
+      trigger: 'hover',
+      content: this.statsHTML,
+      title: function() { return 'Projected Stats' }
+    })
+  },
+
+  deactivateTooltip: function() {
+    $(this.getDOMNode()).popover('destroy');
+  },
+
   updateState: function() {
     this.props.player.updateState();
 
@@ -31,6 +55,19 @@ var Player = React.createClass({
       var e = new CustomEvent('DT.team.removePlayer', { detail: { player: player }, bubbles: true });
       this.getDOMNode().dispatchEvent(e);
     }
+  },
+
+  statsHTML: function() {
+    rows = "";
+    player = this.props.player;
+
+    for (var stat in player.Stats) {
+      if (player.Stats.hasOwnProperty(stat)) {
+        rows += "<tr key={stat}><td><div style='width:100px'>"+stat+"</div></td><td>"+player.Stats[stat]+"</td></tr>";
+      }
+    }
+
+    return "<table><tbody>" + rows + "</tbody></table>";
   },
 
   handleMouseDown: function() {

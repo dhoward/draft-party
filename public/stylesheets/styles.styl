@@ -140,18 +140,6 @@ a.registerButton
 .row.players
   margin-top 30px
 
-table.table-bordered
-  border-width 3px
-
-table
-  box-shadow hsla(0,0%, 0%,.15) 0 -5px 6px 4px,
-    hsla(0,0%,0%,.5) 0  5px 6px 4px
-
-  tr
-    border: 1px solid rgba(0,0,0,0.6);
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-    background-color: #454545
-
 tr, td
   cursor pointer
 
@@ -159,6 +147,40 @@ tr, td
   text-align center
 
 .positional
+
+  table.table-bordered
+    border-width 3px
+
+  table
+    box-shadow hsla(0,0%, 0%,.15) 0 -5px 6px 4px,
+      hsla(0,0%,0%,.5) 0  5px 6px 4px
+
+    tr
+      border: 1px solid rgba(0,0,0,0.6);
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+      background-color: #454545
+
+    tr.taken, tr.taken:hover
+      background-image none
+      background-color #222
+      color #555
+
+      td.rank
+        background-image none
+
+    tr.taken.mine, tr.taken.mine:hover
+      color #eee
+      background-color #16a910
+      background-position 0 0
+      background-repeat no-repeat !important
+      text-shadow none
+
+      td.rank
+        background-image none
+
+    tr.dragging
+      opacity: 0.5
+
   .rank
     position relative
     background-image url("/images/drag-handle.png")
@@ -178,27 +200,6 @@ tr, td
         display block
         position absolute
         top 4px
-
-tr.taken, tr.taken:hover
-  background-image none
-  background-color #222
-  color #555
-
-  td.rank
-    background-image none
-
-tr.taken.mine, tr.taken.mine:hover
-  color #eee
-  background-color #16a910
-  background-position 0 0
-  background-repeat no-repeat !important
-  text-shadow none
-
-  td.rank
-    background-image none
-
-tr.dragging
-  opacity: 0.5
 
 .alert
   .form-group
