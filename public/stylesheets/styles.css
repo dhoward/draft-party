@@ -1,66 +1,51 @@
-.metal {
+.nav-button {
   position: relative;
-  outline: none;
-  font: bold 6em/2em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-  text-align: center;
-  color: #333;
-  text-shadow: rgba(102,102,102,0.5) 0 -1px 0, rgba(255,255,255,0.6) 0 2px 1px;
-  background-color: #e6e6e6;
-  box-shadow: inset #262626 0 0px 0px 4px, inset rgba(38,38,38,0.8) 0 -1px 5px 4px, inset rgba(0,0,0,0.25) 0 -1px 0px 7px, inset rgba(255,255,255,0.7) 0 2px 1px 7px, rgba(0,0,0,0.15) 0 -5px 6px 4px, rgba(0,0,0,0.5) 0 5px 6px 4px;
-  transition: color 0.2s;
-}
-.radial.metal {
-  width: 50px;
-  height: 50px;
-  line-height: 36px;
-  border-radius: 80px;
-  background-image: -webkit-radial-gradient(50% 0%, 8% 50%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), -webkit-radial-gradient(50% 100%, 12% 50%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%), -webkit-radial-gradient(0% 50%, 50% 7%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), -webkit-radial-gradient(100% 50%, 50% 5%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 3%, rgba(0,0,0,0.1) 3.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 6%, rgba(255,255,255,0.1) 7.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 1.2%, rgba(255,255,255,0.2) 2.2%), -webkit-radial-gradient(50% 50%, 200% 50%, #e6e6e6 5%, #d9d9d9 30%, #999 100%);
-}
-.metal.radial:before,
-.metal.radial:after {
-  content: "";
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: inherit;
-  height: inherit;
-  border-radius: inherit;
-  background-image: -webkit-radial-gradient(50% 0%, 10% 50%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%), -webkit-radial-gradient(50% 100%, 10% 50%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%), -webkit-radial-gradient(0% 50%, 50% 10%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%), -webkit-radial-gradient(100% 50%, 50% 6%, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
-}
-.metal.radial:before {
-  transform: rotate(65deg);
-}
-.metal.radial:after {
-  transform: rotate(-65deg);
-}
-.metal.linear {
-  font-size: 18px;
-  border-radius: 0.5em;
-  background-image: -webkit-repeating-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 6%, rgba(255,255,255,0.1) 7.5%), -webkit-repeating-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 4%, rgba(0,0,0,0.03) 4.5%), -webkit-repeating-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 1.2%, rgba(255,255,255,0.15) 2.2%), linear-gradient(180deg, #c7c7c7 0%, #e6e6e6 47%, #c7c7c7 53%, #b3b3b3 100%);
-}
-.metal.linear.oval {
-  margin-top: 100px;
-  width: 70px;
   height: 60px;
-  line-height: 60px !important;
-  border-radius: 50%;
-  font: italic bold 3em/50px Georgia, "Times New Roman", Times, serif;
+  line-height: 56px;
+  outline: none;
+  font: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  color: #777;
+  transition: color 0.2s;
+  border: 1px solid #000;
+  border-width: 0 2px 0 0;
 }
-.metal:active,
-.metal.on {
-  color: #06c;
-  text-shadow: rgba(0,51,102,0.3) 0 -1px 0, #b3d9ff 0 2px 1px, #9df 0 0 5px, rgba(0,127,255,0.6) 0 0 20px;
-  box-shadow: inset #004c99 0 0px 0px 4px, inset rgba(0,38,77,0.4) 0 -1px 5px 4px, inset rgba(0,51,102,0.25) 0 -1px 0px 7px, inset rgba(255,255,255,0.7) 0 2px 1px 7px, rgba(0,64,128,0.8) 0 0px 3px 2px, rgba(38,76,115,0.25) 0 -5px 8px 4px, #0d4073 0 3px 8px 4px;
+.nav-button.highlight,
+.nav-button.highlight.on {
+  color: #ffff50;
 }
-.metal.yellow:active,
-.metal.yellow.on {
-  text-shadow: rgba(102,102,0,0.3) 0 -1px 0, #ffffb3 0 2px 1px, #fe9 0 0 5px, rgba(255,255,0,0.6) 0 0 20px;
-  box-shadow: inset #990 0 0px 0px 4px, inset rgba(76,77,0,0.4) 0 -1px 5px 4px, inset rgba(102,102,0,0.25) 0 -1px 0px 7px, inset rgba(255,255,255,0.7) 0 2px 1px 7px, rgba(127,128,0,0.5) 0 0px 3px 2px, rgba(115,115,38,0.15) 0 -5px 8px 4px, #73730d 0 3px 8px 4px;
+.nav-button.lowlight,
+.nav-button.lowlight.on {
+  color: #ff2c20;
 }
-.metal.red:active,
-.metal.red.on {
-  text-shadow: rgba(102,0,0,0.3) 0 -1px 0, #ffb3b3 0 2px 1px, #fa9 0 0 5px, rgba(255,0,0,0.6) 0 0 20px;
-  box-shadow: inset #900 0 0px 0px 4px, inset rgba(77,0,0,0.4) 0 -1px 5px 4px, inset rgba(102,0,0,0.25) 0 -1px 0px 7px, inset rgba(255,255,255,0.7) 0 2px 1px 7px, rgba(128,0,0,0.8) 0 0px 3px 2px, rgba(115,38,38,0.25) 0 -5px 8px 4px, #730d0d 0 3px 8px 4px;
+.nav-button.highlight,
+.nav-button.lowlight {
+  line-height: 46px;
+}
+.nav-button.highlight:active,
+.nav-button.lowlight:active {
+  line-height: 50px;
+}
+.nav-button.highlight .fa,
+.nav-button.lowlight .fa {
+  opacity: 0.4;
+}
+.nav-button.highlight.on .fa,
+.nav-button.lowlight.on .fa {
+  opacity: 1;
+}
+.nav-button.first {
+  border-width: 0 2px;
+}
+.nav-button:active {
+  background: #333;
+  line-height: 60px;
+  box-shadow: inset 0px 0px 22px 4px rgba(0,0,0,0.2), inset 0 0 2px 2px rgba(0,0,0,0.2), inset 0 0 2px 4px rgba(0,0,0,0.2), inset 0 0 2px 6px rgba(0,0,0,0.2), inset 0 0 1px 8px rgba(0,0,0,0.5), inset 0 -4px 2px 4px rgba(0,0,0,0.5), inset 0 2px 1px 8px rgba(255,255,255,0.15), inset 0 -30px 30px rgba(0,0,0,0.2);
+}
+.nav-button.on {
+  color: #0096ff;
 }
 body {
   background-image: url("/images/metal6.png");
@@ -90,15 +75,8 @@ body {
 #register .btn-info {
   margin-left: 20px;
 }
-.user-dropdown {
-  margin-bottom: 20px;
-}
 .user-dropdown .dropdown-holder {
-  margin: 26px 10px 0 0;
   position: relative;
-}
-.user-dropdown .dropdown-holder .dropdown {
-  padding: 6px 20px;
 }
 .user-dropdown .dropdown-holder .dropdown .caret {
   margin-left: 6px;
@@ -167,44 +145,33 @@ a.registerButton {
   float: left;
   font-size: 18px;
   padding: 6px;
-  margin: 22px 0 24px 30px;
   width: 45px;
 }
 .navbar .projections,
 .navbar .drafted,
-.navbar .editRankings {
+.navbar .editRankings,
+.navbar .dropdown {
   float: left;
-  padding: 10px 16px;
-  margin-left: 30px;
-  margin-top: 26px;
-  line-height: 28px;
+  padding: 0 16px;
 }
-.navbar .editRankings {
-  margin-right: 30px;
-}
-.navbar .highlight,
-.navbar .highlight:hover,
 h4.highlighted,
 h1.highlighted,
 .highlighted .name,
 .highlighted .name:hover {
   color: #ffff50;
 }
-.navbar .lowlight,
-.navbar .lowlight:hover,
 .lowlighted .name,
 .lowlighted .name:hover {
   color: #ff6c60;
 }
 .main-content .navbar {
   margin: 0;
-  padding: 10px 0 0 0;
   background: #444;
   border: none;
   box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.2), inset 0 0 2px 4px rgba(0,0,0,0.2), inset 0 0 2px 6px rgba(0,0,0,0.2), inset 0 0 1px 8px rgba(0,0,0,0.5), inset 0 -4px 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px 8px rgba(255,255,255,0.25), inset 0 -30px 30px rgba(0,0,0,0.2);
   color: #303030;
   cursor: pointer;
-  font: bold 40px/85px sans-serif;
+  font: bold sans-serif;
   padding: 0;
   text-shadow: 0 1px 1px rgba(255,255,255,0.25), 0 -1px 1px rgba(0,0,0,0.75);
 }
