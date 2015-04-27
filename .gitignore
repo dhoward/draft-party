@@ -3,4 +3,7 @@ node_modules/*
 node_modules
 newrelic_agent.log
 
+public/javascripts/application.js
+public/javascripts/components.js
+
 .DS_Store
