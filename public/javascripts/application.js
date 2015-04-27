@@ -1,4 +1,4 @@
-var App, DT, Player, Rankings, Team, Tooltips,
+var App, DT, Player, Rankings, Team,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 Player = (function() {
@@ -118,10 +118,10 @@ Rankings = (function() {
   };
 
   Rankings.prototype.updateRankings = function(players) {
-    var index, j, len, player, ref, results;
+    var i, index, len, player, ref, results;
     ref = this.players;
     results = [];
-    for (index = j = 0, len = ref.length; j < len; index = ++j) {
+    for (index = i = 0, len = ref.length; i < len; index = ++i) {
       player = ref[index];
       results.push(player["Rank"] = index + 1);
     }
@@ -166,7 +166,7 @@ Team = (function() {
   };
 
   Team.prototype.buildPositions = function() {
-    var j, len, player, ref, results;
+    var i, len, player, ref, results;
     this.quarterbacks = [];
     this.runningbacks = [];
     this.widereceivers = [];
@@ -177,8 +177,8 @@ Team = (function() {
     this.bench = [];
     ref = this.players;
     results = [];
-    for (j = 0, len = ref.length; j < len; j++) {
-      player = ref[j];
+    for (i = 0, len = ref.length; i < len; i++) {
+      player = ref[i];
       results.push(this.slotPlayer(player));
     }
     return results;
@@ -237,91 +237,6 @@ Team = (function() {
 
 })();
 
-Tooltips = (function() {
-  function Tooltips($el) {
-    this.$el = $el;
-    this.activateTooltips = bind(this.activateTooltips, this);
-    this.updateTooltips = bind(this.updateTooltips, this);
-    this.toggleTooltips = bind(this.toggleTooltips, this);
-    this.toggleButton = $('form .projections');
-    this.toggleButton.on('click', this.toggleTooltips);
-    $('body').on('Players.rendered', this.updateTooltips);
-  }
-
-  Tooltips.prototype.toggleTooltips = function() {
-    this.toggleButton.toggleClass('on');
-    return this.updateTooltips();
-  };
-
-  Tooltips.prototype.updateTooltips = function() {
-    var activate;
-    activate = this.toggleButton.hasClass('on');
-    if (activate) {
-      return this.activateTooltips();
-    } else {
-      return this.deactivateTooltips();
-    }
-  };
-
-  Tooltips.prototype.activateTooltips = function() {
-    return this.$el.find('.player').each((function(_this) {
-      return function(i, player) {
-        var stats;
-        stats = _this.getStats($(player).attr('data-position'));
-        if (!stats.length) {
-          return;
-        }
-        return $(player).popover({
-          html: true,
-          container: 'body',
-          trigger: 'hover',
-          content: function() {
-            return _this.tooltipHtml(stats, $(player).attr('data-id'));
-          },
-          title: function() {
-            return 'Projected Stats';
-          }
-        });
-      };
-    })(this));
-  };
-
-  Tooltips.prototype.deactivateTooltips = function() {
-    return $('.player').popover('destroy');
-  };
-
-  Tooltips.prototype.getStats = function(pos) {
-    var stats;
-    stats = [];
-    if (pos === 'qb') {
-      stats = ['Pass Yards', 'Pass TD', 'INT', 'Rush Yards', 'Rush TD'];
-    } else if (pos === 'rb') {
-      stats = ['Rush Yards', 'Rush TD', 'Rec Yards', 'Rec TD'];
-    } else if (pos === 'wr') {
-      stats = ['Rec Yards', 'Rec TD'];
-    } else if (pos === 'te') {
-      stats = ['Rec Yards', 'Rec TD'];
-    }
-    return stats;
-  };
-
-  Tooltips.prototype.tooltipHtml = function(stats, id) {
-    var $html, j, len, player, stat;
-    $html = $('<table><tbody></tbody></table>');
-    player = _.findWhere(DT_GLOBALS.allPlayers, {
-      Id: id
-    });
-    for (j = 0, len = stats.length; j < len; j++) {
-      stat = stats[j];
-      $html.append("<tr><td><div style='width:100px'>" + stat + "</div></td><td>" + player[stat] + "</td></tr>");
-    }
-    return $html;
-  };
-
-  return Tooltips;
-
-})();
-
 App = (function() {
   App.prototype.rankings = [];
 
@@ -340,7 +255,7 @@ App = (function() {
     this.toggleDrafted = bind(this.toggleDrafted, this);
     this.toggleLowlighting = bind(this.toggleLowlighting, this);
     this.toggleHighlighting = bind(this.toggleHighlighting, this);
-    var j, len, player, taken;
+    var i, len, player, taken;
     players = _.map(players, function(player) {
       return new Player(player);
     });
@@ -349,8 +264,8 @@ App = (function() {
     taken = _.where(players, {
       Owner: "me"
     });
-    for (j = 0, len = taken.length; j < len; j++) {
-      player = taken[j];
+    for (i = 0, len = taken.length; i < len; i++) {
+      player = taken[i];
       this.team.addPlayer(player);
     }
   }

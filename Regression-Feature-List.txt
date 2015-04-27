@@ -1,3 +1,0 @@
-Regression Feature List
-
-Player stats tooltips
