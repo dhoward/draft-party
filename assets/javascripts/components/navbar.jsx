@@ -6,6 +6,8 @@ var NavBar = React.createClass({
 
   render: function() {
 
+    var nextPick = rankings.getNextPick();
+
     var highlightClass = DT.util.classNames({
       "nav-button first highlight yellow": true,
       "on": this.props.highlighting
@@ -30,11 +32,15 @@ var NavBar = React.createClass({
 
       <div className="row navbar">
 
-        {/*<div className="col-sm-2 col-xs-12 logo">
-          <img src="/images/logo-rainbow.png" />
-        </div>*/}
+        <div className="col-sm-2 col-xs-12 logo">
+          Draft Party
+        </div>
 
-        <div className="col-sm-10 col-xs-12 pull-right">
+        <div className="col-sm-2 hidden-xs picker">
+          Picking: { nextPick }
+        </div>
+
+        <div className="col-sm-8 col-xs-12 pull-right">
           <div className="pull-right hidden-xs">
 
             <div className={highlightClass} onClick={this.props.onHighlight} >

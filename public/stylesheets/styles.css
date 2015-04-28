@@ -56,12 +56,48 @@ body {
   -o-user-select: none;
   user-select: none;
 }
+body .modal-backdrop.in {
+  opacity: 0.7;
+}
+body .modal-content {
+  box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.2), inset 0 0 2px 4px rgba(0,0,0,0.2), inset 0 0 2px 6px rgba(0,0,0,0.2), inset 0 0 1px 8px rgba(0,0,0,0.5), inset 0 -4px 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px 8px rgba(255,255,255,0.25), inset 0 -30px 30px rgba(0,0,0,0.2);
+}
+body .dropdown-menu {
+  border: 3px solid #000;
+  border-radius: 0;
+  background-color: #4e4e4e;
+  box-shadow: 0 0 2px 2px #000;
+}
+body .dropdown-menu li a:hover {
+  background-color: #333;
+}
+body .popover {
+  background-color: #333;
+  border: 1px solid #000;
+}
+body .popover .popover-title {
+  border-bottom-width: 2px;
+}
+body .popover.table {
+  background-color: #333;
+}
 *:focus,
 *:active {
   outline: 0;
 }
-.logo {
+.navbar .logo {
+  font-family: "Sansita One";
   margin: 14px 0;
+  font-size: 24px;
+  padding-left: 24px;
+  color: #dd00ae;
+  text-shadow: 0 1px 1px #ff00de, 0 1px 1px rgba(255,255,255,0.25), 0 -1px 1px rgba(0,0,0,0.75);
+}
+.navbar .picker {
+  line-height: 60px;
+  font-size: 20px;
+  color: #dd00ae;
+  font-weight: bold;
 }
 #login .form-error {
   color: #f00;
@@ -80,6 +116,9 @@ body {
 }
 .user-dropdown .dropdown-holder .dropdown .caret {
   margin-left: 6px;
+  border-top: 6px solid;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
 }
 .user-form {
   margin-right: 20px;
@@ -123,7 +162,7 @@ a.registerButton {
 }
 .main-content .position-column {
   padding-left: 0;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 .main-content .position-column .rank {
   text-align: right;
@@ -146,13 +185,16 @@ a.registerButton {
   font-size: 18px;
   padding: 6px;
   width: 45px;
+  cursor: pointer;
 }
 .navbar .projections,
 .navbar .drafted,
 .navbar .editRankings,
-.navbar .dropdown {
+.navbar .dropdown,
+.navbar .login {
   float: left;
   padding: 0 16px;
+  cursor: pointer;
 }
 h4.highlighted,
 h1.highlighted,
@@ -170,13 +212,12 @@ h1.highlighted,
   border: none;
   box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.2), inset 0 0 2px 4px rgba(0,0,0,0.2), inset 0 0 2px 6px rgba(0,0,0,0.2), inset 0 0 1px 8px rgba(0,0,0,0.5), inset 0 -4px 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px 8px rgba(255,255,255,0.25), inset 0 -30px 30px rgba(0,0,0,0.2);
   color: #303030;
-  cursor: pointer;
   font: bold sans-serif;
   padding: 0;
   text-shadow: 0 1px 1px rgba(255,255,255,0.25), 0 -1px 1px rgba(0,0,0,0.75);
 }
 .row.players {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 tr,
 td {
@@ -190,7 +231,7 @@ td {
   border-width: 3px;
 }
 .positional table {
-  box-shadow: rgba(0,0,0,0.15) 0 -5px 6px 4px, rgba(0,0,0,0.5) 0 5px 6px 4px;
+  box-shadow: rgba(0,0,0,0.15) 0 0px 2px 0px, rgba(0,0,0,0.5) 0 0px 9px 2px;
 }
 .positional table tr {
   border: 1px solid rgba(0,0,0,0.6);
@@ -257,6 +298,10 @@ td {
   border: 1px solid #000 !important;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.3) !important;
   margin-bottom: 0;
+  background-color: #999;
+}
+.my-team table tr {
+  background: none;
 }
 .my-team table tr .rank {
   background-image: none;

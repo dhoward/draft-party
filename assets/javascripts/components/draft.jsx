@@ -52,7 +52,6 @@ var Draft = React.createClass({
 
   render: function() {
     rankings = DT.rankings;
-    nextPick = rankings.getNextPick();
 
     return (
       <div className="container-fluid main-content">
@@ -63,12 +62,6 @@ var Draft = React.createClass({
                   onHighlight={this.onHighlight} onLowlight={this.onLowlight}
                   onDraftedToggle={this.toggleDrafted} onProjectionsToggle={this.toggleProjections}
                   onEditRankings={this.onEditRankings} />
-        </div>
-
-        <div className="row players">
-          <div className="col-md-12">
-            Now picking: { nextPick }
-          </div>
         </div>
 
         <div className="row players">

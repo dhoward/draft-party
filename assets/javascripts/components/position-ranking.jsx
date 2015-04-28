@@ -27,6 +27,8 @@ var PositionRanking = React.createClass({
     var players = _this.props.players;
     var draggedPlayer = _this.draggedPlayer;
 
+    draggedPlayer.dragging = true;
+
     $(this.getDOMNode()).find("[data-rank]").each(function(index){
       var $row = $(this);
       var top = $row.offset().top;
@@ -44,6 +46,8 @@ var PositionRanking = React.createClass({
     var index = this.props.players.indexOf(this.draggedPlayer);
     var newRank;
 
+    delete this.draggedPlayer["dragging"];
+
     if(index === 0) {
       newRank = this.props.players[1]["Rank"] - 1;
     } else {
@@ -55,6 +59,7 @@ var PositionRanking = React.createClass({
 
     var e = new CustomEvent('DT.update', { bubbles: true });
     this.getDOMNode().dispatchEvent(e);
+
 
     this.draggedPlayer = null;
     $("body").off("mousemove");

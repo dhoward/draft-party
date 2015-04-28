@@ -17,7 +17,7 @@ var UserMenu = React.createClass({
     return (
       <div className="pull-right user-dropdown">
         <div className="dropdown-holder pull-right">
-          <div className="nav-button dropdown pull-right" data-toggle="dropdown" href="#">
+          <div className="nav-button dropdown pull-right login" data-toggle="dropdown" href="#">
             {this.props.user.name}
             <span className="caret"></span>
           </div>
@@ -47,7 +47,7 @@ var UserMenu = React.createClass({
       return this.userMenu();
     } else {
       return (
-        <input className="btn btn-info" value="Log In" readOnly onClick={this.showLogin} />
+        <span className="nav-button login" onClick={this.showLogin}>Log In</span>
       )
     }
   }

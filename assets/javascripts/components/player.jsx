@@ -77,27 +77,29 @@ var Player = React.createClass({
   render: function() {
 
     var classes = "";
+    var player = this.props.player;
 
     if(this.props.showAnnotations) {
       classes = DT.util.classNames({
-        'taken': this.props.player.Owner !== null && typeof this.props.player.Owner !== "undefined",
-        'mine': this.props.player.Owner === "me",
-        'highlighted': this.props.player.Attribution == "highlighted",
-        'lowlighted': this.props.player.Attribution == "lowlighted"
+        'taken': player.Owner !== null && typeof player.Owner !== "undefined",
+        'mine': player.Owner === "me",
+        'highlighted': player.Attribution == "highlighted",
+        'lowlighted': player.Attribution == "lowlighted",
+        'dragging': player.dragging
       });
     }
 
-    if(this.props.player.Owner != null && DT.hidingDrafted) {
+    if(player.Owner != null && DT.hidingDrafted) {
       return null;
     }
 
     return (
       <tr
-        data-id={this.props.player["Id"]}
-        data-rank={this.props.player["Rank"]}
+        data-id={player["Id"]}
+        data-rank={player["Rank"]}
         className={classes}>
         <td className="col-md-1 rank" onMouseDown={this.handleMouseDown}>{this.props.label}</td>
-        <td className="name" data-position={this.props.code} onClick={this.updateState}>{this.props.player['Player Name']}</td>
+        <td className="name" data-position={this.props.code} onClick={this.updateState}>{player['Player Name']}</td>
       </tr>
     );
   }
