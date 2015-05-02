@@ -1,23 +1,18 @@
 var Login = React.createClass({
 
+  mixins: [React.addons.LinkedStateMixin],
+
   getInitialState: function() {
     return {
       username: "",
       password: "",
-      loginError: "",
+      loginError: null,
       newUser: false
     }
   },
 
-  usernameChanged: function(e) {
-    this.setState({username: e.target.value});
-  },
-
-  passwordChanged: function(e) {
-    this.setState({password: e.target.value});
-  },
-
   submit: function() {
+    this.setState({ loginError: null });
     $.post('/login', this.state, this.handleResponse);
   },
 
@@ -44,14 +39,14 @@ var Login = React.createClass({
               <div className="form-group">
                 <label htmlFor="email" className="col-lg-3 col-md-3 control-label">Email</label>
                 <div className="col-lg-9 col-md-9">
-                  <input type="text" name="email" className="form-control" onChange={this.usernameChanged}/>
+                  <input type="text" name="email" className="form-control" valueLink={this.linkState('username')} />
                 </div>
               </div>
 
               <div className="form-group">
                 <label htmlFor="password" className="col-lg-3 col-md-3 control-label">Password</label>
                 <div className="col-lg-9 col-md-9">
-                  <input type="password" className="form-control password" onChange={this.passwordChanged}/>
+                  <input type="password" className="form-control password" valueLink={this.linkState('password')} />
                 </div>
               </div>
 
