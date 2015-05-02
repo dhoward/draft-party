@@ -85,13 +85,15 @@ body .popover.table {
 *:active {
   outline: 0;
 }
-.navbar .logo {
+.logo {
   font-family: "Sansita One";
-  margin: 14px 0;
   font-size: 24px;
-  padding-left: 24px;
   color: #dd00ae;
   text-shadow: 0 1px 1px #ff00de, 0 1px 1px rgba(255,255,255,0.25), 0 -1px 1px rgba(0,0,0,0.75);
+}
+.navbar .logo {
+  margin: 14px 0;
+  padding-left: 24px;
 }
 .navbar .picker {
   line-height: 60px;
@@ -323,6 +325,9 @@ td {
 }
 #instructions .modal-dialog h4 {
   margin-bottom: 4px;
+}
+#instructions .modal-dialog .logo {
+  font-size: 28px;
 }
 .modal p {
   margin-bottom: 30px;
