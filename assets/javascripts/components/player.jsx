@@ -1,9 +1,19 @@
 var Player = React.createClass({
 
+  mixins: [React.addons.LinkedStateMixin],
+
   getDefaultProps: function() {
     return {
       player: {},
-      showAnnotations: true
+      showAnnotations: true,
+      onMouseDown: function(){}
+    }
+  },
+
+  getInitialState: function() {
+    return {
+      editing: false,
+      newRank: null
     }
   },
 
@@ -74,6 +84,22 @@ var Player = React.createClass({
     this.props.onMouseDown(this.props.player);
   },
 
+  promptRerank: function() {
+    this.setState({ editing: true });
+  },
+
+  onEdit: function(e) {
+    if(e.key === "Enter") {
+      this.setState({ editing: false });
+
+      var rank = parseInt(this.state.newRank, 10);
+      DT.rankings.rankPlayer(this.props.player, rank);
+
+      var e = new CustomEvent('DT.update', { bubbles: true });
+      this.getDOMNode().dispatchEvent(e);
+    }
+  },
+
   render: function() {
 
     var classes = "";
@@ -98,8 +124,17 @@ var Player = React.createClass({
         data-id={player["Id"]}
         data-rank={player["Rank"]}
         className={classes}>
-        <td className="col-md-1 rank" onMouseDown={this.handleMouseDown}>{this.props.label}</td>
+
+        { this.state.editing ?
+          <td className="col-md-1 rank">
+            <input className="rankingInput" valueLink={this.linkState('newRank')} onKeyDown={this.onEdit} />
+          </td>
+          :
+          <td className="col-md-1 rank" onDoubleClick={this.promptRerank} onMouseDown={this.handleMouseDown}>{this.props.label}</td>
+        }
+
         <td className="name" data-position={this.props.code} onClick={this.updateState}>{player['Player Name']}</td>
+
       </tr>
     );
   }

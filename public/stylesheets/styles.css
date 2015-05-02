@@ -265,6 +265,7 @@ td {
   border-width: 3px;
 }
 .positional .rank {
+  width: 42px;
   position: relative;
   background-image: url("/images/drag-handle.png");
   background-repeat: no-repeat;
@@ -275,16 +276,12 @@ td {
   width: 28px;
 }
 .positional .rank .rankingInput {
-  display: none;
-  width: 28px;
+  width: 24px;
+  border: none;
+  box-shadow: inset 0 0 1px 1px;
 }
-.positional.edit .rank .ranking {
-  opacity: 0;
-}
-.positional.edit .rank .rankingInput {
-  display: block;
-  position: absolute;
-  top: 4px;
+.positional .rank.editing {
+  babkground-image: none;
 }
 .alert .form-group {
   margin-bottom: 0;

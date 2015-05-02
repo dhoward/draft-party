@@ -219,6 +219,7 @@ tr, td
       border-width 3px
 
   .rank
+    width 42px
     position relative
     background-image url("/images/drag-handle.png")
     background-repeat no-repeat
@@ -227,16 +228,12 @@ tr, td
     .ranking
       width 28px
     .rankingInput
-      display none
-      width 28px
-  &.edit
-    .rank
-      .ranking
-        opacity 0
-      .rankingInput
-        display block
-        position absolute
-        top 4px
+      width 24px
+      border none
+      box-shadow inset 0 0 1px 1px
+
+    &.editing
+      babkground-image none
 
 .alert
   .form-group
