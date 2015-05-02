@@ -261,7 +261,8 @@ td {
   background-image: none;
 }
 .positional table tr.dragging {
-  opacity: 0.5;
+  opacity: 0.8;
+  border-width: 3px;
 }
 .positional .rank {
   position: relative;
