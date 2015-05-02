@@ -46,20 +46,21 @@ var PositionRanking = React.createClass({
     var index = this.props.players.indexOf(this.draggedPlayer);
     var newRank;
 
-    delete this.draggedPlayer["dragging"];
+    if(this.draggedPlayer.dragging) {
+      delete this.draggedPlayer["dragging"];
 
-    if(index === 0) {
-      newRank = this.props.players[1]["Rank"] - 1;
-    } else {
-      newRank = parseInt(this.props.players[index-1]["Rank"], 10) + 1;
+      if(index === 0) {
+        newRank = this.props.players[1]["Rank"] - 1;
+      } else {
+        newRank = parseInt(this.props.players[index-1]["Rank"], 10) + 1;
+      }
+
+      newRank = Math.max(newRank, 1);
+      DT.rankings.rankPlayer(this.draggedPlayer, newRank);
+
+      var e = new CustomEvent('DT.update', { bubbles: true });
+      this.getDOMNode().dispatchEvent(e);
     }
-
-    newRank = Math.max(newRank, 1);
-    DT.rankings.rankPlayer(this.draggedPlayer, newRank);
-
-    var e = new CustomEvent('DT.update', { bubbles: true });
-    this.getDOMNode().dispatchEvent(e);
-
 
     this.draggedPlayer = null;
     $("body").off("mousemove");
