@@ -58,9 +58,12 @@ var Draft = React.createClass({
 
         <div className="row">
           <NavBar user={this.state.user}
-                  highlighting={this.state.highlighting} lowlighting={this.state.lowlighting}
-                  onHighlight={this.onHighlight} onLowlight={this.onLowlight}
-                  onDraftedToggle={this.toggleDrafted} onProjectionsToggle={this.toggleProjections}
+                  highlighting={this.state.highlighting}
+                  lowlighting={this.state.lowlighting}
+                  onHighlight={this.onHighlight}
+                  onLowlight={this.onLowlight}
+                  onDraftedToggle={this.toggleDrafted}
+                  onProjectionsToggle={this.toggleProjections}
                   onEditRankings={this.onEditRankings} />
         </div>
 
