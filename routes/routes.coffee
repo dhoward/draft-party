@@ -57,6 +57,18 @@ exports.init = (app, passport) ->
     user.save (err) =>
       res.send formatResponseJSON(err, { success:true })
 
+  app.post '/settings', (req, res) ->
+    user = req.user
+    settings = req.body
+
+    for key, val of settings
+      if typeof settings[key] is 'string'
+        settings[key] = ( val is "true" )
+
+    user.settings = settings
+    user.save (err) =>
+      res.send formatResponseJSON(err, { success:true })
+
   app.post '/updatePlayer', (req, res) ->
     user = req.user
     player = req.body

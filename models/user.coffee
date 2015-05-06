@@ -7,8 +7,13 @@ userSchema = mongoose.Schema
   name: String
   email: String
   password: String
+  settings: Schema.Types.Mixed
   rankings: [ Schema.Types.Mixed ]
   createDate: { type: Date, default: Date.now }
+
+defaultSettings =
+  showDrafted: true
+  showProjections: false
 
 
 userSchema.methods.validPassword = (attempt) ->
@@ -17,11 +22,9 @@ userSchema.methods.validPassword = (attempt) ->
   hashedPassword = shasum.digest('hex')
   if(this.password is hashedPassword) then return true else return false
 
-
 userSchema.statics.emailTaken = (email, callback) ->
   users = this.count { email: email }, (err, users) ->
     callback(users isnt 0)
-
 
 userSchema.statics.createUser = (name, email, password, callback) ->
   this.emailTaken email, (taken) =>
@@ -34,7 +37,7 @@ userSchema.statics.saveNewUser = (name, email, password, callback) ->
     shasum = crypto.createHash 'sha1'
     shasum.update password
     hashedPassword = shasum.digest 'hex'
-    this.create { name: name, email: email, password: hashedPassword, rankings: defaultRankings }, (err, user) ->
+    this.create { name: name, email: email, password: hashedPassword, rankings: defaultRankings, settings: defaultSettings }, (err, user) ->
       callback err, user
 
 module.exports = mongoose.model "User", userSchema

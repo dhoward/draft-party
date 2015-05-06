@@ -329,6 +329,9 @@ td {
 #instructions .modal-dialog .logo {
   font-size: 28px;
 }
+#settings label {
+  padding-top: 12px;
+}
 .modal p {
   margin-bottom: 30px;
 }

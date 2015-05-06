@@ -13,6 +13,11 @@ var UserMenu = React.createClass({
     this.getDOMNode().dispatchEvent(e);
   },
 
+  showSettings: function() {
+    var e = new CustomEvent('DT.showSettings', {bubbles: true});
+    this.getDOMNode().dispatchEvent(e);
+  },
+
   userMenu: function() {
     return (
       <div className="pull-right user-dropdown">
@@ -24,6 +29,9 @@ var UserMenu = React.createClass({
           <ul className="dropdown-menu" role="menu" aria-labelledby="dLabel">
             <li>
               <a className="resetButton" href="#" onClick={this.showInstructions}>Help</a>
+            </li>
+            <li>
+              <a className="resetButton" href="#" onClick={this.showSettings}>Settings</a>
             </li>
             <li>
               <a className="resetButton" href="#">Reset</a>

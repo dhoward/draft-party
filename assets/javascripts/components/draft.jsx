@@ -40,16 +40,6 @@ var Draft = React.createClass({
     this.setState(newState);
   },
 
-  toggleDrafted: function() {
-    DT.toggleDrafted();
-    this.forceUpdate();
-  },
-
-  toggleProjections: function() {
-    DT.toggleProjections();
-    this.forceUpdate();
-  },
-
   render: function() {
     rankings = DT.rankings;
 
@@ -62,8 +52,6 @@ var Draft = React.createClass({
                   lowlighting={this.state.lowlighting}
                   onHighlight={this.onHighlight}
                   onLowlight={this.onLowlight}
-                  onDraftedToggle={this.toggleDrafted}
-                  onProjectionsToggle={this.toggleProjections}
                   onEditRankings={this.onEditRankings} />
         </div>
 
@@ -101,6 +89,8 @@ var Draft = React.createClass({
         <Instructions user={this.state.user}/>
 
         <UserDialog />
+
+        { DT_GLOBALS.loggedIn ? <Settings settings={this.state.user.settings}/> : null }
 
       </div>
     )

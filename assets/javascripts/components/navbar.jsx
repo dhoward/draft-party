@@ -18,16 +18,6 @@ var NavBar = React.createClass({
       "on": this.props.lowlighting
     });
 
-    var draftedClass = DT.util.classNames({
-      "nav-button hidden-xs drafted": true,
-      "on": DT.hidingDrafted
-    });
-
-    var projectionsClass = DT.util.classNames({
-      "nav-button hidden-xs drafted": true,
-      "on": DT.showProjections
-    });
-
     return (
 
       <div className="row navbar">
@@ -50,10 +40,6 @@ var NavBar = React.createClass({
             <div className={lowlightClass} onClick={this.props.onLowlight} >
               <i className="fa fa-pencil" />
             </div>
-
-            <span className={draftedClass} onClick={this.props.onDraftedToggle}>Hide drafted</span>
-
-            <span className={projectionsClass} onClick={this.props.onProjectionsToggle}>Show projections</span>
 
             {
               this.props.user !== null ?

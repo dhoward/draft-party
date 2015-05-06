@@ -17,10 +17,19 @@ var Player = React.createClass({
     }
   },
 
+  componentDidMount: function() {
+    this.checkProjections();
+  },
+
   componentDidUpdate: function() {
-    var _this = this;
     console.log("updating");
-    if(DT.showProjections) {
+    this.checkProjections();
+  },
+
+  checkProjections: function() {
+    var showProjections = DT.user != null && DT.user.settings.showProjections;
+
+    if(showProjections) {
       this.activateTooltip();
     } else {
       this.deactivateTooltip();
@@ -28,13 +37,16 @@ var Player = React.createClass({
   },
 
   activateTooltip: function() {
-    $(this.getDOMNode()).popover({
-      html : true,
-      container: 'body',
-      trigger: 'hover',
-      content: this.statsHTML,
-      title: function() { return 'Projected Stats' }
-    })
+
+    if(this.props.player.Stats) {
+      $(this.getDOMNode()).popover({
+        html : true,
+        container: 'body',
+        trigger: 'hover',
+        content: this.statsHTML,
+        title: function() { return 'Projected Stats' }
+      });
+    }
   },
 
   deactivateTooltip: function() {
@@ -115,7 +127,9 @@ var Player = React.createClass({
       });
     }
 
-    if(player.Owner != null && DT.hidingDrafted) {
+    var hideDrafted = DT.user != null && !DT.user.settings.showDrafted;
+
+    if(player.Owner != null && hideDrafted) {
       return null;
     }
 
