@@ -11,7 +11,9 @@ var PositionRanking = React.createClass({
     var players = this.props.players;
     var rows = [];
     for(var i=0; i < players.length; i++) {
-      rows.push(<Player key={i} label={players[i]["Rank"]} player={players[i]} onMouseDown={this.startDragPlayer} />)
+      rows.push(
+        <Player key={i} label={players[i]["Rank"]} player={players[i]} onMouseDown={this.startDragPlayer} hideIfTaken={DT.shouldHideDrafted()}/>
+      )
     }
     return rows;
   },

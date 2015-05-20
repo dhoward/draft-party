@@ -2,6 +2,8 @@ var Player = React.createClass({
 
   mixins: [React.addons.LinkedStateMixin],
 
+  _hideTimer: null,
+
   getDefaultProps: function() {
     return {
       player: {},
@@ -19,6 +21,7 @@ var Player = React.createClass({
 
   componentDidMount: function() {
     this.checkProjections();
+    this.checkHide(this.props.hideIfTaken);
   },
 
   componentDidUpdate: function() {
@@ -26,10 +29,14 @@ var Player = React.createClass({
     this.checkProjections();
   },
 
-  checkProjections: function() {
-    var showProjections = DT.user != null && DT.user.settings.showProjections;
+  componentWillReceiveProps: function(newProps) {
+    if(this.props.hideIfTaken != newProps.hideIfTaken) {
+      this.checkHide(newProps.hideIfTaken);
+    }
+  },
 
-    if(showProjections) {
+  checkProjections: function() {
+    if(DT.shouldShowProjections()) {
       this.activateTooltip();
     } else {
       this.deactivateTooltip();
@@ -37,7 +44,6 @@ var Player = React.createClass({
   },
 
   activateTooltip: function() {
-
     if(this.props.player.Stats) {
       $(this.getDOMNode()).popover({
         html : true,
@@ -55,6 +61,9 @@ var Player = React.createClass({
 
   updateState: function() {
     this.props.player.updateState();
+
+    this.dontHide();
+    this.checkHide(this.props.hideIfTaken);
 
     this.checkAdded();
     this.checkRemoved();
@@ -112,6 +121,35 @@ var Player = React.createClass({
     }
   },
 
+  checkHide: function(shouldHide) {
+    if(this.props.player.isTaken && this.props.player.isTaken() && shouldHide) {
+      this.prepareToHide();
+    } else {
+      this.dontHide();
+    };
+  },
+
+  prepareToHide: function(){
+    this._hideTimer != null ? clearTimeout(this._hideTimer) : null;
+
+    var _this = this;
+    this._hideTimer = setTimeout(function(){
+      _this.setState({ hiding: true });
+      _this._hideTimer = setTimeout(function(){
+        _this.setState({ hidden: true });
+      }, 500);
+    }, 3000);
+  },
+
+  dontHide: function() {
+    this.setState({ hiding: false, hidden: false });
+    this._hideTimer != null ? clearTimeout(this._hideTimer) : null;
+  },
+
+  tableData: function(ref, html) {
+    return <div className="player-td" ref={ref}><div className="player-padding">{html}</div></div>
+  },
+
   render: function() {
 
     var classes = "";
@@ -119,19 +157,15 @@ var Player = React.createClass({
 
     if(this.props.showAnnotations) {
       classes = DT.util.classNames({
-        'taken': player.Owner !== null && typeof player.Owner !== "undefined",
-        'mine': player.Owner === "me",
-        'highlighted': player.Attribution == "highlighted",
-        'lowlighted': player.Attribution == "lowlighted",
-        'dragging': player.dragging
+        'taken': player.isTaken(),
+        'mine': player.isMine(),
+        'highlighted': player.isHighlighted(),
+        'lowlighted': player.isLowlighted(),
+        'dragging': player.dragging,
+        'hiding': this.state.hiding,
+        'hidden': this.state.hidden
       });
-    }
-
-    var hideDrafted = DT.user != null && !DT.user.settings.showDrafted;
-
-    if(player.Owner != null && hideDrafted) {
-      return null;
-    }
+    };
 
     return (
       <tr
@@ -141,13 +175,15 @@ var Player = React.createClass({
 
         { this.state.editing ?
           <td className="col-md-1 rank">
-            <input className="rankingInput" valueLink={this.linkState('newRank')} onKeyDown={this.onEdit} />
+            <div className="player-td">
+              <input className="rankingInput" valueLink={this.linkState('newRank')} onKeyDown={this.onEdit} />
+            </div>
           </td>
           :
-          <td className="col-md-1 rank" onDoubleClick={this.promptRerank} onMouseDown={this.handleMouseDown}>{this.props.label}</td>
+          <td className="col-md-1 rank" onDoubleClick={this.promptRerank} onMouseDown={this.handleMouseDown}>{this.tableData('data1', this.props.label)}</td>
         }
 
-        <td className="name" data-position={this.props.code} onClick={this.updateState}>{player['Player Name']}</td>
+        <td className="name" data-position={this.props.code} onClick={this.updateState}>{this.tableData('data2', player['Player Name'])}</td>
 
       </tr>
     );

@@ -37,6 +37,13 @@ class App
       @user.settings = settings
       $.post '/settings', settings
 
+  shouldHideDrafted: =>
+    if !@user? then return false
+    !@user.settings?.showDrafted
+
+  shouldShowProjections: =>
+    @user? and @user.settings?.showProjections
+
 DT = new App(DT_GLOBALS.user, DT_GLOBALS.allPlayers)
 delete[DT_GLOBALS.allPlayers]
 

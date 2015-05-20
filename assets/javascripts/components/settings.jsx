@@ -2,12 +2,17 @@ var Settings = React.createClass({
 
   mixins: [React.addons.LinkedStateMixin],
 
+  defaultSettings: {
+    showDrafted: true,
+    showProjections: false
+  },
+
   getDefaultProps: function() {
     return {};
   },
 
   getInitialState: function() {
-    return this.props.settings;
+    return this.props.initialSettings || this.defaultSettings;
   },
 
   componentDidMount: function() {

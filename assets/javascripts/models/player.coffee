@@ -36,6 +36,11 @@ class Player
     if DT_GLOBALS.loggedIn
       $.post '/updatePlayer', @toJSON()
 
+  isTaken: => @Owner?
+  isMine: => @Owner is "me"
+  isHighlighted: => @Attribution is "highlighted"
+  isLowlighted: => @Attribution is "lowlighted"
+
   toJSON: ->
     json =
       Id: @Id

@@ -189,14 +189,25 @@ tr, td
   table.table-bordered
     border-width 3px
 
-  table
+  table.table
     box-shadow rgba(0,0,0,0.15) 0 0px 2px 0px,
                rgba(0,0,0,0.5) 0 0px 9px 2px
 
-    tr
-      border: 1px solid rgba(0,0,0,0.6);
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-      background-color: #454545
+    tbody tr
+      border 1px solid rgba(0,0,0,0.6);
+      text-shadow 1px 1px 1px rgba(0,0,0,0.3);
+      background-color #454545
+
+      td
+        padding 0
+
+      td
+        .player-td
+          max-height 50px
+          overflow hidden
+
+        .player-padding
+          padding 8px
 
     tr.taken, tr.taken:hover
       background-image none
@@ -219,6 +230,11 @@ tr, td
     tr.dragging
       opacity: 0.8
       border-width 3px
+
+    tr.hiding .player-td
+      max-height 0
+      transition max-height .5s
+      -webkit-transition max-height .5s
 
   .rank
     width 42px

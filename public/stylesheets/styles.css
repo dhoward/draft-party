@@ -232,39 +232,54 @@ td {
 .positional table.table-bordered {
   border-width: 3px;
 }
-.positional table {
+.positional table.table {
   box-shadow: rgba(0,0,0,0.15) 0 0px 2px 0px, rgba(0,0,0,0.5) 0 0px 9px 2px;
 }
-.positional table tr {
+.positional table.table tbody tr {
   border: 1px solid rgba(0,0,0,0.6);
   text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
   background-color: #454545;
 }
-.positional table tr.taken,
-.positional table tr.taken:hover {
+.positional table.table tbody tr td {
+  padding: 0;
+}
+.positional table.table tbody tr td .player-td {
+  max-height: 50px;
+  overflow: hidden;
+}
+.positional table.table tbody tr td .player-padding {
+  padding: 8px;
+}
+.positional table.table tr.taken,
+.positional table.table tr.taken:hover {
   background-image: none;
   background-color: #222;
   color: #555;
 }
-.positional table tr.taken td.rank,
-.positional table tr.taken:hover td.rank {
+.positional table.table tr.taken td.rank,
+.positional table.table tr.taken:hover td.rank {
   background-image: none;
 }
-.positional table tr.taken.mine,
-.positional table tr.taken.mine:hover {
+.positional table.table tr.taken.mine,
+.positional table.table tr.taken.mine:hover {
   color: #eee;
   background-color: #16a910;
   background-position: 0 0;
   background-repeat: no-repeat !important;
   text-shadow: none;
 }
-.positional table tr.taken.mine td.rank,
-.positional table tr.taken.mine:hover td.rank {
+.positional table.table tr.taken.mine td.rank,
+.positional table.table tr.taken.mine:hover td.rank {
   background-image: none;
 }
-.positional table tr.dragging {
+.positional table.table tr.dragging {
   opacity: 0.8;
   border-width: 3px;
+}
+.positional table.table tr.hiding .player-td {
+  max-height: 0;
+  transition: max-height 0.5s;
+  -webkit-transition: max-height 0.5s;
 }
 .positional .rank {
   width: 42px;
