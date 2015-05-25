@@ -7,6 +7,7 @@ userSchema = mongoose.Schema
   name: String
   email: String
   password: String
+  facebookId: Number
   settings: Schema.Types.Mixed
   rankings: [ Schema.Types.Mixed ]
   createDate: { type: Date, default: Date.now }
@@ -39,5 +40,13 @@ userSchema.statics.saveNewUser = (name, email, password, callback) ->
     hashedPassword = shasum.digest 'hex'
     this.create { name: name, email: email, password: hashedPassword, rankings: defaultRankings, settings: defaultSettings }, (err, user) ->
       callback err, user
+
+userSchema.statics.findOrCreateFromFacebook = (name, facebookId, callback) ->
+  this.findOne { name, facebookId }, (err, user) =>
+    if err? or user?
+      callback err, user
+    else
+      this.create { name: name, facebookId: facebookId, rankings: defaultRankings, settings: defaultSettings }, (err, user) ->
+        callback err, user
 
 module.exports = mongoose.model "User", userSchema

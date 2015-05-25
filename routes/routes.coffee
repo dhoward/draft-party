@@ -38,6 +38,18 @@ exports.init = (app, passport) ->
     ) req, res, next
     return
 
+  app.post '/login/facebook', (req, res) ->
+    name = req.body.name
+    email = req.body.email
+    facebookId = req.body.facebookId
+
+    User.findOrCreateFromFacebook name, facebookId, (errors, user) =>
+      if(errors)
+        res.send(formatResponseJSON errors)
+      else
+        req.login user, (err) =>
+          res.send formatResponseJSON err, user
+
 
   app.get "/logout", (req, res) ->
     req.logout()
