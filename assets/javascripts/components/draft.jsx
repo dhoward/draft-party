@@ -2,7 +2,7 @@ var Draft = React.createClass({
 
   getInitialState: function() {
     return {
-      user: DT_GLOBALS.user,
+      user: DT.user,
       highlighting: false,
       lowLighting: false,
       editing: false,

@@ -32,13 +32,13 @@ html(lang="en")
     script(type='text/javascript', src="javascripts/lib/underscore-1.6.0.min.js")
     script(type='text/javascript', src="javascripts/analytics.js")
 
-    script(type='text/javascript').
-      DT_GLOBALS = {
-        user: !{JSON.stringify(user || null)},
-        allPlayers: !{JSON.stringify(players)}
-      };
-
     script(type='text/javascript', src="javascripts/application.js")
+    script(type='text/javascript').
+      user = !{JSON.stringify(user || null)};
+      allPlayers = !{JSON.stringify(players)};
+      DT = new App(user, allPlayers);
+      DT.util = { classNames: classNames };
+
     script(type='text/javascript', src="javascripts/components.js")
     script(type='text/javascript', src="javascripts/facebook.js")
 

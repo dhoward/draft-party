@@ -11,7 +11,7 @@ class App
       new Player player
 
     @rankings = new Rankings players
-    @loggedIn = @user?    
+    @loggedIn = @user?
     @team = new Team
 
     taken = _.where players, { Owner: "me" }
@@ -44,8 +44,3 @@ class App
 
   shouldShowProjections: =>
     @user? and @user.settings?.showProjections
-
-DT = new App(DT_GLOBALS.user, DT_GLOBALS.allPlayers)
-delete[DT_GLOBALS.allPlayers]
-
-DT.util = { classNames: classNames };
