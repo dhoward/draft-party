@@ -25,7 +25,6 @@ var Player = React.createClass({
   },
 
   componentDidUpdate: function() {
-    console.log("updating");
     this.checkProjections();
   },
 
