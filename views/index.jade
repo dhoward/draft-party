@@ -44,6 +44,6 @@ html(lang="en")
 
     script(type='text/javascript').
       React.render(
-        React.createElement(Draft, null),
+        React.createElement(Draft, { app: DT }),
         document.getElementById('content-root')
       );

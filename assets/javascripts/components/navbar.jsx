@@ -6,7 +6,7 @@ var NavBar = React.createClass({
 
   render: function() {
 
-    var nextPick = rankings.getNextPick();
+    var nextPick = this.props.app.rankings.getNextPick();
 
     var highlightClass = DT.util.classNames({
       "nav-button first highlight yellow": true,
@@ -42,13 +42,13 @@ var NavBar = React.createClass({
             </div>
 
             {
-              this.props.user !== null ?
+              this.props.app.user !== null ?
                 <span className="nav-button editRankings hidden-xs">Edit Rankings</span>
               :
                 <span className="nav-button editRankings disabled hidden-xs" data-toggle="tooltip" data-placement="bottom" title="Gotta log in to do this">Edit Rankings</span>
             }
 
-            <UserMenu user={this.props.user}/>
+            <UserMenu user={this.props.app.user}/>
 
           </div>
         </div>

@@ -2,7 +2,6 @@ var Draft = React.createClass({
 
   getInitialState: function() {
     return {
-      user: DT.user,
       highlighting: false,
       lowLighting: false,
       editing: false,
@@ -41,13 +40,13 @@ var Draft = React.createClass({
   },
 
   render: function() {
-    rankings = DT.rankings;
+    var app = this.props.app;
 
     return (
       <div className="container-fluid main-content">
 
         <div className="row">
-          <NavBar user={this.state.user}
+          <NavBar app={app}
                   highlighting={this.state.highlighting}
                   lowlighting={this.state.lowlighting}
                   onHighlight={this.onHighlight}
@@ -60,24 +59,24 @@ var Draft = React.createClass({
             <div className="positional">
 
               <div className="col-md-2 col-sm-6 position-column">
-                <PositionRanking label="QB" players={rankings.getPosition("QB")} />
+                <PositionRanking label="QB" players={app.rankings.getPosition("QB")} />
               </div>
 
               <div className="col-md-2 col-sm-6 position-column">
-                <PositionRanking label="RB" players={rankings.getPosition("RB")} />
+                <PositionRanking label="RB" players={app.rankings.getPosition("RB")} />
               </div>
 
               <div className="col-md-2 col-sm-6 position-column">
-                <PositionRanking label="WR" players={rankings.getPosition("WR")} />
+                <PositionRanking label="WR" players={app.rankings.getPosition("WR")} />
               </div>
 
               <div className="col-md-2 col-sm-6 position-column">
-                <PositionRanking label="TE" players={rankings.getPosition("TE")} />
+                <PositionRanking label="TE" players={app.rankings.getPosition("TE")} />
               </div>
 
               <div className="col-md-2 col-sm-6 position-column">
-                <PositionRanking label="K" players={rankings.getPosition("K")} />
-                <PositionRanking label="DEF" players={rankings.getPosition("DEF")} />
+                <PositionRanking label="K" players={app.rankings.getPosition("K")} />
+                <PositionRanking label="DEF" players={app.rankings.getPosition("DEF")} />
               </div>
 
               <Team team={DT.team} />
@@ -86,11 +85,11 @@ var Draft = React.createClass({
           </div>
         </div>
 
-        <Instructions user={this.state.user}/>
+        <Instructions user={app.user}/>
 
         <UserDialog />
 
-        { DT.loggedIn ? <Settings initialSettings={this.state.user.settings}/> : null }
+        { DT.loggedIn ? <Settings initialSettings={app.user.settings}/> : null }
 
       </div>
     )
