@@ -33,7 +33,7 @@ class Player
     else
       @updateOwner()
 
-    if DT_GLOBALS.loggedIn
+    if DT.loggedIn
       $.post '/updatePlayer', @toJSON()
 
   isTaken: => @Owner?

@@ -10,9 +10,8 @@ formatResponseJSON = (err, obj) ->
 exports.init = (app, passport) ->
 
   app.get '/', (req, res) ->
-    loggedIn = req.user?
     players = req.user?.rankings or defaultRankings
-    res.render 'index.jade', { loggedIn: loggedIn, players: players, error: req.flash('error') }
+    res.render 'index.jade', { players: players, error: req.flash('error') }
 
   app.post '/register', (req, res) ->
     name = req.body.name

@@ -26,7 +26,7 @@ class Rankings
 
     ranksArray = _.pluck @players, "Id"
 
-    if DT_GLOBALS.loggedIn
+    if DT.loggedIn
       $.post '/rankings', { rankings: ranksArray }
 
   updateRankings: (players) =>

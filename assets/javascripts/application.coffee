@@ -11,6 +11,7 @@ class App
       new Player player
 
     @rankings = new Rankings players
+    @loggedIn = @user?    
     @team = new Team
 
     taken = _.where players, { Owner: "me" }

@@ -90,7 +90,7 @@ var Draft = React.createClass({
 
         <UserDialog />
 
-        { DT_GLOBALS.loggedIn ? <Settings initialSettings={this.state.user.settings}/> : null }
+        { DT.loggedIn ? <Settings initialSettings={this.state.user.settings}/> : null }
 
       </div>
     )
