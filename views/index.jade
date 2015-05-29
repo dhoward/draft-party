@@ -34,8 +34,8 @@ html(lang="en")
 
     script(type='text/javascript', src="javascripts/application.js")
     script(type='text/javascript').
-      user = !{JSON.stringify(user || null)};
-      allPlayers = !{JSON.stringify(players)};
+      var user = !{JSON.stringify(user || null)};
+      var allPlayers = !{JSON.stringify(players)};
       DT = new App(user, allPlayers);
       DT.util = { classNames: classNames };
 
