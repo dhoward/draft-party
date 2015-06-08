@@ -105,7 +105,7 @@ var Player = React.createClass({
   },
 
   promptRerank: function() {
-    this.setState({ editing: true });
+    this.setState({ editing: !this.state.editing });
   },
 
   onEdit: function(e) {
@@ -173,7 +173,7 @@ var Player = React.createClass({
         className={classes}>
 
         { this.state.editing ?
-          <td className="col-md-1 rank">
+          <td className="col-md-1 rank" onDoubleClick={this.promptRerank}>
             <div className="player-td">
               <input className="rankingInput" valueLink={this.linkState('newRank')} onKeyDown={this.onEdit} />
             </div>

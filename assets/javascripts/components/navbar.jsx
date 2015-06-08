@@ -1,9 +1,5 @@
 var NavBar = React.createClass({
 
-  componentDidMount: function() {
-    $('.editRankings').tooltip();
-  },
-
   render: function() {
 
     var nextPick = this.props.app.rankings.getNextPick();
@@ -40,13 +36,6 @@ var NavBar = React.createClass({
             <div className={lowlightClass} onClick={this.props.onLowlight} >
               <i className="fa fa-pencil" />
             </div>
-
-            {
-              this.props.app.user !== null ?
-                <span className="nav-button editRankings hidden-xs">Edit Rankings</span>
-              :
-                <span className="nav-button editRankings disabled hidden-xs" data-toggle="tooltip" data-placement="bottom" title="Gotta log in to do this">Edit Rankings</span>
-            }
 
             <UserMenu user={this.props.app.user}/>
 

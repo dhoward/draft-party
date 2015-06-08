@@ -297,6 +297,7 @@ td {
   width: 28px;
 }
 .positional .rank .rankingInput {
+  margin-top: 7px;
   width: 24px;
   border: none;
   box-shadow: inset 0 0 1px 1px;
