@@ -239,19 +239,19 @@ td {
 .positional table.table {
   box-shadow: rgba(0,0,0,0.15) 0 0px 2px 0px, rgba(0,0,0,0.5) 0 0px 9px 2px;
 }
-.positional table.table tbody tr {
+.positional table.table tr {
   border: 1px solid rgba(0,0,0,0.6);
   text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
   background-color: #454545;
 }
-.positional table.table tbody tr td {
+.positional table.table tr td {
   padding: 0;
 }
-.positional table.table tbody tr td .player-td {
+.positional table.table tr td .player-td {
   max-height: 50px;
   overflow: hidden;
 }
-.positional table.table tbody tr td .player-padding {
+.positional table.table tr td .player-padding {
   padding: 8px;
 }
 .positional table.table tr.taken,
